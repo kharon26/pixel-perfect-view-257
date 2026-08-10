@@ -82,7 +82,7 @@ function CaseStudy() {
         {/* Gallery — TODO: replace placeholders with the real image/video set */}
         <section className="mx-auto max-w-[1600px] px-6 pb-24 md:px-10 md:pb-32">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
-            {project.gallery.map((src, i) => (
+            {project.gallery.map((src: string, i: number) => (
               <Reveal
                 key={i}
                 delay={(i % 2) * 90}
