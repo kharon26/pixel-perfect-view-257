@@ -3,16 +3,15 @@ import { useMemo, useState } from "react";
 import { CATEGORIES, PROJECTS, type Category } from "@/data/projects";
 import { Reveal } from "@/components/Reveal";
 
-// Asymmetric rhythm: every 3rd tile spans wider / taller.
-const spanFor = (i: number) => {
-  const m = i % 6;
-  if (m === 0) return "md:col-span-7 aspect-[16/10]";
-  if (m === 1) return "md:col-span-5 aspect-[4/5]";
-  if (m === 2) return "md:col-span-5 md:mt-24 aspect-[4/5]";
-  if (m === 3) return "md:col-span-7 aspect-[16/11]";
-  if (m === 4) return "md:col-span-6 aspect-[3/2]";
-  return "md:col-span-6 md:mt-16 aspect-[3/2]";
-};
+// Asymmetric rhythm: alternating wide/tall tiles with offset columns.
+const LAYOUT = [
+  { span: "md:col-span-7", aspect: "aspect-[16/10]", offset: "" },
+  { span: "md:col-span-5", aspect: "aspect-[4/5]", offset: "md:mt-28" },
+  { span: "md:col-span-5", aspect: "aspect-[4/5]", offset: "" },
+  { span: "md:col-span-7", aspect: "aspect-[16/11]", offset: "md:mt-20" },
+  { span: "md:col-span-6", aspect: "aspect-[3/2]", offset: "" },
+  { span: "md:col-span-6", aspect: "aspect-[3/2]", offset: "md:mt-16" },
+];
 
 export function Work() {
   const [filter, setFilter] = useState<Category | "All">("All");
@@ -70,10 +69,12 @@ export function Work() {
         </Reveal>
 
         <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-12">
-          {items.map((p, i) => (
-            <Reveal key={p.slug} delay={(i % 2) * 90} className={`md:col-span-6 ${spanFor(i).split(" aspect")[0]}`}>
+          {items.map((p, i) => {
+            const l = LAYOUT[i % LAYOUT.length]!;
+            return (
+            <Reveal key={p.slug} delay={(i % 2) * 90} className={`${l.span} ${l.offset}`}>
               <Link to="/work/$slug" params={{ slug: p.slug }} className="group block">
-                <div className={`relative overflow-hidden bg-secondary ${"aspect" + spanFor(i).split(" aspect")[1]}`}>
+                <div className={`relative overflow-hidden bg-secondary ${l.aspect}`}>
                   <img
                     src={p.cover}
                     alt={`${p.title} — ${p.category} placeholder cover`}
@@ -93,7 +94,8 @@ export function Work() {
                 </p>
               </Link>
             </Reveal>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
