@@ -39,13 +39,14 @@ export function Hero() {
 
   const slides = isMobile ? MOBILE_SLIDES : DESKTOP_SLIDES;
 
-  // Preload both mobile & desktop images into browser memory cache
+  // Preload only the next upcoming slide sequentially to keep main page initial load sub-second
   useEffect(() => {
-    [...DESKTOP_SLIDES, ...MOBILE_SLIDES].forEach((slide) => {
+    const nextIndex = (currentIndex + 1) % slides.length;
+    if (slides[nextIndex]) {
       const img = new Image();
-      img.src = slide.src;
-    });
-  }, []);
+      img.src = slides[nextIndex].src;
+    }
+  }, [currentIndex, slides]);
 
   const resetTimer = () => {
     if (timerRef.current) clearInterval(timerRef.current);
@@ -73,46 +74,48 @@ export function Hero() {
 
   // Touch Swipe Gesture Handlers for Mobile
   const onTouchStart = (e: React.TouchEvent) => {
-    touchEndX.current = null;
-    if (e.targetTouches && e.targetTouches[0]) {
-      touchStartX.current = e.targetTouches[0].clientX;
+    if (e.touches && e.touches[0]) {
+      touchStartX.current = e.touches[0].clientX;
+      touchEndX.current = e.touches[0].clientX;
     }
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
-    if (e.targetTouches && e.targetTouches[0]) {
-      touchEndX.current = e.targetTouches[0].clientX;
+    if (e.touches && e.touches[0]) {
+      touchEndX.current = e.touches[0].clientX;
     }
   };
 
   const onTouchEnd = () => {
-    if (touchStartX.current === null || touchEndX.current === null) return;
+    if (!touchStartX.current || !touchEndX.current) return;
     const distance = touchStartX.current - touchEndX.current;
-    const minSwipeDistance = 30;
-    if (distance > minSwipeDistance) {
-      handleNext();
-    } else if (distance < -minSwipeDistance) {
-      handlePrev();
-    }
+    if (distance > 30) handleNext();
+    else if (distance < -30) handlePrev();
+    touchStartX.current = 0;
+    touchEndX.current = 0;
   };
 
   return (
     <section
+      id="hero"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
-      className="relative flex min-h-svh flex-col justify-end overflow-hidden bg-neutral-900 select-none"
+      className="relative flex min-h-[90vh] md:min-h-screen w-full flex-col justify-end overflow-hidden border-b border-border bg-black text-white"
     >
-      {/* Background Image Slider — Crisp visibility with dark overlay */}
-      <div className="absolute inset-0 bg-neutral-950">
+      {/* Background Slideshow */}
+      <div className="absolute inset-0 z-0">
         {/* Desktop Landscape Slides */}
         <div className="hidden md:block absolute inset-0">
           {DESKTOP_SLIDES.map((slide, index) => {
             const isActive = index === (currentIndex % DESKTOP_SLIDES.length);
+            const isNext = index === ((currentIndex + 1) % DESKTOP_SLIDES.length);
+            if (!isActive && !isNext) return null;
+
             return (
               <div
                 key={slide.src}
-                className="absolute inset-0 transition-opacity duration-500 ease-in-out"
+                className="absolute inset-0 transition-opacity duration-700 ease-in-out"
                 style={{
                   opacity: isActive ? 0.95 : 0,
                   zIndex: isActive ? 10 : 0,
@@ -122,6 +125,8 @@ export function Hero() {
                 <img
                   src={slide.src}
                   alt="George Roșu Portfolio Hero Landscape Slide"
+                  loading={isActive ? "eager" : "lazy"}
+                  decoding="async"
                   className="h-full w-full object-cover"
                   style={{ objectPosition: slide.position }}
                 />
@@ -134,10 +139,13 @@ export function Hero() {
         <div className="block md:hidden absolute inset-0">
           {MOBILE_SLIDES.map((slide, index) => {
             const isActive = index === (currentIndex % MOBILE_SLIDES.length);
+            const isNext = index === ((currentIndex + 1) % MOBILE_SLIDES.length);
+            if (!isActive && !isNext) return null;
+
             return (
               <div
                 key={slide.src}
-                className="absolute inset-0 transition-opacity duration-500 ease-in-out"
+                className="absolute inset-0 transition-opacity duration-700 ease-in-out"
                 style={{
                   opacity: isActive ? 0.95 : 0,
                   zIndex: isActive ? 10 : 0,
@@ -147,6 +155,8 @@ export function Hero() {
                 <img
                   src={slide.src}
                   alt="George Roșu Portfolio Hero Portrait Mobile Slide"
+                  loading={isActive ? "eager" : "lazy"}
+                  decoding="async"
                   className="h-full w-full object-cover"
                   style={{ objectPosition: slide.position }}
                 />
