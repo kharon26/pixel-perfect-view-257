@@ -8,16 +8,6 @@ export function Work() {
   const [filter, setFilter] = useState<string>("Toate");
   const { lang } = useLanguage();
 
-  // Preload all 16 portfolio cover images into browser cache instantly upon mount
-  useEffect(() => {
-    PROJECTS.forEach((p) => {
-      if (!p.cover.endsWith(".mp4")) {
-        const img = new Image();
-        img.src = p.cover;
-      }
-    });
-  }, []);
-
   const items = useMemo(
     () => (filter === "Toate" ? PROJECTS : PROJECTS.filter((p) => p.category === filter)),
     [filter],
@@ -98,7 +88,7 @@ export function Work() {
           </ul>
         </Reveal>
 
-        {/* Portfolio grid — preloaded images with silky smooth staggered fade reveal */}
+        {/* Portfolio grid — lazy loaded images & smart video preloading */}
         <div className="mt-14 grid grid-cols-1 gap-x-12 gap-y-20 sm:grid-cols-2 lg:grid-cols-2">
           {items.map((p, i) => {
             const isVideoCover = p.cover.endsWith(".mp4");
@@ -113,14 +103,14 @@ export function Work() {
                         loop
                         muted
                         playsInline
-                        preload="auto"
+                        preload="metadata"
                         className="h-full w-full object-cover transform-gpu transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
                       />
                     ) : (
                       <img
                         src={p.cover}
                         alt={`${p.title} — ${p.category} cover`}
-                        loading="eager"
+                        loading={i < 2 ? "eager" : "lazy"}
                         decoding="async"
                         className="h-full w-full object-cover transform-gpu transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
                       />
