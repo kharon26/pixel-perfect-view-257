@@ -1,0 +1,16 @@
+# ─────────────────────────────────────────────────────────────
+# CLOUDFLARE PAGES EDGE CDN CACHING HEADERS
+# ─────────────────────────────────────────────────────────────
+
+# Cache all high-resolution portfolio images & videos at Cloudflare Edge CDN (1 Year)
+/portfolio/*
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+# Cache static JS & CSS bundle assets permanently at Edge CDN
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache font assets permanently
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable

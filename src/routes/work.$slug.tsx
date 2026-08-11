@@ -3,6 +3,7 @@ import { createFileRoute, Link, useNavigate, notFound } from "@tanstack/react-ro
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
+import { LazyVideo } from "@/components/LazyVideo";
 import { getProject, nextProject, getCategoryLabel, getRoleLabel } from "@/data/projects";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -133,17 +134,11 @@ function CaseStudy() {
                   >
                     <div className="w-full max-w-5xl flex justify-center">
                       {isVideo ? (
-                        <video
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
+                        <LazyVideo
+                          src={src}
                           controls
-                          preload="auto"
                           className="w-full h-auto max-h-[85vh] object-contain rounded-none shadow-sm"
-                        >
-                          <source src={src} type="video/mp4" />
-                        </video>
+                        />
                       ) : (
                         <img
                           src={src}

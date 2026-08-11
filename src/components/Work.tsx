@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { CATEGORIES, PROJECTS } from "@/data/projects";
 import { useLanguage } from "@/context/LanguageContext";
 import { Reveal } from "@/components/Reveal";
+import { LazyVideo } from "@/components/LazyVideo";
 
 export function Work() {
   const [filter, setFilter] = useState<string>("Toate");
@@ -97,13 +98,8 @@ export function Work() {
                 <Link to="/work/$slug" params={{ slug: p.slug }} className="group block">
                   <div className="relative overflow-hidden bg-neutral-100 border border-border/30 aspect-[3/4] w-full flex items-center justify-center p-3 transition-all duration-500 group-hover:border-black transform-gpu">
                     {isVideoCover ? (
-                      <video
+                      <LazyVideo
                         src={p.cover}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="metadata"
                         className="h-full w-full object-cover transform-gpu transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
                       />
                     ) : (
