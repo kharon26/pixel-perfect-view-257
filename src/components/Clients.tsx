@@ -1,23 +1,35 @@
 import { Reveal } from "@/components/Reveal";
+import { useLanguage } from "@/context/LanguageContext";
 
-// TODO: replace with the real client list
 const CLIENTS = [
-  "BMW",
-  "Mazda",
-  "Motorpark",
+  "99% Beauty",
+  "Măcelăria Alex",
+  "Alex Restaurant",
+  "BCRacing Europe",
+  "BMW România",
+  "Dentoart Clinic",
+  "Famous Chicken",
+  "Formula Xperience",
+  "Harmonie Cafe",
+  "MAPET-TUNING airRIDE",
+  "Mazda România",
+  "Motorpark România",
   "Nespresso",
-  "Client Five",
-  "Client Six",
-  "Client Seven",
-  "Client Eight",
+  "Raliw Forged Wheels",
+  "Royal Pizza",
+  "Toyota Brăila",
 ];
 
 export function Clients() {
+  const { lang } = useLanguage();
+
   return (
     <section id="clients" className="scroll-mt-24 overflow-hidden border-t border-border py-20 md:py-28">
       <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         <Reveal>
-          <p className="label text-muted-foreground">Selected Clients</p>
+          <p className="label text-muted-foreground">
+            {lang === "RO" ? "Clienți & Colaboratori" : "Clients & Collaborators"}
+          </p>
         </Reveal>
       </div>
 
