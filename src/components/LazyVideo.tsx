@@ -43,7 +43,7 @@ export function LazyVideo({
   }, []);
 
   return (
-    <div ref={containerRef} className={`relative overflow-hidden bg-neutral-950 ${className}`}>
+    <div ref={containerRef} className="relative overflow-hidden w-full flex items-center justify-center">
       {inView ? (
         <video
           src={src}
@@ -53,10 +53,10 @@ export function LazyVideo({
           playsInline={playsInline}
           controls={controls}
           preload="metadata"
-          className="h-full w-full object-cover"
+          className={`w-full h-auto object-contain ${className}`}
         />
       ) : (
-        <div className="h-full w-full animate-pulse bg-neutral-900/60" />
+        <div className="h-48 w-full animate-pulse bg-neutral-900/60" />
       )}
     </div>
   );

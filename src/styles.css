@@ -218,3 +218,15 @@
     animation: none;
   }
 }
+
+/* ── 60FPS Hardware Acceleration & Viewport Containment ── */
+.gpu-layer {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 500px;
+}

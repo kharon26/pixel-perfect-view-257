@@ -94,7 +94,7 @@ export function Work() {
           {items.map((p, i) => {
             const isVideoCover = p.cover.endsWith(".mp4");
             return (
-              <Reveal key={p.slug} delay={(i % 2) * 120} className="w-full">
+              <Reveal key={p.slug} delay={(i % 2) * 120} className="w-full cv-auto gpu-layer">
                 <Link to="/work/$slug" params={{ slug: p.slug }} className="group block">
                   <div className="relative overflow-hidden bg-neutral-100 border border-border/30 aspect-[3/4] w-full flex items-center justify-center p-3 transition-all duration-500 group-hover:border-black transform-gpu">
                     {isVideoCover ? (

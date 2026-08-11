@@ -130,7 +130,7 @@ function CaseStudy() {
                   <Reveal
                     key={i}
                     delay={(i % 2) * 60}
-                    className="w-full flex justify-center"
+                    className="w-full flex justify-center cv-auto gpu-layer"
                   >
                     <div className="w-full max-w-5xl flex justify-center">
                       {isVideo ? (
