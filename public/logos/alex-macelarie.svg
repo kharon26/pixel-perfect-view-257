@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 60" fill="#000">
+  <g transform="translate(10, 10)">
+    <path d="M12 4 L22 14 L18 18 L14 14 L14 26 L10 26 L10 14 L6 18 L2 14 Z"/>
+    <path d="M4 28 C4 24, 20 24, 20 28 L20 30 L4 30 Z"/>
+  </g>
+  <text x="145" y="32" text-anchor="middle" font-family="'Montserrat', 'Oswald', sans-serif" font-size="20" font-weight="800" letter-spacing="3" fill="#000">MĂCELĂRIA ALEX</text>
+  <text x="145" y="46" text-anchor="middle" font-family="'Inter', sans-serif" font-size="8" font-weight="600" letter-spacing="5" fill="#000">PREPARATE ARTIZANALE</text>
+</svg>

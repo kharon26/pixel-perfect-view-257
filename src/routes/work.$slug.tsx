@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { createFileRoute, Link, useNavigate, notFound } from "@tanstack/react-router";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
 import { LazyVideo } from "@/components/LazyVideo";
-import { getProject, nextProject, getCategoryLabel, getRoleLabel } from "@/data/projects";
+import { Lightbox } from "@/components/Lightbox";
+import { getProject, nextProject, getCategoryLabel, getRoleLabel, videoPoster } from "@/data/projects";
 import { useLanguage } from "@/context/LanguageContext";
 
 export const Route = createFileRoute("/work/$slug")({
@@ -20,6 +21,14 @@ export const Route = createFileRoute("/work/$slug")({
     const description = loaderData
       ? `${loaderData.project.category} case study for ${loaderData.project.client}, ${loaderData.project.year}. Commercial photography and motion by George Roșu.`
       : "Commercial photography and motion case study by George Roșu.";
+
+    // Preload the hero image so the browser fetches it before React mounts
+    const heroSrc = loaderData
+      ? (loaderData.project.heroLandscape || loaderData.project.cover).endsWith(".mp4")
+        ? videoPoster(loaderData.project.heroLandscape || loaderData.project.cover)
+        : (loaderData.project.heroLandscape || loaderData.project.cover)
+      : undefined;
+
     return {
       meta: [
         { title },
@@ -29,6 +38,9 @@ export const Route = createFileRoute("/work/$slug")({
         { property: "og:type", content: "article" },
         { name: "twitter:card", content: "summary_large_image" },
       ],
+      links: heroSrc
+        ? [{ rel: "preload", href: heroSrc, as: "image" }]
+        : [],
     };
   },
   component: CaseStudy,
@@ -40,6 +52,9 @@ function CaseStudy() {
   const navigate = useNavigate();
   const safeNext = next || getProject("99beauty")!;
 
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
   // Reset scroll to top whenever changing project pages
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -48,6 +63,8 @@ function CaseStudy() {
   const activeNarrative = lang === "RO" ? project.narrative : (project.narrativeEn || project.narrative);
   const activeCategory = getCategoryLabel(project.category, lang);
   const activeRole = getRoleLabel(project.role, lang);
+
+  const photos = project.gallery.filter((src: string) => !src.endsWith(".mp4"));
 
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -69,14 +86,21 @@ function CaseStudy() {
         <section className="relative flex min-h-[75svh] items-end overflow-hidden bg-neutral-900 group">
           <div className="absolute inset-0 overflow-hidden">
             <img
-              src={project.heroLandscape || project.cover}
+              src={
+                (project.heroLandscape || project.cover).endsWith(".mp4")
+                  ? videoPoster(project.heroLandscape || project.cover)
+                  : (project.heroLandscape || project.cover)
+              }
               alt={`${project.title} case study cover`}
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
               className="h-full w-full object-cover opacity-85 transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
           <div className="relative mx-auto w-full max-w-[1600px] px-6 pb-14 md:px-10 md:pb-20">
-            <Link to="/" hash="work" className="label link-underline text-muted-foreground hover:text-foreground font-medium">
+            <Link to="/" className="label link-underline text-muted-foreground hover:text-foreground font-medium">
               {lang === "RO" ? "← Înapoi la portofoliu" : "← Back to portfolio"}
             </Link>
             <p className="label mt-8 text-accent font-semibold">
@@ -87,12 +111,12 @@ function CaseStudy() {
         </section>
 
         <section className="mx-auto grid max-w-[1600px] grid-cols-1 gap-12 px-6 py-20 md:grid-cols-12 md:px-10 md:py-28">
-          <Reveal className="md:col-span-4">
+          <Reveal once className="md:col-span-4">
             <dl className="space-y-6">
               {[
                 [lang === "RO" ? "Client" : "Client", project.client],
                 [lang === "RO" ? "An" : "Year", project.year],
-                [lang === "RO" ? "Rol Proiect" : "Project Role", activeRole],
+                [lang === "RO" ? "Categorie" : "Category", activeCategory],
               ].map(([k, v]) => (
                 <div key={k} className="border-t border-border pt-3">
                   <dt className="label text-muted-foreground">{k}</dt>
@@ -101,14 +125,14 @@ function CaseStudy() {
               ))}
             </dl>
           </Reveal>
-          <Reveal className="md:col-span-7 md:col-start-6" delay={100}>
-            <p className="text-lg leading-relaxed text-muted-foreground md:text-2xl md:leading-relaxed">
+          <Reveal once className="md:col-span-7 md:col-start-6" delay={100}>
+            <p className="text-lg leading-relaxed text-neutral-600 md:text-2xl md:leading-relaxed font-normal">
               {activeNarrative}
             </p>
             <div className="mt-10">
               <button
                 onClick={handleContactClick}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-foreground/30 bg-foreground/5 px-6 py-3.5 text-xs font-semibold tracking-widest uppercase transition-all duration-300 hover:border-foreground hover:bg-black hover:text-white cursor-pointer active:scale-95 text-center"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-neutral-400/80 bg-neutral-100 hover:bg-neutral-900 hover:text-white hover:border-neutral-900 text-black px-6 py-3.5 text-xs font-bold tracking-widest uppercase transition-all duration-300 cursor-pointer active:scale-95 text-center shadow-xs"
               >
                 {lang === "RO" ? "Discută despre un proiect similar →" : "Discuss a similar project →"}
               </button>
@@ -117,27 +141,30 @@ function CaseStudy() {
         </section>
 
         {/* Gallery — grouped media flow (videos sequentially together, followed by photo series) */}
-        <section className="mx-auto max-w-[1200px] px-6 pb-24 md:px-10 md:pb-32">
-          <div className="flex flex-col items-center gap-12 md:gap-16">
+        <section className="mx-auto max-w-[1060px] px-6 pb-24 md:px-10 md:pb-36">
+          <div className="flex flex-col items-center gap-14 md:gap-24">
             {(() => {
               const videos = project.gallery.filter((src: string) => src.endsWith(".mp4"));
-              const photos = project.gallery.filter((src: string) => !src.endsWith(".mp4"));
               const sortedGallery = [...videos, ...photos];
 
               return sortedGallery.map((src: string, i: number) => {
                 const isVideo = src.endsWith(".mp4");
+                const photoIdx = photos.indexOf(src);
+
                 return (
                   <Reveal
                     key={i}
+                    once
                     delay={(i % 2) * 60}
-                    className="w-full flex justify-center cv-auto gpu-layer"
+                    className="w-full flex justify-center"
                   >
-                    <div className="w-full max-w-5xl flex justify-center">
+                    <div className="w-full max-w-4xl flex justify-center">
                       {isVideo ? (
                         <LazyVideo
                           src={src}
+                          poster={videoPoster(src)}
                           controls
-                          className="w-full h-auto max-h-[85vh] object-contain rounded-none shadow-sm"
+                          className="w-full h-auto max-h-[78vh] object-contain rounded-none shadow-sm"
                         />
                       ) : (
                         <img
@@ -145,7 +172,12 @@ function CaseStudy() {
                           alt={`${project.title} gallery item ${i + 1}`}
                           loading={i < 2 ? "eager" : "lazy"}
                           decoding="async"
-                          className="w-full h-auto object-contain rounded-none"
+                          fetchPriority={i < 1 ? "high" : "auto"}
+                          onClick={() => {
+                            setLightboxIndex(photoIdx >= 0 ? photoIdx : 0);
+                            setLightboxOpen(true);
+                          }}
+                          className="w-full h-auto max-h-[78vh] object-contain rounded-none cursor-pointer hover:opacity-95 transition-opacity duration-300"
                         />
                       )}
                     </div>
@@ -172,6 +204,15 @@ function CaseStudy() {
         </section>
       </main>
       <Footer />
+
+      {/* Interactive Fullscreen Gallery Lightbox */}
+      <Lightbox
+        images={photos}
+        initialIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        title={project.title}
+      />
     </>
   );
 }

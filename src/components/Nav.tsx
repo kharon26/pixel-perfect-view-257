@@ -38,7 +38,7 @@ export function Nav() {
       />
 
       {/* Foreground Content */}
-      <nav className="relative z-10 mx-auto flex max-w-[1600px] items-center justify-between px-6 py-5 md:px-10 pointer-events-auto">
+      <nav className="relative z-10 mx-auto flex max-w-[1600px] items-center justify-between px-5 py-4 md:px-10 pointer-events-auto">
         <Link
           to="/"
           className={`text-sm md:text-base font-bold tracking-widest uppercase transition-colors duration-500 ${
@@ -54,6 +54,17 @@ export function Nav() {
               <li key={l.label}>
                 <a
                   href={l.to}
+                  onClick={(e) => {
+                    if (window.location.pathname === "/") {
+                      e.preventDefault();
+                      const targetId = l.to.replace("/#", "");
+                      const el = document.getElementById(targetId);
+                      if (el) {
+                        el.scrollIntoView({ behavior: "smooth" });
+                        history.replaceState(null, "", "/");
+                      }
+                    }
+                  }}
                   className={`text-xs md:text-sm font-semibold tracking-widest uppercase transition-colors duration-500 ${
                     solid
                       ? "text-neutral-800 hover:text-black"
@@ -68,7 +79,7 @@ export function Nav() {
 
           {/* Language Switcher Button (RO | EN) */}
           <div
-            className={`flex items-center border rounded-full px-2.5 py-1 text-xs font-mono font-bold tracking-wider transition-colors duration-500 ${
+            className={`flex items-center border rounded-full px-3 py-1 text-xs font-mono font-bold tracking-wider transition-colors duration-500 ${
               solid
                 ? "border-black/20 bg-neutral-100 text-black"
                 : "border-white/30 bg-black/30 text-white backdrop-blur-sm"
@@ -95,9 +106,9 @@ export function Nav() {
         </div>
 
         {/* Mobile controls */}
-        <div className="flex items-center gap-4 md:hidden">
+        <div className="flex items-center gap-3 md:hidden">
           <div
-            className={`flex items-center border rounded-full px-2 py-0.5 text-[10px] font-mono font-bold tracking-wider ${
+            className={`flex items-center border rounded-full px-2.5 py-1 text-xs font-mono font-bold tracking-wider ${
               solid
                 ? "border-black/20 bg-neutral-100 text-black"
                 : "border-white/30 bg-black/30 text-white"
@@ -105,14 +116,14 @@ export function Nav() {
           >
             <button
               onClick={() => setLang("RO")}
-              className={`${lang === "RO" ? "opacity-100 underline" : "opacity-50"}`}
+              className={`px-1 ${lang === "RO" ? "opacity-100 font-extrabold underline" : "opacity-50"}`}
             >
               RO
             </button>
-            <span className="px-1 opacity-40">|</span>
+            <span className="px-0.5 opacity-40">|</span>
             <button
               onClick={() => setLang("EN")}
-              className={`${lang === "EN" ? "opacity-100 underline" : "opacity-50"}`}
+              className={`px-1 ${lang === "EN" ? "opacity-100 font-extrabold underline" : "opacity-50"}`}
             >
               EN
             </button>
@@ -122,8 +133,8 @@ export function Nav() {
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
             aria-expanded={open}
-            className={`text-xs font-bold tracking-widest uppercase transition-colors duration-500 ${
-              solid ? "text-black" : "text-white"
+            className={`px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase transition-all duration-300 ${
+              solid ? "bg-black/5 text-black" : "bg-white/10 text-white backdrop-blur-sm"
             }`}
           >
             {open ? (lang === "RO" ? "Închide" : "Close") : (lang === "RO" ? "Meniu" : "Menu")}
@@ -132,13 +143,24 @@ export function Nav() {
       </nav>
 
       {open && (
-        <ul className="relative z-10 flex flex-col gap-6 border-t border-neutral-200 bg-white px-6 py-8 md:hidden shadow-lg pointer-events-auto">
+        <ul className="relative z-10 flex flex-col gap-6 border-b border-neutral-200 bg-white/98 backdrop-blur-xl px-6 py-8 md:hidden shadow-2xl pointer-events-auto">
           {links.map((l) => (
             <li key={l.label}>
               <a
                 href={l.to}
-                onClick={() => setOpen(false)}
-                className="text-sm font-bold tracking-widest uppercase text-black"
+                onClick={(e) => {
+                  setOpen(false);
+                  if (window.location.pathname === "/") {
+                    e.preventDefault();
+                    const targetId = l.to.replace("/#", "");
+                    const el = document.getElementById(targetId);
+                    if (el) {
+                      el.scrollIntoView({ behavior: "smooth" });
+                      history.replaceState(null, "", "/");
+                    }
+                  }
+                }}
+                className="text-base font-bold tracking-widest uppercase text-black block py-1"
               >
                 {l.label}
               </a>

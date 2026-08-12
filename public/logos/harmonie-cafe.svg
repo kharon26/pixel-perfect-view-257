@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="#000">
+  <g transform="translate(15, 14)">
+    <path d="M4 10 C4 24 20 24 20 10 Z" fill="#000"/>
+    <path d="M20 12 C24 12 24 18 20 18" stroke="#000" stroke-width="2" fill="none"/>
+    <path d="M12 2 C10 6 14 8 12 10" stroke="#000" stroke-width="1.5" fill="none"/>
+  </g>
+  <text x="135" y="32" text-anchor="middle" font-family="'Playfair Display', 'Georgia', serif" font-size="21" font-weight="700" letter-spacing="3" fill="#000">HARMONIE</text>
+  <text x="135" y="46" text-anchor="middle" font-family="'Inter', sans-serif" font-size="8" font-weight="500" letter-spacing="6" fill="#000">SPECIALTY COFFEE</text>
+</svg>

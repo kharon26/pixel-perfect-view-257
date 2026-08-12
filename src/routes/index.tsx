@@ -8,9 +8,9 @@ import { Clients } from "@/components/Clients";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
-const title = "George Roșu — Fotografie Comercială & Regie Video";
+const title = "George Roșu — Fotografie și Videografie Comercială";
 const description =
-  "Fotografie comercială, de produs, automotive și proiecte video regizate de George Roșu. Portofoliu complet foto și video.";
+  "Fotografie și videografie comercială, de produs, automotive și proiecte vizuale realizate de George Roșu. Portofoliu complet foto și video.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,11 +28,19 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   useEffect(() => {
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+
+    // Only scroll to target if user deep-linked directly with a hash in URL on initial page load
     if (window.location.hash) {
       const id = window.location.hash.replace("#", "");
       const el = document.getElementById(id);
       if (el) {
-        setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 100);
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth" });
+          history.replaceState(null, "", window.location.pathname);
+        }, 100);
       }
     }
   }, []);

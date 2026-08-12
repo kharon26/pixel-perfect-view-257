@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 60" fill="#000">
+  <g transform="translate(12, 10)">
+    <path d="M2 14 L8 2 L14 10 L20 2 L26 14 Z" fill="#000"/>
+    <path d="M2 16 L26 16 L26 20 L2 20 Z" fill="#000"/>
+  </g>
+  <text x="135" y="32" text-anchor="middle" font-family="'Cinzel', 'Oswald', serif" font-size="22" font-weight="800" letter-spacing="3" fill="#000">ROYAL PIZZA</text>
+  <text x="135" y="46" text-anchor="middle" font-family="'Inter', sans-serif" font-size="8" font-weight="600" letter-spacing="5" fill="#000">PIZZERIA ARTIZANALĂ</text>
+</svg>

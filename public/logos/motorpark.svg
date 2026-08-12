@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 60" fill="#000">
+  <g transform="translate(10, 14)">
+    <path d="M2 20 L12 4 L22 20 L32 4 L42 20" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+  <text x="150" y="32" text-anchor="middle" font-family="'Oswald', 'Impact', sans-serif" font-size="20" font-weight="900" letter-spacing="2" fill="#000">MOTORPARK</text>
+  <text x="150" y="46" text-anchor="middle" font-family="'Inter', sans-serif" font-size="8" font-weight="700" letter-spacing="5" fill="#000">RACE CIRCUIT ROMÂNIA</text>
+</svg>

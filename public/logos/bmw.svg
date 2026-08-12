@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="#000">
+  <g transform="translate(10, 8)">
+    <circle cx="22" cy="22" r="20" fill="none" stroke="#000" stroke-width="3"/>
+    <circle cx="22" cy="22" r="14" fill="none" stroke="#000" stroke-width="1.5"/>
+    <path d="M22 8 L22 36 M8 22 L36 22" stroke="#000" stroke-width="1.5"/>
+    <path d="M22 8 A14 14 0 0 1 36 22 L22 22 Z" fill="#000"/>
+    <path d="M8 22 A14 14 0 0 1 22 36 L22 22 Z" fill="#000"/>
+  </g>
+  <text x="125" y="36" text-anchor="middle" font-family="'Helvetica Neue', 'Arial', sans-serif" font-size="26" font-weight="800" letter-spacing="4" fill="#000">BMW</text>
+  <text x="125" y="48" text-anchor="middle" font-family="'Inter', sans-serif" font-size="8" font-weight="600" letter-spacing="4" fill="#000">ROMÂNIA</text>
+</svg>

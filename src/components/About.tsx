@@ -21,7 +21,7 @@ export function About() {
               <p>
                 {lang === "RO"
                   ? "Mă ocup de fotografie și videografie comercială. Specializat în automotive, food & product, dar extrem de versatil în toate domeniile."
-                  : "I specialize in commercial photography and videography. Focused on automotive, food & product, yet highly versatile across all fields."}
+                  : "I specialize in commercial photography and videography. Focused on automotive, food & product imagery, while remaining versatile across diverse creative briefs."}
               </p>
             </Reveal>
 
@@ -29,7 +29,7 @@ export function About() {
               <p>
                 {lang === "RO"
                   ? "Abordare cinematică, estetică minimalistă. Fiecare cadru construit strategic pentru a spune o poveste clară, fără zgomot vizual."
-                  : "Cinematic approach, minimalist aesthetic. Every frame is strategically built to tell a clear story, without visual noise."}
+                  : "Cinematic perspective, minimalist aesthetic. Every frame is strategically composed to tell a clear narrative without visual noise."}
               </p>
             </Reveal>
 
@@ -37,7 +37,7 @@ export function About() {
               <p>
                 {lang === "RO"
                   ? "Am fost featured de brand-uri precum BMW România, Mazda România, Motorpark România și am lucrat cu brand-uri locale care înțeleg valoarea unei imagini bine gândite."
-                  : "Featured by brands such as BMW Romania, Mazda Romania, Motorpark Romania, working with clients who value well-crafted visuals."}
+                  : "Featured by brands including BMW Romania, Mazda Romania, and Motorpark Romania, partnering with clients who understand the value of intentional imagery."}
               </p>
             </Reveal>
 
@@ -45,7 +45,7 @@ export function About() {
               <p className="font-medium text-white">
                 {lang === "RO"
                   ? "Freelancer. Muncă bună, livrată la timp."
-                  : "Freelancer. Great work, delivered on time."}
+                  : "Freelancer. Exceptional work, delivered on schedule."}
               </p>
             </Reveal>
 
@@ -53,7 +53,7 @@ export function About() {
               <p>
                 {lang === "RO"
                   ? "Pentru branduri care vor să iasă în față. Pentru oameni care știu că o imagine face diferența."
-                  : "For brands aiming to stand out. For people who know a great image makes all the difference."}
+                  : "For brands aiming to stand out. For clients who know a powerful image makes all the difference."}
               </p>
             </Reveal>
 

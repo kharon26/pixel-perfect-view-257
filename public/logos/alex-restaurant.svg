@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 60" fill="#000">
+  <text x="50%" y="30" text-anchor="middle" font-family="'Cormorant Garamond', 'Baskerville', serif" font-size="23" font-weight="600" letter-spacing="4" fill="#000">ALEX RESTAURANT</text>
+  <line x1="40" y1="40" x2="220" y2="40" stroke="#000" stroke-width="1.5"/>
+  <text x="50%" y="50" text-anchor="middle" font-family="'Inter', sans-serif" font-size="7" font-weight="600" letter-spacing="6" fill="#000">FINE DINING & GRILL</text>
+</svg>
