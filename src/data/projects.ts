@@ -8,6 +8,7 @@ export const CATEGORIES = [
   "Produs",
   "Reclamă & Brand",
   "Clinică Dentară",
+  "Altele",
 ] as const;
 
 export type Category = typeof CATEGORIES[number];
@@ -44,6 +45,8 @@ const getSingleCategoryLabel = (cat: string, lang: "RO" | "EN" = "RO") => {
       return "Brand & Advertising";
     case "Clinică Dentară":
       return "Dental Clinic";
+    case "Altele":
+      return "Other";
     default:
       return cat;
   }
