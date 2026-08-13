@@ -205,6 +205,13 @@
     will-change: auto;
   }
 
+  /* GPU texture compositing layer for smooth photographic rendering in Chrome */
+  .gpu-photo-layer {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
   .link-underline {
     background-image: linear-gradient(var(--accent), var(--accent));
     background-size: 0% 1px;

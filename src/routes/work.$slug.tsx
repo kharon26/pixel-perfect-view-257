@@ -153,7 +153,7 @@ function CaseStudy() {
                     delay={(i % 2) * 60}
                     className="w-full flex justify-center"
                   >
-                    <div className="w-full max-w-4xl flex justify-center min-h-[250px] sm:min-h-[400px] bg-neutral-100/40 relative overflow-hidden">
+                    <div className="w-full max-w-4xl flex justify-center bg-transparent relative overflow-hidden">
                       {isVideo ? (
                         <LazyVideo
                           src={src}
