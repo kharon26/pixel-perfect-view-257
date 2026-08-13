@@ -131,7 +131,7 @@ export function Hero() {
     >
       {/* Background Slideshow with Parallax Zoom Reveal */}
       <div
-        className="absolute inset-0 z-0 will-change-transform transition-transform duration-75 ease-out"
+        className="absolute inset-0 z-0 will-change-transform"
         style={{
           transform: `scale(${bgScale})`,
           opacity: bgOpacity,
@@ -224,7 +224,7 @@ export function Hero() {
 
       {/* Hero Content with Smooth Scroll Reveal Fade & Parallax Shift */}
       <div
-        className="relative mx-auto w-full max-w-[1600px] px-5 pb-10 md:px-10 md:pb-20 z-20 text-center will-change-transform transition-all duration-75 ease-out"
+        className="relative mx-auto w-full max-w-[1600px] px-5 pb-10 md:px-10 md:pb-20 z-20 text-center will-change-transform"
         style={{
           transform: `translateY(${textTranslateY}px)`,
           opacity: textOpacity,
