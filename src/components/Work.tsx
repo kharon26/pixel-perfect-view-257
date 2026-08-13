@@ -19,6 +19,9 @@ function MainGridCard({
   const [isIntersected, setIsIntersected] = useState(false);
 
   const imgSrc = p.cover.endsWith(".mp4") ? videoPoster(p.cover) : p.cover;
+  const imgSrc1200w = imgSrc.replace(/\.(webp|jpg|jpeg|png)$/i, "-1200w.webp");
+  const srcSet = `${imgSrc1200w} 1200w, ${imgSrc} 3200w`;
+  const sizes = "(max-width: 768px) 100vw, 50vw";
 
   // 1. Proximity observer (350px rootMargin) — only fetch image when card approaches viewport
   useEffect(() => {
@@ -47,7 +50,7 @@ function MainGridCard({
 
     let active = true;
     const img = new Image();
-    img.src = imgSrc;
+    img.src = imgSrc1200w;
 
     const handleReady = () => {
       if (active) setIsLoaded(true);
@@ -69,7 +72,7 @@ function MainGridCard({
     return () => {
       active = false;
     };
-  }, [shouldFetch, imgSrc]);
+  }, [shouldFetch, imgSrc1200w]);
 
   // 3. Reveal observer (80px rootMargin) — tracks viewport entry/exit for scroll reveal
   useEffect(() => {
@@ -104,7 +107,9 @@ function MainGridCard({
         <div className="relative overflow-hidden bg-neutral-100 border border-border/30 aspect-[3/4] w-full flex items-center justify-center p-3 transition-colors duration-500 group-hover:border-black">
           {shouldFetch ? (
             <img
-              src={imgSrc}
+              src={imgSrc1200w}
+              srcSet={srcSet}
+              sizes={sizes}
               alt={`${p.title} — ${p.category} cover`}
               loading={i < 2 ? "eager" : "lazy"}
               decoding="async"
