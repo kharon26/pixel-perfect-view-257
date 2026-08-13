@@ -89,7 +89,7 @@ function MainGridCard({
     return () => revealIo.disconnect();
   }, []);
 
-  const isVisible = isLoaded && isIntersected;
+  const isVisible = isIntersected;
   const delay = (i % 2) * 100;
 
   return (
@@ -111,7 +111,9 @@ function MainGridCard({
               fetchPriority={i < 2 ? "high" : "auto"}
               className={`h-full w-full object-cover ${
                 p.coverPosition ?? "object-center"
-              } transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]`}
+              } transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${
+                isLoaded ? "opacity-100" : "opacity-0"
+              }`}
             />
           ) : (
             <div className="h-full w-full bg-neutral-100" />

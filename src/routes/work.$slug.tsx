@@ -153,7 +153,7 @@ function CaseStudy() {
                     delay={(i % 2) * 60}
                     className="w-full flex justify-center"
                   >
-                    <div className="w-full max-w-4xl flex justify-center">
+                    <div className="w-full max-w-4xl flex justify-center min-h-[250px] sm:min-h-[400px] bg-neutral-100/40 relative overflow-hidden">
                       {isVideo ? (
                         <LazyVideo
                           src={src}
@@ -168,7 +168,7 @@ function CaseStudy() {
                           loading={i < 2 ? "eager" : "lazy"}
                           decoding="async"
                           fetchPriority={i < 1 ? "high" : "auto"}
-                          className="w-auto max-w-full h-auto max-h-[85vh] rounded-none shadow-sm"
+                          className="w-auto max-w-full h-auto max-h-[85vh] rounded-none shadow-sm transition-opacity duration-300"
                         />
                       )}
                     </div>
