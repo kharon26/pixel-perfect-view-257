@@ -205,10 +205,9 @@
     will-change: auto;
   }
 
-  /* GPU texture compositing layer for smooth photographic rendering in Chrome */
+  /* GPU texture compositing layer for smooth photographic rendering on homepage grid cards */
   .gpu-photo-layer {
     transform: translateZ(0);
-    will-change: transform;
     backface-visibility: hidden;
   }
 

@@ -137,7 +137,7 @@ function CaseStudy() {
         </section>
 
         {/* Gallery — grouped media flow (videos sequentially together, followed by photo series) */}
-        <section className="mx-auto max-w-[1060px] px-6 pb-24 md:px-10 md:pb-36">
+        <section className="mx-auto max-w-[1180px] px-6 pb-24 md:px-10 md:pb-36">
           <div className="flex flex-col items-center gap-14 md:gap-24">
             {(() => {
               const videos = project.gallery.filter((src: string) => src.endsWith(".mp4"));
@@ -153,13 +153,13 @@ function CaseStudy() {
                     delay={(i % 2) * 60}
                     className="w-full flex justify-center"
                   >
-                    <div className="w-full max-w-4xl flex justify-center bg-transparent relative overflow-hidden">
+                    <div className="w-full max-w-5xl flex justify-center bg-transparent relative overflow-hidden">
                       {isVideo ? (
                         <LazyVideo
                           src={src}
                           poster={videoPoster(src)}
                           controls
-                          className="w-auto max-w-full h-auto max-h-[85vh] rounded-none shadow-sm"
+                          className="w-auto max-w-full h-auto max-h-[88vh] rounded-none shadow-sm"
                         />
                       ) : (
                         <img
@@ -168,7 +168,7 @@ function CaseStudy() {
                           loading={i < 2 ? "eager" : "lazy"}
                           decoding="async"
                           fetchPriority={i < 1 ? "high" : "auto"}
-                          className="w-auto max-w-full h-auto max-h-[85vh] rounded-none shadow-sm transition-opacity duration-300"
+                          className="w-auto max-w-full h-auto max-h-[88vh] rounded-none shadow-sm transition-opacity duration-300"
                         />
                       )}
                     </div>
