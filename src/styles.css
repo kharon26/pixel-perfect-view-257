@@ -201,7 +201,8 @@
   }
   .main-grid-card-reveal.is-visible {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: none;
+    will-change: auto;
   }
 
   .link-underline {
