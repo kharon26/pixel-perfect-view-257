@@ -149,6 +149,7 @@
     font-family: var(--font-sans);
     font-weight: 200;
     -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
   }
 
   ::selection {
@@ -245,6 +246,16 @@
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
+}
+
+@media (max-width: 768px) {
+  .backdrop-blur-md,
+  .backdrop-blur-xl,
+  .backdrop-blur-sm,
+  .backdrop-blur-2xl {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
 }
 
 .cv-auto {

@@ -185,7 +185,7 @@ function CoverVideo({
     return () => observer.disconnect();
   }, [containerRef]);
 
-  // Pause video when scrolled out of view to save resources
+  // Pause video when scrolled out of view to save CPU/GPU resources
   useEffect(() => {
     const video = videoRef.current;
     if (!video || !inView) return;
@@ -198,7 +198,7 @@ function CoverVideo({
           video.pause();
         }
       },
-      { threshold: 0.1 },
+      { threshold: 0.05, rootMargin: "100px 0px" },
     );
 
     observer.observe(video);
@@ -208,7 +208,7 @@ function CoverVideo({
   return (
     <div
       ref={containerRef}
-      className="relative overflow-hidden w-full flex items-center justify-center"
+      className="relative overflow-hidden w-full flex items-center justify-center bg-neutral-950/40"
     >
       {inView ? (
         <video
@@ -220,7 +220,7 @@ function CoverVideo({
           playsInline={playsInline}
           preload="none"
           poster={poster}
-          className={`w-full h-auto object-contain ${className}`}
+          className={`w-full h-auto object-contain transform-gpu ${className}`}
         />
       ) : poster ? (
         <img
@@ -231,7 +231,7 @@ function CoverVideo({
           className={`w-full h-auto object-contain ${className}`}
         />
       ) : (
-        <div className="h-48 w-full animate-pulse bg-neutral-900/60" />
+        <div className="aspect-video w-full bg-neutral-950/40" />
       )}
     </div>
   );

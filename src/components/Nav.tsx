@@ -8,7 +8,14 @@ export function Nav() {
   const { lang, setLang } = useLanguage();
 
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 40);
+    let lastSolid = false;
+    const onScroll = () => {
+      const isSolid = window.scrollY > 40;
+      if (isSolid !== lastSolid) {
+        lastSolid = isSolid;
+        setSolid(isSolid);
+      }
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);

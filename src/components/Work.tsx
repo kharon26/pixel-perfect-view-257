@@ -111,7 +111,7 @@ function MainGridCard({
               fetchPriority={i < 2 ? "high" : "auto"}
               className={`h-full w-full object-cover ${
                 p.coverPosition ?? "object-center"
-              } transform-gpu transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] [filter:blur(0.3px)]`}
+              } transform-gpu transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]`}
             />
           ) : (
             <div className="h-full w-full bg-neutral-100" />

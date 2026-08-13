@@ -31,12 +31,26 @@ export function Hero() {
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
-    window.addEventListener("resize", checkMobile);
+    window.addEventListener("resize", checkMobile, { passive: true });
+
+    let ticking = false;
+    let lastScroll = -1;
 
     const handleScroll = () => {
-      // Throttle/requestAnimationFrame for 60fps smooth scroll reveal
-      setScrollY(window.scrollY);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const sy = window.scrollY;
+          // Stop updating state once scrolled past Hero (> 900px)
+          if (sy <= 900 || lastScroll <= 900) {
+            setScrollY(sy);
+            lastScroll = sy;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
