@@ -1,30 +1,11 @@
 import { useState } from "react";
 import { Reveal } from "@/components/Reveal";
 import { useLanguage } from "@/context/LanguageContext";
-
-const PROJECT_TYPES_RO = [
-  "Automotive",
-  "Product & E-commerce",
-  "Food & Beverage",
-  "Medical/Aesthetic",
-  "Social Content",
-  "Altele",
-];
-
-const PROJECT_TYPES_EN = [
-  "Automotive",
-  "Product & E-commerce",
-  "Food & Beverage",
-  "Medical/Aesthetic",
-  "Social Content",
-  "Other",
-];
+import { CATEGORIES, getCategoryLabel } from "@/data/projects";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
   const { lang } = useLanguage();
-
-  const projectTypes = lang === "RO" ? PROJECT_TYPES_RO : PROJECT_TYPES_EN;
 
   return (
     <section id="contact" className="scroll-mt-24 border-t border-border py-20 md:py-36">
@@ -105,11 +86,14 @@ export function Contact() {
                   name="type"
                   className="mt-2 w-full border-0 border-b border-border bg-transparent pb-3 text-base md:text-lg outline-none focus:border-accent"
                 >
-                  {projectTypes.map((t) => (
-                    <option key={t} value={t} className="bg-background">
-                      {t}
-                    </option>
-                  ))}
+                  {CATEGORIES.map((cat) => {
+                    const label = getCategoryLabel(cat, lang);
+                    return (
+                      <option key={cat} value={label} className="bg-background">
+                        {label}
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
 
