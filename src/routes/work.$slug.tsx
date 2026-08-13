@@ -159,7 +159,7 @@ function CaseStudy() {
                           src={src}
                           poster={videoPoster(src)}
                           controls
-                          className="w-full h-auto max-h-[78vh] object-contain rounded-none shadow-sm"
+                          className="w-auto max-w-full h-auto max-h-[85vh] rounded-none shadow-sm"
                         />
                       ) : (
                         <img
@@ -168,7 +168,7 @@ function CaseStudy() {
                           loading={i < 2 ? "eager" : "lazy"}
                           decoding="async"
                           fetchPriority={i < 1 ? "high" : "auto"}
-                          className="w-full h-auto max-h-[78vh] object-contain rounded-none shadow-sm"
+                          className="w-auto max-w-full h-auto max-h-[85vh] rounded-none shadow-sm"
                         />
                       )}
                     </div>

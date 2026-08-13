@@ -92,7 +92,7 @@ function ClickToPlayVideo({
   return (
     <div
       ref={containerRef}
-      className="relative overflow-hidden w-full flex items-center justify-center"
+      className="relative overflow-hidden flex items-center justify-center max-w-full"
     >
       {playing ? (
         <video
@@ -102,14 +102,14 @@ function ClickToPlayVideo({
           playsInline
           preload="auto"
           poster={poster}
-          className={`w-full h-auto object-contain ${className}`}
+          className={`w-auto max-w-full h-auto ${className}`}
         />
       ) : inView ? (
         <button
           type="button"
           onClick={handlePlay}
           aria-label="Redă video"
-          className="relative w-full cursor-pointer group focus:outline-none"
+          className="relative max-w-full cursor-pointer group focus:outline-none flex justify-center"
         >
           {poster ? (
             <img
@@ -117,10 +117,10 @@ function ClickToPlayVideo({
               alt=""
               loading="lazy"
               decoding="async"
-              className={`w-full h-auto object-contain ${className}`}
+              className={`w-auto max-w-full h-auto ${className}`}
             />
           ) : (
-            <div className="aspect-video w-full bg-neutral-900/60" />
+            <div className="aspect-video w-full max-w-4xl bg-neutral-900/60" />
           )}
           {/* Play button overlay */}
           <span className="absolute inset-0 flex items-center justify-center">
@@ -136,7 +136,7 @@ function ClickToPlayVideo({
           </span>
         </button>
       ) : (
-        <div className="aspect-video w-full animate-pulse bg-neutral-900/60" />
+        <div className="aspect-video w-full max-w-4xl bg-neutral-900/60" />
       )}
     </div>
   );
