@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { createFileRoute, Link, useNavigate, notFound } from "@tanstack/react-router";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
 import { LazyVideo } from "@/components/LazyVideo";
-import { Lightbox } from "@/components/Lightbox";
 import { getProject, nextProject, getCategoryLabel, getRoleLabel, videoPoster } from "@/data/projects";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -51,9 +50,6 @@ function CaseStudy() {
   const { lang } = useLanguage();
   const navigate = useNavigate();
   const safeNext = next || getProject("99beauty")!;
-
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   // Reset scroll to top whenever changing project pages
   useEffect(() => {
@@ -149,7 +145,6 @@ function CaseStudy() {
 
               return sortedGallery.map((src: string, i: number) => {
                 const isVideo = src.endsWith(".mp4");
-                const photoIdx = photos.indexOf(src);
 
                 return (
                   <Reveal
@@ -173,11 +168,7 @@ function CaseStudy() {
                           loading={i < 2 ? "eager" : "lazy"}
                           decoding="async"
                           fetchPriority={i < 1 ? "high" : "auto"}
-                          onClick={() => {
-                            setLightboxIndex(photoIdx >= 0 ? photoIdx : 0);
-                            setLightboxOpen(true);
-                          }}
-                          className="w-full h-auto max-h-[78vh] object-contain rounded-none cursor-pointer hover:opacity-95 transition-opacity duration-300"
+                          className="w-full h-auto max-h-[78vh] object-contain rounded-none shadow-sm"
                         />
                       )}
                     </div>
@@ -204,15 +195,6 @@ function CaseStudy() {
         </section>
       </main>
       <Footer />
-
-      {/* Interactive Fullscreen Gallery Lightbox */}
-      <Lightbox
-        images={photos}
-        initialIndex={lightboxIndex}
-        isOpen={lightboxOpen}
-        onClose={() => setLightboxOpen(false)}
-        title={project.title}
-      />
     </>
   );
 }
