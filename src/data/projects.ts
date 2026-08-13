@@ -111,7 +111,7 @@ export const PROJECTS: Project[] = [
     year: "2026",
     role: "Fotografie Comercială & Produs",
     cover: "/portfolio/beauty-editorial/99beauty__3_.webp",
-    coverPosition: "object-center",
+    coverPosition: "object-[46%_50%]",
     heroLandscape: "/portfolio/beauty-editorial/99beauty__3_.webp",
     narrative:
       "O serie de imagini comerciale create pentru 99% Beauty, cu focus pe forma, textura și identitatea vizuală a produselor. Am construit un setup de studio minimalist, folosind lumină controlată și compoziții curate pentru a pune produsele în prim-plan și a păstra estetica brandului.",
