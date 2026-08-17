@@ -5,33 +5,47 @@
     border-color: var(--color-border);
   }
 
-  html {
-    overflow-y: scroll;
-    scrollbar-gutter: stable;
-    -webkit-overflow-scrolling: touch;
-    touch-action: manipulation;
-  }
-
-  body, #root, main {
-    overflow-y: visible !important;
-    min-height: 100%;
-  }
-
-  html, body {
+  html,
+  body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
-    max-width: 100vw;
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: #ffffff !important;
+    color: #000000;
     font-family: var(--font-sans);
     font-weight: 200;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    overscroll-behavior-y: none;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
     -webkit-overflow-scrolling: touch;
   }
 
+  #root,
+  main {
+    min-height: 100vh;
+    background-color: #ffffff !important;
+    display: flex;
+    flex-direction: column;
+    overflow-y: visible !important;
+  }
+
+  /* Accelerare hardware pentru fluiditate 60/120fps pe imagini */
   img,
-  video,
+  video {
+    display: block;
+    vertical-align: bottom;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
   iframe {
     display: block;
   }
@@ -312,7 +326,10 @@ section, header, main > div {
   outline: 1px solid transparent;
 }
 
+/* Accelerare hardware pentru fluiditate 60/120fps pe imagini */
 img, video {
   display: block;
   vertical-align: bottom;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }

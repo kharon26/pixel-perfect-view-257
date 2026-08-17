@@ -83,32 +83,40 @@ function CaseStudy() {
       <Nav />
       <main id="top">
         {/* Hero — interactive landscape image background */}
-        <section className="relative flex min-h-[75svh] items-end overflow-hidden bg-neutral-900 group -mb-px pb-px border-none outline-none">
-          <div className="absolute inset-0 overflow-hidden">
-            <img
-              src={
-                (project.heroLandscape || project.cover).endsWith(".mp4")
-                  ? videoPoster(project.heroLandscape || project.cover)
-                  : (project.heroLandscape || project.cover)
-              }
-              alt={`${project.title} — ${getRoleLabel(project.role, lang)} case study cover`}
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
-              className={`h-full w-full object-cover block opacity-85 transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 ${project.heroPosition ?? "object-center"}`}
-            />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
-          <div className="relative mx-auto w-full max-w-[1600px] px-6 pb-14 md:px-10 md:pb-20">
-            <Link to="/" className="label link-underline text-muted-foreground hover:text-foreground font-medium">
+        <div className="relative w-full h-[85vh] md:h-[90vh] min-h-[520px] flex flex-col justify-end overflow-hidden bg-black">
+          {/* Media Fundal - direct fără chenare sau filtre active pe scroll */}
+          <img
+            src={
+              (project.heroLandscape || project.cover).endsWith(".mp4")
+                ? videoPoster(project.heroLandscape || project.cover)
+                : (project.heroLandscape || project.cover)
+            }
+            alt={project.title}
+            loading="eager"
+            decoding="sync"
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+            style={{
+              objectPosition: project.heroPosition || "center center",
+              transform: "translateZ(0)",
+            }}
+          />
+
+          {/* Gradient fin curat strict peste bază (fără backdrop-filter) */}
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none z-10" />
+
+          {/* Container Text */}
+          <div className="relative z-20 w-full max-w-7xl mx-auto px-6 pb-16 md:pb-24 pt-32 pointer-events-auto">
+            <Link to="/" className="label link-underline text-neutral-700 hover:text-black font-semibold transition-colors inline-block mb-4">
               {lang === "RO" ? "← Înapoi la portofoliu" : "← Back to portfolio"}
             </Link>
-            <p className="label mt-8 text-accent font-semibold">
+            <p className="label text-neutral-800 font-bold mb-2 text-xs uppercase tracking-widest">
               {project.index} — {activeCategory}
             </p>
-            <h1 className="display mt-4 text-[clamp(2.5rem,10vw,9rem)]">{project.title}</h1>
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-black tracking-tight text-black uppercase">
+              {project.title}
+            </h1>
           </div>
-        </section>
+        </div>
 
         <section className="bg-background mx-auto grid max-w-[1600px] grid-cols-1 gap-12 px-6 py-20 md:grid-cols-12 md:px-10 md:py-28">
           <Reveal once className="md:col-span-4">

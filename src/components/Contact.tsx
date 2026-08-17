@@ -38,31 +38,31 @@ export function Contact() {
     setStatus("loading");
     setErrorMessage(null);
 
+    const projectType = getCategoryLabel(selectedCategory, lang) || "Nespecificat";
+
     const payload = {
-      name: formData.name,
-      email: formData.email,
-      projectType: getCategoryLabel(selectedCategory, lang) || "Nespecificat",
-      message: formData.message,
+      _subject: `Mesaj nou pe georgerosu.eu: ${formData.name} - ${projectType}`,
+      _template: "table",
+      _captcha: "false",
+      _replyto: formData.email,
+      Nume: formData.name,
+      Email: formData.email,
+      "Tip Proiect": projectType,
+      Mesaj: formData.message,
+      Domeniu: "georgerosu.eu",
     };
 
     try {
-      // 1. Încercare trimitere directă prin FormSubmit AJAX
       const response = await fetch("https://formsubmit.co/ajax/26georgerosu@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({
-          _subject: `Mesaj Portofoliu: ${payload.name} (${payload.projectType})`,
-          _template: "table",
-          _captcha: "false",
-          ...payload,
-        }),
+        body: JSON.stringify(payload),
       });
 
       const data = await response.json().catch(() => null);
-      console.log("[Contact Form] Response status:", response.status, data);
 
       if (response.ok && (data?.success === "true" || data?.success === true || response.status === 200)) {
         setStatus("success");
@@ -71,19 +71,15 @@ export function Contact() {
         return;
       }
 
-      throw new Error(data?.message || `Eroare server (${response.status})`);
+      throw new Error(data?.message || "Eroare la trimitere");
     } catch (err) {
-      console.warn("[Contact Form] Trimiterea automată a eșuat, folosesc fallback mailto:", err);
-
-      // 2. Fallback Garantat: Deschide direct aplicația de mail cu toate datele completate
-      const subject = encodeURIComponent(`Proiect nou: ${payload.projectType} - ${payload.name}`);
+      console.warn("[Contact Form Error]:", err);
+      // Fallback nativ mailto dacă rețeaua/serviciul pică
+      const subject = encodeURIComponent(`Proiect nou (${projectType}) - ${formData.name}`);
       const body = encodeURIComponent(
-        `Nume: ${payload.name}\nEmail: ${payload.email}\nTip Proiect: ${payload.projectType}\n\nMesaj:\n${payload.message}`
+        `Nume: ${formData.name}\nEmail: ${formData.email}\nTip Proiect: ${projectType}\n\nMesaj:\n${formData.message}`
       );
-
       window.location.href = `mailto:26georgerosu@gmail.com?subject=${subject}&body=${body}`;
-
-      // Marcare ca succes deoarece mesajul a fost predat către clientul de mail
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
       setTimeout(() => setStatus("idle"), 6000);

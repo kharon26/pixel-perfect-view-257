@@ -25,59 +25,13 @@ export function Hero() {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
-  const bgRef = useRef<HTMLDivElement | null>(null);
-  const textRef = useRef<HTMLDivElement | null>(null);
-  const prevBtnRef = useRef<HTMLButtonElement | null>(null);
-  const nextBtnRef = useRef<HTMLButtonElement | null>(null);
   const { lang } = useLanguage();
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener("resize", checkMobile, { passive: true });
-
-    let ticking = false;
-    let lastScroll = -1;
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const sy = window.scrollY;
-          // Stop updating styles once scrolled past Hero (> 900px)
-          if (sy <= 900 || lastScroll <= 900) {
-            lastScroll = sy;
-            const bgScale = 1 + Math.min(sy / 800, 0.12);
-            const bgOpacity = Math.max(0, 1 - sy / 650);
-            const textTranslateY = -Math.min(sy * 0.35, 120);
-            const textOpacity = Math.max(0, 1 - sy / 450);
-
-            if (bgRef.current) {
-              bgRef.current.style.transform = `scale(${bgScale})`;
-              bgRef.current.style.opacity = `${bgOpacity}`;
-            }
-            if (textRef.current) {
-              textRef.current.style.transform = `translateY(${textTranslateY}px)`;
-              textRef.current.style.opacity = `${textOpacity}`;
-            }
-            if (prevBtnRef.current) {
-              prevBtnRef.current.style.opacity = `${textOpacity}`;
-            }
-            if (nextBtnRef.current) {
-              nextBtnRef.current.style.opacity = `${textOpacity}`;
-            }
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("resize", checkMobile);
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   const slides = isMobile ? MOBILE_SLIDES : DESKTOP_SLIDES;
@@ -102,22 +56,21 @@ export function Hero() {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isMobile, slides.length]);
+  }, [slides.length]);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
+    resetTimer();
+  };
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % slides.length);
     resetTimer();
   };
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-    resetTimer();
-  };
-
   const onTouchStart = (e: React.TouchEvent) => {
     if (e.touches && e.touches[0]) {
       touchStartX.current = e.touches[0].clientX;
-      touchEndX.current = e.touches[0].clientX;
     }
   };
 
@@ -144,11 +97,8 @@ export function Hero() {
       onTouchEnd={onTouchEnd}
       className="relative flex h-[100dvh] min-h-[100dvh] md:h-auto md:min-h-[100dvh] w-full flex-col justify-end overflow-hidden border-b border-border bg-black text-white"
     >
-      {/* Background Slideshow with Parallax Zoom Reveal */}
-      <div
-        ref={bgRef}
-        className="absolute inset-0 z-0 will-change-transform"
-      >
+      {/* Background Slideshow */}
+      <div className="absolute inset-0 z-0">
         {/* Desktop Landscape Slides */}
         <div className="hidden md:block absolute inset-0">
           {DESKTOP_SLIDES.map((slide, index) => {
@@ -172,8 +122,11 @@ export function Hero() {
                   loading={isActive ? "eager" : "lazy"}
                   decoding="async"
                   fetchPriority={isActive ? "high" : "auto"}
-                  className="h-full w-full object-cover block"
-                  style={{ objectPosition: slide.position }}
+                  className="h-full w-full object-cover block select-none pointer-events-none"
+                  style={{
+                    objectPosition: slide.position,
+                    transform: "translateZ(0)",
+                  }}
                 />
               </div>
             );
@@ -203,8 +156,11 @@ export function Hero() {
                   loading={isActive ? "eager" : "lazy"}
                   decoding="async"
                   fetchPriority={isActive ? "high" : "auto"}
-                  className="h-full w-full object-cover block"
-                  style={{ objectPosition: slide.position }}
+                  className="h-full w-full object-cover block select-none pointer-events-none"
+                  style={{
+                    objectPosition: slide.position,
+                    transform: "translateZ(0)",
+                  }}
                 />
               </div>
             );
@@ -212,33 +168,28 @@ export function Hero() {
         </div>
 
         {/* Dark Overlay Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20 z-10 pointer-events-none" />
       </div>
 
       {/* Manual Navigation Buttons (Desktop Only) */}
       <button
-        ref={prevBtnRef}
         onClick={handlePrev}
         aria-label={lang === "RO" ? "Imaginea anterioară" : "Previous slide"}
-        className="hidden md:flex absolute left-10 top-1/2 -translate-y-1/2 z-30 h-14 w-14 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-md border border-white/20 transition-transform duration-150 active:scale-90 hover:bg-white hover:text-black shadow-xl cursor-pointer"
+        className="hidden md:flex absolute left-10 top-1/2 -translate-y-1/2 z-30 h-14 w-14 items-center justify-center rounded-full bg-black/70 text-white border border-white/20 transition-transform duration-150 active:scale-90 hover:bg-white hover:text-black shadow-xl cursor-pointer"
       >
         ←
       </button>
 
       <button
-        ref={nextBtnRef}
         onClick={handleNext}
         aria-label={lang === "RO" ? "Imaginea următoare" : "Next slide"}
-        className="hidden md:flex absolute right-10 top-1/2 -translate-y-1/2 z-30 h-14 w-14 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-md border border-white/20 transition-all duration-150 active:scale-90 hover:bg-white hover:text-black shadow-xl cursor-pointer"
+        className="hidden md:flex absolute right-10 top-1/2 -translate-y-1/2 z-30 h-14 w-14 items-center justify-center rounded-full bg-black/70 text-white border border-white/20 transition-all duration-150 active:scale-90 hover:bg-white hover:text-black shadow-xl cursor-pointer"
       >
         →
       </button>
 
-      {/* Hero Content with Smooth Scroll Reveal Fade & Parallax Shift */}
-      <div
-        ref={textRef}
-        className="relative mx-auto w-full max-w-[1600px] px-5 pb-10 md:px-10 md:pb-20 z-20 text-center will-change-transform"
-      >
+      {/* Hero Content */}
+      <div className="relative mx-auto w-full max-w-[1600px] px-5 pb-10 md:px-10 md:pb-20 z-20 text-center">
         <h1 className="text-[clamp(2.75rem,10.5vw,10rem)] font-normal tracking-[0.04em] text-white uppercase leading-none w-full text-center mb-6 md:mb-8 font-sans drop-shadow-md">
           GEORGE ROȘU
         </h1>
