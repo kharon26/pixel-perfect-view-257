@@ -91,7 +91,7 @@ function CaseStudy() {
                   ? videoPoster(project.heroLandscape || project.cover)
                   : (project.heroLandscape || project.cover)
               }
-              alt={`${project.title} case study cover`}
+              alt={`${project.title} — ${getRoleLabel(project.role, lang)} case study cover`}
               loading="eager"
               decoding="async"
               fetchPriority="high"
@@ -164,7 +164,7 @@ function CaseStudy() {
                       ) : (
                         <img
                           src={src}
-                          alt={`${project.title} gallery item ${i + 1}`}
+                          alt={`${project.title} — ${getRoleLabel(project.role, lang)} photo ${i + 1}`}
                           loading={i < 2 ? "eager" : "lazy"}
                           decoding="async"
                           fetchPriority={i < 1 ? "high" : "auto"}

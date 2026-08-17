@@ -108,13 +108,13 @@ function ClickToPlayVideo({
         <button
           type="button"
           onClick={handlePlay}
-          aria-label="Redă video"
+          aria-label="Redă prezentarea video"
           className="relative max-w-full cursor-pointer group focus:outline-none flex justify-center"
         >
           {poster ? (
             <img
               src={poster}
-              alt=""
+              alt="Video preview poster"
               loading="lazy"
               decoding="async"
               className={`w-auto max-w-full h-auto ${className}`}
@@ -225,7 +225,7 @@ function CoverVideo({
       ) : poster ? (
         <img
           src={poster}
-          alt=""
+          alt="Video preview poster"
           loading="lazy"
           decoding="async"
           className={`w-full h-auto object-contain ${className}`}
