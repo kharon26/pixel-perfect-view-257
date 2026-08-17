@@ -104,7 +104,7 @@ export const MainGridCard = React.memo(function MainGridCard({
         isVisible ? "is-visible" : ""
       }`}
     >
-      <Link to="/work/$slug" params={{ slug: p.slug }} className="group block">
+      <Link to="/work/$slug" params={{ slug: p.slug }} preload="intent" className="group block">
         <div className="relative overflow-hidden bg-neutral-100 border border-border/30 aspect-[3/4] w-full flex items-center justify-center p-3 transition-colors duration-500 group-hover:border-black">
           {shouldFetch ? (
             <img

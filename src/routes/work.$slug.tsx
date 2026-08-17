@@ -79,7 +79,7 @@ function CaseStudy() {
   };
 
   return (
-    <>
+    <div className="animate-fade-in">
       <Nav />
       <main id="top">
         {/* Hero — interactive landscape image background */}
@@ -194,6 +194,6 @@ function CaseStudy() {
         </section>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

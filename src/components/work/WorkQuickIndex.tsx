@@ -11,6 +11,7 @@ export function WorkQuickIndex() {
             <Link
               to="/work/$slug"
               params={{ slug: p.slug }}
+              preload="intent"
               className="group flex items-baseline gap-2.5 min-w-0 w-full transition-transform duration-300 ease-out hover:translate-x-1"
             >
               <span className="font-mono text-neutral-400 text-[10px] sm:text-[11px] shrink-0 select-none w-5 text-left font-normal tracking-tight">
