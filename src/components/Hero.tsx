@@ -22,10 +22,13 @@ const MOBILE_SLIDES = [
 export function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
+  const bgRef = useRef<HTMLDivElement | null>(null);
+  const textRef = useRef<HTMLDivElement | null>(null);
+  const prevBtnRef = useRef<HTMLButtonElement | null>(null);
+  const nextBtnRef = useRef<HTMLButtonElement | null>(null);
   const { lang } = useLanguage();
 
   useEffect(() => {
@@ -40,10 +43,28 @@ export function Hero() {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const sy = window.scrollY;
-          // Stop updating state once scrolled past Hero (> 900px)
+          // Stop updating styles once scrolled past Hero (> 900px)
           if (sy <= 900 || lastScroll <= 900) {
-            setScrollY(sy);
             lastScroll = sy;
+            const bgScale = 1 + Math.min(sy / 800, 0.12);
+            const bgOpacity = Math.max(0, 1 - sy / 650);
+            const textTranslateY = -Math.min(sy * 0.35, 120);
+            const textOpacity = Math.max(0, 1 - sy / 450);
+
+            if (bgRef.current) {
+              bgRef.current.style.transform = `scale(${bgScale})`;
+              bgRef.current.style.opacity = `${bgOpacity}`;
+            }
+            if (textRef.current) {
+              textRef.current.style.transform = `translateY(${textTranslateY}px)`;
+              textRef.current.style.opacity = `${textOpacity}`;
+            }
+            if (prevBtnRef.current) {
+              prevBtnRef.current.style.opacity = `${textOpacity}`;
+            }
+            if (nextBtnRef.current) {
+              nextBtnRef.current.style.opacity = `${textOpacity}`;
+            }
           }
           ticking = false;
         });
@@ -115,12 +136,6 @@ export function Hero() {
     touchEndX.current = 0;
   };
 
-  // Parallax Scroll Reveal Math
-  const bgScale = 1 + Math.min(scrollY / 800, 0.12);
-  const bgOpacity = Math.max(0, 1 - scrollY / 650);
-  const textTranslateY = -Math.min(scrollY * 0.35, 120);
-  const textOpacity = Math.max(0, 1 - scrollY / 450);
-
   return (
     <section
       id="hero"
@@ -131,11 +146,8 @@ export function Hero() {
     >
       {/* Background Slideshow with Parallax Zoom Reveal */}
       <div
+        ref={bgRef}
         className="absolute inset-0 z-0 will-change-transform"
-        style={{
-          transform: `scale(${bgScale})`,
-          opacity: bgOpacity,
-        }}
       >
         {/* Desktop Landscape Slides */}
         <div className="hidden md:block absolute inset-0">
@@ -205,30 +217,27 @@ export function Hero() {
 
       {/* Manual Navigation Buttons (Desktop Only) */}
       <button
+        ref={prevBtnRef}
         onClick={handlePrev}
         aria-label={lang === "RO" ? "Imaginea anterioară" : "Previous slide"}
         className="hidden md:flex absolute left-10 top-1/2 -translate-y-1/2 z-30 h-14 w-14 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-md border border-white/20 transition-transform duration-150 active:scale-90 hover:bg-white hover:text-black shadow-xl cursor-pointer"
-        style={{ opacity: textOpacity }}
       >
         ←
       </button>
 
       <button
+        ref={nextBtnRef}
         onClick={handleNext}
         aria-label={lang === "RO" ? "Imaginea următoare" : "Next slide"}
         className="hidden md:flex absolute right-10 top-1/2 -translate-y-1/2 z-30 h-14 w-14 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-md border border-white/20 transition-all duration-150 active:scale-90 hover:bg-white hover:text-black shadow-xl cursor-pointer"
-        style={{ opacity: textOpacity }}
       >
         →
       </button>
 
       {/* Hero Content with Smooth Scroll Reveal Fade & Parallax Shift */}
       <div
+        ref={textRef}
         className="relative mx-auto w-full max-w-[1600px] px-5 pb-10 md:px-10 md:pb-20 z-20 text-center will-change-transform"
-        style={{
-          transform: `translateY(${textTranslateY}px)`,
-          opacity: textOpacity,
-        }}
       >
         <h1 className="text-[clamp(2.75rem,10.5vw,10rem)] font-normal tracking-[0.04em] text-white uppercase leading-none w-full text-center mb-6 md:mb-8 font-sans drop-shadow-md">
           GEORGE ROȘU

@@ -2,9 +2,17 @@ import { useState } from "react";
 import { Reveal } from "@/components/Reveal";
 import { useLanguage } from "@/context/LanguageContext";
 import { CATEGORIES, getCategoryLabel } from "@/data/projects";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>(CATEGORIES[0]);
   const { lang } = useLanguage();
 
   return (
@@ -81,20 +89,30 @@ export function Contact() {
                 <label htmlFor="type" className="label text-muted-foreground text-xs">
                   {lang === "RO" ? "Tip Proiect" : "Project Type"}
                 </label>
-                <select
-                  id="type"
-                  name="type"
-                  className="mt-2 w-full border-0 border-b border-border bg-transparent pb-3 text-base md:text-lg outline-none focus:border-accent"
-                >
-                  {CATEGORIES.map((cat) => {
-                    const label = getCategoryLabel(cat, lang);
-                    return (
-                      <option key={cat} value={label} className="bg-background">
-                        {label}
-                      </option>
-                    );
-                  })}
-                </select>
+                <input type="hidden" name="type" value={getCategoryLabel(selectedCategory, lang)} />
+                <div className="mt-2">
+                  <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                    <SelectTrigger
+                      id="type"
+                      className="relative w-full border-0 border-b border-border bg-transparent pb-3 pt-1 px-8 text-center text-base md:text-lg font-medium text-foreground outline-none transition-colors focus:border-black focus:ring-0 rounded-none shadow-none justify-center h-auto cursor-pointer group [&>svg]:absolute [&>svg]:right-2 md:[&>svg]:right-3 [&>svg]:top-1/2 [&>svg]:-translate-y-1/2 [&>svg]:opacity-70 [&>svg]:transition-transform [&[data-state=open]>svg]:rotate-180"
+                    >
+                      <SelectValue>
+                        {getCategoryLabel(selectedCategory, lang)}
+                      </SelectValue>
+                    </SelectTrigger>
+                    <SelectContent className="w-full min-w-[var(--radix-select-trigger-width)] border border-border bg-background/95 backdrop-blur-md rounded-none shadow-xl p-1 z-50">
+                      {CATEGORIES.map((cat) => (
+                        <SelectItem
+                          key={cat}
+                          value={cat}
+                          className="text-left justify-start py-2.5 px-4 text-base md:text-lg font-medium text-foreground hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:bg-black focus:text-white data-[state=checked]:font-bold rounded-none cursor-pointer transition-colors"
+                        >
+                          {getCategoryLabel(cat, lang)}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
 
               <div>

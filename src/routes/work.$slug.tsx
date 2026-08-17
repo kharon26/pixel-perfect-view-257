@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { createFileRoute, Link, useNavigate, notFound } from "@tanstack/react-router";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
@@ -60,7 +60,11 @@ function CaseStudy() {
   const activeCategory = getCategoryLabel(project.category, lang);
   const activeRole = getRoleLabel(project.role, lang);
 
-  const photos = project.gallery.filter((src: string) => !src.endsWith(".mp4"));
+  const { photos, sortedGallery } = useMemo(() => {
+    const p = project.gallery.filter((src: string) => !src.endsWith(".mp4"));
+    const v = project.gallery.filter((src: string) => src.endsWith(".mp4"));
+    return { photos: p, sortedGallery: [...v, ...p] };
+  }, [project.gallery]);
 
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -91,7 +95,7 @@ function CaseStudy() {
               loading="eager"
               decoding="async"
               fetchPriority="high"
-              className="h-full w-full object-cover opacity-85 transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+              className={`h-full w-full object-cover opacity-85 transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 ${project.heroPosition ?? "object-center"}`}
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
@@ -139,11 +143,7 @@ function CaseStudy() {
         {/* Gallery — grouped media flow (videos sequentially together, followed by photo series) */}
         <section className="mx-auto max-w-[1180px] px-6 pb-24 md:px-10 md:pb-36">
           <div className="flex flex-col items-center gap-14 md:gap-24">
-            {(() => {
-              const videos = project.gallery.filter((src: string) => src.endsWith(".mp4"));
-              const sortedGallery = [...videos, ...photos];
-
-              return sortedGallery.map((src: string, i: number) => {
+            {sortedGallery.map((src: string, i: number) => {
                 const isVideo = src.endsWith(".mp4");
 
                 return (
@@ -174,8 +174,7 @@ function CaseStudy() {
                     </div>
                   </Reveal>
                 );
-              });
-            })()}
+            })}
           </div>
         </section>
 

@@ -23,6 +23,7 @@ export type Project = {
   role: string;
   cover: string;
   coverPosition?: string;
+  heroPosition?: string;
   heroLandscape?: string;
   narrative: string;
   narrativeEn: string;
@@ -137,6 +138,7 @@ export const PROJECTS: Project[] = [
     year: "2025",
     role: "Fotografie Culinară & Motion Comercial",
     cover: "/portfolio/alex-macelarie/P1010164-1.webp",
+    coverPosition: "object-[50%_46%]",
     video: "/portfolio/alex-macelarie/macelarie-noua2_iris2.mp4",
     heroLandscape: "/portfolio/alex-macelarie/P1010164-1.webp",
     narrative:
@@ -170,6 +172,8 @@ export const PROJECTS: Project[] = [
     year: "2026",
     role: "Fotografie Culinară & Video Promo",
     cover: "/portfolio/alex-restaurant/Grillhouse2-5.webp",
+    coverPosition: "object-[50%_58%]",
+    heroPosition: "object-[center_62%]",
     video: "/portfolio/alex-restaurant/alex-video2_iris2.mp4",
     heroLandscape: "/portfolio/alex-restaurant/Grillhouse2-5.webp",
     narrative:
@@ -201,6 +205,8 @@ export const PROJECTS: Project[] = [
     year: "2024",
     role: "Fotografie Auto & Tehnică",
     cover: "/portfolio/bcracing-europe/DSC02745-Enhanced-NR.webp",
+    coverPosition: "object-[50%_46%]",
+    heroPosition: "object-[center_68%]",
     heroLandscape: "/portfolio/bcracing-europe/DSC02745-Enhanced-NR.webp",
     narrative:
       "Serie de imagini auto realizate pentru BCRacing Europe, ulterior featured de mai multe ori pe pagina oficială de Instagram. Fotografiile au fost utilizate ca materiale promoționale pentru promovarea suspensiilor și în campanii desfășurate de brand.",
@@ -226,6 +232,8 @@ export const PROJECTS: Project[] = [
     year: "2023",
     role: "Fotografie Comercială & Regie",
     cover: "/portfolio/bmw-romania/DSC043461_1.webp",
+    coverPosition: "object-[50%_53%]",
+    heroPosition: "object-[center_62%]",
     heroLandscape: "/portfolio/bmw-romania/DSC042801.webp",
     narrative:
       "Serie de imagini auto preluată și publicată în repetate rânduri pe paginile oficiale BMW România. Cadrele au fost utilizate ca material vizual pentru promovarea modelelor și comunicarea brandului în social media.",
@@ -258,6 +266,7 @@ export const PROJECTS: Project[] = [
     year: "2026",
     role: "Fotografie Comercială & Medicală",
     cover: "/portfolio/dentoart-clinic/DentoArt-1.webp",
+    coverPosition: "object-[49%_50%]",
     heroLandscape: "/portfolio/dentoart-clinic/DentoArt-1.webp",
     narrative:
       "Fotografii realizate pentru clinica Dentoart, destinate utilizării în materialele media și pe website. Imagini naturale și profesioniste, construite pentru a susține comunicarea vizuală și identitatea clinicii.",
@@ -280,6 +289,7 @@ export const PROJECTS: Project[] = [
     year: "2025",
     role: "Fotografie Culinară & Reclame Social Media",
     cover: "/portfolio/famous-chicken/DSC054922_1.webp",
+    coverPosition: "object-[50%_55%]",
     video: "/portfolio/famous-chicken/famous-reclama112_prob4.mp4",
     heroLandscape: "/portfolio/famous-chicken/DSC054922_1.webp",
     narrative:
@@ -305,6 +315,7 @@ export const PROJECTS: Project[] = [
     year: "2026",
     role: "Motion pe Circuit & Fotografie de Mare Viteză",
     cover: "/portfolio/formula-xperience/P10685322_2.webp",
+    coverPosition: "object-[50%_54%]",
     video: "/portfolio/formula-xperience/orizontal-portofoliu.mp4",
     heroLandscape: "/portfolio/formula-xperience/P1068258_HDR2.webp",
     narrative:
@@ -314,6 +325,7 @@ export const PROJECTS: Project[] = [
     gallery: [
       "/portfolio/formula-xperience/orizontal-portofoliu.mp4",
       "/portfolio/formula-xperience/linkinbio_final.mp4",
+      "/portfolio/formula-xperience/Formula-reel1-final.mp4",
       "/portfolio/formula-xperience/P1068258_HDR2.webp",
       "/portfolio/formula-xperience/P1068266_HDR12_2.webp",
       "/portfolio/formula-xperience/P1068284_HDR2.webp",
@@ -345,6 +357,7 @@ export const PROJECTS: Project[] = [
     year: "2025",
     role: "Fotografie Comercială de Produs & Motion",
     cover: "/portfolio/harmonie-cafe/DSC02158-Enhanced-NR-Edit.webp",
+    coverPosition: "object-[50%_52%]",
     video: "/portfolio/harmonie-cafe/vid-cin-2.mp4",
     heroLandscape: "/portfolio/harmonie-cafe/DSC01961-Edit-Edit.webp",
     narrative:
@@ -374,6 +387,7 @@ export const PROJECTS: Project[] = [
     year: "2025",
     role: "Fotografie Auto & Detaliu Tehnic",
     cover: "/portfolio/mapet-tuning-airride/DSC09200-Enhanced-NR.webp",
+    coverPosition: "object-[50%_48%]",
     heroLandscape: "/portfolio/mapet-tuning-airride/DSC09200-Enhanced-NR.webp",
     narrative:
       "Fotografii auto realizate pentru Mapet Tuning Airride, ulterior preluate și featured de brand în postări de social media. Imaginile au fost folosite ca material promoțional pentru prezentarea proiectului și a sistemului de suspensie AirRide.",
@@ -402,6 +416,8 @@ export const PROJECTS: Project[] = [
     year: "2025",
     role: "Fotografie Comercială",
     cover: "/portfolio/mazda-romania/DSC07935-Enhanced-NR.webp",
+    coverPosition: "object-[50%_58%]",
+    heroPosition: "object-[center_60%]",
     heroLandscape: "/portfolio/mazda-romania/DSC07935-Enhanced-NR.webp",
     narrative:
       "Fotografii auto ulterior preluate și publicate pe canalele oficiale de social media ale Mazda România. Cadrele au fost utilizate ca material vizual pentru promovarea modelelor și comunicarea brandului.",
@@ -426,6 +442,7 @@ export const PROJECTS: Project[] = [
     year: "2024",
     role: "Fotografie de Acțiune pe Circuit",
     cover: "/portfolio/motorpark-romania/BMW_74_.webp",
+    coverPosition: "object-[53%_50%]",
     heroLandscape: "/portfolio/motorpark-romania/BMW_74_.webp",
     narrative:
       "Fotografii de motorsport preluate și publicate de MotorPark România, utilizate ca material vizual pentru promovarea evenimentelor și activității de pe circuit.",
@@ -453,6 +470,7 @@ export const PROJECTS: Project[] = [
     year: "2026",
     role: "Reclamă Video de Produs Comercial",
     cover: "/portfolio/nespresso/nespresso-final.mp4",
+    coverPosition: "object-[50%_54%]",
     video: "/portfolio/nespresso/nespresso-final.mp4",
     heroLandscape: "/portfolio/nespresso/nespresso-hero.jpg",
     narrative:
@@ -472,6 +490,7 @@ export const PROJECTS: Project[] = [
     year: "2025",
     role: "Fotografie de Produs & Auto",
     cover: "/portfolio/raliw-forged-wheels/DSC09061-Enhanced-NR.webp",
+    coverPosition: "object-[50%_43%]",
     heroLandscape: "/portfolio/raliw-forged-wheels/DSC09061-Enhanced-NR.webp",
     narrative:
       "Fotografii cu jantele forjate Raliw Wheels, preluate și publicate de brand ca material vizual pentru comunicarea și promovarea produselor pe canalele de social media.",
@@ -496,6 +515,7 @@ export const PROJECTS: Project[] = [
     year: "2025",
     role: "Fotografie Culinară",
     cover: "/portfolio/royal-pizza/royal__5_.webp",
+    coverPosition: "object-[50%_48%]",
     heroLandscape: "/portfolio/royal-pizza/royal__11_.webp",
     narrative:
       "Material foto realizat pentru Royal Pizza, destinat promovării pe social media și în campanii de marketing. Cadre culinare concepute pentru a evidenția produsele și identitatea vizuală a brandului.",
@@ -518,6 +538,7 @@ export const PROJECTS: Project[] = [
     year: "2025",
     role: "Fotografie Comercială",
     cover: "/portfolio/toyota-braila/DSC03312.webp",
+    coverPosition: "object-[50%_48%]",
     heroLandscape: "/portfolio/toyota-braila/DSC03435_v3-Recovered-6.webp",
     narrative:
       "Ședință foto realizată special pentru reprezentanța Toyota Brăila. Materialele rezultate au fost publicate ulterior pe pagina oficială Toyota Brăila.",

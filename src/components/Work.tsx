@@ -143,6 +143,8 @@ function MainGridCard({
   );
 }
 
+const WORK_CATEGORIES = CATEGORIES.filter((c) => c !== "Altele");
+
 export function Work() {
   const [filter, setFilter] = useState<string>("Toate");
   const { lang } = useLanguage();
@@ -179,7 +181,7 @@ export function Work() {
         {/* Persistent filter bar */}
         <div className="sticky top-[68px] z-30 -mx-6 mt-10 border-y border-border bg-background/95 px-6 py-4 backdrop-blur-md md:-mx-10 md:px-10">
           <ul className="flex snap-x gap-6 overflow-x-auto md:gap-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {(["Toate", ...CATEGORIES] as const).map((c) => (
+            {(["Toate", ...WORK_CATEGORIES] as const).map((c) => (
               <li key={c} className="shrink-0 snap-start">
                 <button
                   onClick={() => setFilter(c)}
@@ -205,18 +207,18 @@ export function Work() {
 
         {/* Quick index — scan all 16 projects with editorial tabular alignment & centered mobile 2-column grid */}
         <Reveal>
-          <ul className="mx-auto mt-8 grid w-full max-w-[340px] grid-cols-2 gap-x-4 gap-y-3.5 border-b border-border pb-8 sm:max-w-none sm:grid-cols-3 sm:gap-x-8 md:grid-cols-4 h-auto overflow-visible">
+          <ul className="mx-auto mt-7 md:mt-8 grid w-full max-w-[340px] grid-cols-2 gap-x-4 gap-y-3.5 border-b border-border pb-6 md:pb-7 sm:max-w-none sm:grid-cols-3 sm:gap-x-8 md:grid-cols-4 h-auto overflow-visible">
             {PROJECTS.map((p) => (
               <li key={p.slug} className="min-w-0 flex items-start">
                 <Link
                   to="/work/$slug"
                   params={{ slug: p.slug }}
-                  className="text-[11px] sm:text-xs font-semibold tracking-wider uppercase text-black hover:text-neutral-600 transition-colors flex items-baseline gap-2 min-w-0 w-full"
+                  className="group flex items-baseline gap-2.5 min-w-0 w-full transition-transform duration-300 ease-out hover:translate-x-1"
                 >
-                  <span className="font-mono text-neutral-400 text-[10px] sm:text-xs shrink-0 select-none w-5 text-left font-medium">
+                  <span className="font-mono text-neutral-400 text-[10px] sm:text-[11px] shrink-0 select-none w-5 text-left font-normal tracking-tight">
                     {p.index}
                   </span>
-                  <span className="break-words min-w-0 flex-1 leading-snug font-medium">
+                  <span className="text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-wider uppercase text-foreground/90 group-hover:text-black group-hover:underline underline-offset-4 decoration-border/80 transition-colors break-words min-w-0 flex-1 leading-snug">
                     {p.title}
                   </span>
                 </Link>
@@ -226,7 +228,7 @@ export function Work() {
         </Reveal>
 
         {/* Portfolio grid — pre-decoded images with decoupled scroll reveal */}
-        <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-2 md:gap-x-12 md:gap-y-20">
+        <div className="mt-8 md:mt-10 grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-2 md:gap-x-12 md:gap-y-20">
           {items.map((p, i) => (
             <MainGridCard key={p.slug} project={p} index={i} lang={lang} />
           ))}

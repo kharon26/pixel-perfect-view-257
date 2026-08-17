@@ -9,11 +9,18 @@ export function Nav() {
 
   useEffect(() => {
     let lastSolid = false;
+    let ticking = false;
     const onScroll = () => {
-      const isSolid = window.scrollY > 40;
-      if (isSolid !== lastSolid) {
-        lastSolid = isSolid;
-        setSolid(isSolid);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const isSolid = window.scrollY > 40;
+          if (isSolid !== lastSolid) {
+            lastSolid = isSolid;
+            setSolid(isSolid);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
     onScroll();
