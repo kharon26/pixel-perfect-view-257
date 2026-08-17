@@ -76,7 +76,7 @@ export const PROJECTS: Project[] = [
     role: "Fotografie Culinară & Video Promo",
     cover: "/portfolio/alex-restaurant/Grillhouse2-5.webp",
     coverPosition: "object-[50%_58%]",
-    heroPosition: "object-[center_62%]",
+    heroPosition: "object-[center_18%]",
     video: "/portfolio/alex-restaurant/alex-video2_iris2.mp4",
     heroLandscape: "/portfolio/alex-restaurant/Grillhouse2-5.webp",
     narrative:
