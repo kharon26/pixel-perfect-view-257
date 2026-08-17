@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
+import { useNavigate, useSearch } from "@tanstack/react-router";
 import { PROJECTS } from "@/data/projects";
 import { useLanguage } from "@/context/LanguageContext";
 import { Reveal } from "@/components/Reveal";
@@ -7,8 +8,22 @@ import { WorkFilterBar } from "@/components/work/WorkFilterBar";
 import { WorkQuickIndex } from "@/components/work/WorkQuickIndex";
 
 export function Work() {
-  const [filter, setFilter] = useState<string>("Toate");
   const { lang } = useLanguage();
+  const search = useSearch({ strict: false }) as { category?: string };
+  const navigate = useNavigate();
+
+  const filter = search.category || "Toate";
+
+  const setFilter = (c: string) => {
+    navigate({
+      to: "/",
+      search: (prev: any) => ({
+        ...prev,
+        category: c === "Toate" ? undefined : c,
+      }),
+      replace: true,
+    });
+  };
 
   const items = useMemo(
     () =>
