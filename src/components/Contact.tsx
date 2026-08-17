@@ -92,7 +92,7 @@ export function Contact() {
                 </label>
                 <input type="hidden" name="type" value={getCategoryLabel(selectedCategory, lang)} />
                 <div className="mt-2">
-                  <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                  <Select value={selectedCategory} onValueChange={setSelectedCategory} modal={false}>
                     <SelectTrigger
                       id="type"
                       className="relative w-full border-0 border-b border-border bg-transparent pb-3 pt-1 px-8 text-center text-base md:text-lg font-medium text-foreground outline-none transition-colors focus:border-black focus:ring-0 rounded-none shadow-none justify-center h-auto cursor-pointer group [&>svg]:absolute [&>svg]:right-2 md:[&>svg]:right-3 [&>svg]:top-1/2 [&>svg]:-translate-y-1/2 [&>svg]:opacity-70 [&>svg]:transition-transform [&[data-state=open]>svg]:rotate-180"
