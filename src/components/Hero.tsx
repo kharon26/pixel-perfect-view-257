@@ -172,7 +172,7 @@ export function Hero() {
                   loading={isActive ? "eager" : "lazy"}
                   decoding="async"
                   fetchPriority={isActive ? "high" : "auto"}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover block"
                   style={{ objectPosition: slide.position }}
                 />
               </div>
@@ -203,7 +203,7 @@ export function Hero() {
                   loading={isActive ? "eager" : "lazy"}
                   decoding="async"
                   fetchPriority={isActive ? "high" : "auto"}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover block"
                   style={{ objectPosition: slide.position }}
                 />
               </div>

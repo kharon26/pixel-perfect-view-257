@@ -95,7 +95,7 @@ function CaseStudy() {
               loading="eager"
               decoding="async"
               fetchPriority="high"
-              className={`h-full w-full object-cover opacity-85 transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 ${project.heroPosition ?? "object-center"}`}
+              className={`h-full w-full object-cover block opacity-85 transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 ${project.heroPosition ?? "object-center"}`}
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
@@ -168,7 +168,7 @@ function CaseStudy() {
                           loading={i < 2 ? "eager" : "lazy"}
                           decoding="async"
                           fetchPriority={i < 1 ? "high" : "auto"}
-                          className="w-auto max-w-full h-auto max-h-[88vh] rounded-none shadow-sm transition-opacity duration-300"
+                          className="w-auto max-w-full h-auto max-h-[88vh] rounded-none shadow-sm block transition-opacity duration-300"
                         />
                       )}
                     </div>

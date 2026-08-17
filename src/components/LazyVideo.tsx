@@ -4,6 +4,7 @@ type LazyVideoProps = {
   src: string;
   poster?: string;
   className?: string;
+  aspectRatio?: string;
   autoPlay?: boolean;
   loop?: boolean;
   muted?: boolean;
@@ -102,7 +103,7 @@ function ClickToPlayVideo({
           playsInline
           preload="auto"
           poster={poster}
-          className={`w-auto max-w-full h-auto ${className}`}
+          className={`w-auto max-w-full h-auto block ${className}`}
         />
       ) : inView ? (
         <button
