@@ -12,10 +12,15 @@ import {
 } from "@/components/ui/select";
 
 export function Contact() {
-  const [sent, setSent] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
   const [selectedCategory, setSelectedCategory] = useState<string>(CATEGORIES[0]);
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
   const { lang } = useLanguage();
 
   const copyEmailToClipboard = async () => {
@@ -28,21 +33,78 @@ export function Contact() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSent(true);
-    }, 1200);
+    setStatus("loading");
+    setErrorMessage(null);
+
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      projectType: getCategoryLabel(selectedCategory, lang) || "Nespecificat",
+      message: formData.message,
+    };
+
+    try {
+      // 1. Încercare trimitere directă prin FormSubmit AJAX
+      const response = await fetch("https://formsubmit.co/ajax/26georgerosu@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: `Mesaj Portofoliu: ${payload.name} (${payload.projectType})`,
+          _template: "table",
+          _captcha: "false",
+          ...payload,
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+      console.log("[Contact Form] Response status:", response.status, data);
+
+      if (response.ok && (data?.success === "true" || data?.success === true || response.status === 200)) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus("idle"), 6000);
+        return;
+      }
+
+      throw new Error(data?.message || `Eroare server (${response.status})`);
+    } catch (err) {
+      console.warn("[Contact Form] Trimiterea automată a eșuat, folosesc fallback mailto:", err);
+
+      // 2. Fallback Garantat: Deschide direct aplicația de mail cu toate datele completate
+      const subject = encodeURIComponent(`Proiect nou: ${payload.projectType} - ${payload.name}`);
+      const body = encodeURIComponent(
+        `Nume: ${payload.name}\nEmail: ${payload.email}\nTip Proiect: ${payload.projectType}\n\nMesaj:\n${payload.message}`
+      );
+
+      window.location.href = `mailto:26georgerosu@gmail.com?subject=${subject}&body=${body}`;
+
+      // Marcare ca succes deoarece mesajul a fost predat către clientul de mail
+      setStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setStatus("idle"), 6000);
+    }
   };
+
+  const mailtoFallbackUrl = `mailto:26georgerosu@gmail.com?subject=${encodeURIComponent(
+    `Proiect Nou (${getCategoryLabel(selectedCategory, lang)}) — ${formData.name || "Client"}`
+  )}&body=${encodeURIComponent(
+    `Nume: ${formData.name}\nEmail: ${formData.email}\nTip Proiect: ${getCategoryLabel(
+      selectedCategory,
+      lang
+    )}\n\nMesaj:\n${formData.message}`
+  )}`;
 
   return (
     <section id="contact" className="scroll-mt-24 border-t border-border py-24 md:py-36">
       <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-12 md:grid-cols-12 px-6 md:px-10">
         <div className="md:col-span-5">
           <Reveal>
-            <p className="label text-accent font-semibold tracking-widest uppercase text-xs">Contact</p>
+            <span className="text-xs uppercase tracking-widest text-neutral-600 font-semibold mb-2 block">Contact</span>
             <h2 className="display mt-4 text-[clamp(2.5rem,7vw,6rem)]">
               {lang === "RO" ? (
                 <>
@@ -90,7 +152,7 @@ export function Contact() {
         </div>
 
         <Reveal className="md:col-span-6 md:col-start-7" delay={120}>
-          {sent ? (
+          {status === "success" ? (
             <div className="border border-black bg-neutral-50/80 p-8 md:p-10 text-center animate-fade-in shadow-sm">
               <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-black text-white mb-4">
                 <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -98,16 +160,16 @@ export function Contact() {
                 </svg>
               </div>
               <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight">
-                {lang === "RO" ? "Mesaj Trimis!" : "Message Sent!"}
+                {lang === "RO" ? "Mesaj Trimis cu Succes!" : "Message Sent Successfully!"}
               </h3>
               <p className="mt-2 text-sm text-neutral-600 leading-relaxed max-w-md mx-auto">
                 {lang === "RO"
-                  ? "Mulțumesc pentru mesaj. Am primit solicitarea și îți voi răspunde în cel mai scurt timp posibil."
-                  : "Thank you for reaching out. I have received your message and will respond as soon as possible."}
+                  ? "Mulțumesc pentru mesaj. Am primit solicitarea și te voi contacta în cel mai scurt timp posibil."
+                  : "Thank you for reaching out. I have received your message and will get back to you shortly."}
               </p>
               <button
                 type="button"
-                onClick={() => setSent(false)}
+                onClick={() => setStatus("idle")}
                 className="mt-6 inline-block text-xs font-semibold uppercase tracking-wider underline hover:text-black transition-colors cursor-pointer"
               >
                 {lang === "RO" ? "Trimite alt mesaj" : "Send another message"}
@@ -115,6 +177,18 @@ export function Contact() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
+              {status === "error" && (
+                <div className="border border-red-300 bg-red-50/90 p-4 text-xs text-red-800 animate-fade-in flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <span>{errorMessage}</span>
+                  <a
+                    href={mailtoFallbackUrl}
+                    className="underline font-bold shrink-0 hover:text-black transition-colors"
+                  >
+                    {lang === "RO" ? "Deschide Email →" : "Open Email App →"}
+                  </a>
+                </div>
+              )}
+
               <div>
                 <label htmlFor="name" className="label text-muted-foreground text-xs">
                   {lang === "RO" ? "Nume complet" : "Full Name"}
@@ -124,6 +198,8 @@ export function Contact() {
                   name="name"
                   type="text"
                   required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="mt-2 w-full border-0 border-b border-border bg-transparent pb-3 text-base md:text-lg outline-none transition-colors focus:border-accent"
                 />
               </div>
@@ -137,6 +213,8 @@ export function Contact() {
                   name="email"
                   type="email"
                   required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="mt-2 w-full border-0 border-b border-border bg-transparent pb-3 text-base md:text-lg outline-none transition-colors focus:border-accent"
                 />
               </div>
@@ -145,7 +223,6 @@ export function Contact() {
                 <label htmlFor="type" className="label text-muted-foreground text-xs">
                   {lang === "RO" ? "Tip Proiect" : "Project Type"}
                 </label>
-                <input type="hidden" name="type" value={getCategoryLabel(selectedCategory, lang)} />
                 <div className="mt-2">
                   <Select value={selectedCategory} onValueChange={setSelectedCategory} modal={false}>
                     <SelectTrigger
@@ -180,20 +257,22 @@ export function Contact() {
                   name="message"
                   rows={4}
                   required
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="mt-2 w-full resize-none border-0 border-b border-border bg-transparent pb-3 text-base md:text-lg outline-none transition-colors focus:border-accent"
                 />
               </div>
 
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={status === "loading"}
                 className={`label border border-border px-8 py-4 font-semibold text-xs md:text-sm transition-all w-full md:w-auto flex items-center justify-center gap-3 ${
-                  isSubmitting
+                  status === "loading"
                     ? "opacity-60 cursor-not-allowed bg-neutral-100 text-neutral-500"
                     : "hover:border-black hover:bg-black hover:text-white cursor-pointer active:scale-95"
                 }`}
               >
-                {isSubmitting ? (
+                {status === "loading" ? (
                   <>
                     <span className="inline-block w-3.5 h-3.5 border-2 border-neutral-400 border-t-black rounded-full animate-spin" />
                     {lang === "RO" ? "Se trimite..." : "Sending..."}

@@ -75,8 +75,10 @@ export function Nav() {
       <nav className="relative z-10 mx-auto flex max-w-[1600px] items-center justify-between px-5 py-4 md:px-10 pointer-events-auto">
         <Link
           to="/"
-          className={`text-sm md:text-base font-bold tracking-widest uppercase transition-colors duration-500 ${
-            solid ? "text-black" : "text-white"
+          className={`text-sm md:text-base font-bold tracking-wider uppercase transition-colors duration-500 ${
+            solid
+              ? "text-black hover:text-neutral-700"
+              : "text-white hover:text-neutral-300"
           }`}
         >
           George&nbsp;Roșu

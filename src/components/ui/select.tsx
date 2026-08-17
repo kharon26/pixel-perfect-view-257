@@ -10,8 +10,8 @@ type SelectProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root> &
   modal?: boolean;
 };
 
-const Select: React.FC<SelectProps> = ({ children, ...props }) => {
-  return <SelectPrimitive.Root {...(props as any)}>{children}</SelectPrimitive.Root>;
+const Select: React.FC<SelectProps> = ({ children, modal = false, ...props }) => {
+  return <SelectPrimitive.Root modal={modal} {...(props as any)}>{children}</SelectPrimitive.Root>;
 };
 
 const SelectGroup = SelectPrimitive.Group;

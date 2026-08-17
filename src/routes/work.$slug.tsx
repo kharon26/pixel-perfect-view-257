@@ -79,11 +79,11 @@ function CaseStudy() {
   };
 
   return (
-    <div className="animate-fade-in">
+    <div className="min-h-screen bg-background text-foreground">
       <Nav />
       <main id="top">
         {/* Hero — interactive landscape image background */}
-        <section className="relative flex min-h-[75svh] items-end overflow-hidden bg-neutral-900 group">
+        <section className="relative flex min-h-[75svh] items-end overflow-hidden bg-neutral-900 group -mb-px pb-px border-none outline-none">
           <div className="absolute inset-0 overflow-hidden">
             <img
               src={
@@ -110,7 +110,7 @@ function CaseStudy() {
           </div>
         </section>
 
-        <section className="mx-auto grid max-w-[1600px] grid-cols-1 gap-12 px-6 py-20 md:grid-cols-12 md:px-10 md:py-28">
+        <section className="bg-background mx-auto grid max-w-[1600px] grid-cols-1 gap-12 px-6 py-20 md:grid-cols-12 md:px-10 md:py-28">
           <Reveal once className="md:col-span-4">
             <dl className="space-y-6">
               {[

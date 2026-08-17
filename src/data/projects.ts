@@ -40,10 +40,11 @@ export const PROJECTS: Project[] = [
     category: "Reclamă & Brand",
     year: "2025",
     role: "Fotografie Culinară & Motion Comercial",
-    cover: "/portfolio/alex-macelarie/P1010164-1.webp",
+    cover: "/portfolio/alex-macelarie/P1010706-1.webp",
     coverPosition: "object-[50%_46%]",
+    heroPosition: "center 35%",
     video: "/portfolio/alex-macelarie/macelarie-noua2_iris2.mp4",
-    heroLandscape: "/portfolio/alex-macelarie/P1010164-1.webp",
+    heroLandscape: "/portfolio/alex-macelarie/P1010706-1.webp",
     narrative:
       "O serie de materiale foto și video create pentru lansarea Măcelăriei Alex, de la primele cadre ale spațiului și produselor până la energia zilei de deschidere. Am construit un conținut vizual dinamic, gândit pentru promovarea brandului și pentru a transforma atmosfera lansării în materiale care continuă să atragă atenția și după deschidere.",
     narrativeEn:
@@ -76,7 +77,7 @@ export const PROJECTS: Project[] = [
     role: "Fotografie Culinară & Video Promo",
     cover: "/portfolio/alex-restaurant/Grillhouse2-5.webp",
     coverPosition: "object-[50%_58%]",
-    heroPosition: "object-[center_18%]",
+    heroPosition: "center 80%",
     video: "/portfolio/alex-restaurant/alex-video2_iris2.mp4",
     heroLandscape: "/portfolio/alex-restaurant/Grillhouse2-5.webp",
     narrative:
@@ -109,7 +110,7 @@ export const PROJECTS: Project[] = [
     role: "Fotografie Auto & Tehnică",
     cover: "/portfolio/bcracing-europe/DSC02745-Enhanced-NR.webp",
     coverPosition: "object-[50%_46%]",
-    heroPosition: "object-[center_68%]",
+    heroPosition: "center center",
     heroLandscape: "/portfolio/bcracing-europe/DSC02745-Enhanced-NR.webp",
     narrative:
       "Serie de imagini auto realizate pentru BCRacing Europe, ulterior featured de mai multe ori pe pagina oficială de Instagram. Fotografiile au fost utilizate ca materiale promoționale pentru promovarea suspensiilor și în campanii desfășurate de brand.",
@@ -136,7 +137,7 @@ export const PROJECTS: Project[] = [
     role: "Fotografie Comercială & Regie",
     cover: "/portfolio/bmw-romania/DSC043461_1.webp",
     coverPosition: "object-[50%_53%]",
-    heroPosition: "object-[center_62%]",
+    heroPosition: "center center",
     heroLandscape: "/portfolio/bmw-romania/DSC042801.webp",
     narrative:
       "Serie de imagini auto preluată și publicată în repetate rânduri pe paginile oficiale BMW România. Cadrele au fost utilizate ca material vizual pentru promovarea modelelor și comunicarea brandului în social media.",
