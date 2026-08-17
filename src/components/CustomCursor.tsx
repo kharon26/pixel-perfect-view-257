@@ -6,7 +6,6 @@ export function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Only enable custom cursor on fine pointer desktop devices
     if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
       return;
     }
@@ -17,20 +16,27 @@ export function CustomCursor() {
     let mouseY = -100;
     let currentX = -100;
     let currentY = -100;
+    let initialized = false;
     let rafId: number;
 
     const onMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+      if (!initialized) {
+        currentX = mouseX;
+        currentY = mouseY;
+        initialized = true;
+      }
     };
 
     const render = () => {
-      // Smooth lerp (0.2) for buttery smooth cursor tracking
-      currentX += (mouseX - currentX) * 0.25;
-      currentY += (mouseY - currentY) * 0.25;
+      if (initialized) {
+        currentX += (mouseX - currentX) * 0.35;
+        currentY += (mouseY - currentY) * 0.35;
 
-      if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
+        if (cursorRef.current) {
+          cursorRef.current.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
+        }
       }
       rafId = requestAnimationFrame(render);
     };
@@ -39,7 +45,7 @@ export function CustomCursor() {
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
-      const interactive = target.closest("a, button, input, select, textarea, [data-cursor-hover]");
+      const interactive = target.closest("a, button, [role='button'], input, select, textarea, [data-cursor-hover]");
       if (interactive) {
         setIsHovered(true);
       } else {
