@@ -142,7 +142,7 @@ export function Hero() {
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
-      className="relative flex h-[100dvh] min-h-[100dvh] md:h-auto md:min-h-screen w-full flex-col justify-end overflow-hidden border-b border-border bg-black text-white"
+      className="relative flex h-[100dvh] min-h-[100dvh] md:h-auto md:min-h-[100dvh] w-full flex-col justify-end overflow-hidden border-b border-border bg-black text-white"
     >
       {/* Background Slideshow with Parallax Zoom Reveal */}
       <div

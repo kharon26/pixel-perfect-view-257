@@ -46,7 +46,7 @@ export function Nav() {
 
       {/* Background Layer 2 — Solid White Bar (fades in smoothly on scroll) */}
       <div
-        className={`absolute inset-0 border-b border-neutral-200/80 bg-white/95 backdrop-blur-md shadow-sm transition-opacity duration-700 ease-in-out ${
+        className={`absolute inset-0 border-b border-neutral-200/80 bg-white/95 backdrop-blur-md transform-gpu shadow-sm transition-opacity duration-700 ease-in-out ${
           solid ? "opacity-100" : "opacity-0"
         }`}
       />

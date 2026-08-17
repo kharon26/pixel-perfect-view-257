@@ -17,7 +17,7 @@ export function Contact() {
   const { lang } = useLanguage();
 
   return (
-    <section id="contact" className="scroll-mt-24 border-t border-border py-20 md:py-36">
+    <section id="contact" className="scroll-mt-24 border-t border-border py-24 md:py-36">
       <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-12 md:grid-cols-12 px-6 md:px-10">
         <div className="md:col-span-5">
           <Reveal>
