@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { CATEGORIES, PROJECTS, videoPoster, getCategoryLabel } from "@/data/projects";
+import { PROJECTS } from "@/data/projects";
+import { CATEGORIES } from "@/types/project";
+import { getCategoryLabel, videoPoster } from "@/lib/project-utils";
 import { useLanguage } from "@/context/LanguageContext";
 import { Reveal } from "@/components/Reveal";
 
@@ -154,7 +156,7 @@ export function Work() {
       filter === "Toate"
         ? PROJECTS
         : PROJECTS.filter((p) =>
-            Array.isArray(p.category) ? p.category.includes(filter) : p.category === filter,
+            Array.isArray(p.category) ? (p.category as string[]).includes(filter) : p.category === filter,
           ),
     [filter],
   );

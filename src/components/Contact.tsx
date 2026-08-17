@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Reveal } from "@/components/Reveal";
 import { useLanguage } from "@/context/LanguageContext";
-import { CATEGORIES, getCategoryLabel } from "@/data/projects";
+import { CATEGORIES } from "@/types/project";
+import { getCategoryLabel } from "@/lib/project-utils";
 import {
   Select,
   SelectContent,

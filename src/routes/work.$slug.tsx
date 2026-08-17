@@ -4,7 +4,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
 import { LazyVideo } from "@/components/LazyVideo";
-import { getProject, nextProject, getCategoryLabel, getRoleLabel, videoPoster } from "@/data/projects";
+import { getProject, nextProject, getCategoryLabel, getRoleLabel, videoPoster } from "@/lib/project-utils";
 import { useLanguage } from "@/context/LanguageContext";
 
 export const Route = createFileRoute("/work/$slug")({
