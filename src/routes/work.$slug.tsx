@@ -120,23 +120,23 @@ function CaseStudy() {
             }}
           />
 
-          {/* Subtle gradient overlay in bottom area */}
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/30 via-black/5 to-transparent pointer-events-none z-10" />
+          {/* Clean white gradient overlay at bottom for black text readability */}
+          <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-background via-background/75 to-transparent pointer-events-none z-10" />
 
-          {/* Text Overlay at bottom */}
+          {/* Text Overlay at bottom with dark text */}
           <div className="relative z-20 w-full max-w-[1600px] mx-auto px-4 pb-6 pt-16 md:px-10 md:pb-16 md:pt-28 pointer-events-auto text-center md:text-left">
             <Reveal once delay={60}>
-              <Link to="/" className="label link-underline text-white/90 hover:text-white font-bold transition-colors inline-block text-xs md:text-sm mb-2 md:mb-4">
+              <Link to="/" className="label link-underline text-neutral-900 hover:text-black font-bold transition-colors inline-block text-xs md:text-sm mb-2 md:mb-4">
                 {lang === "RO" ? "← Înapoi la portofoliu" : "← Back to portfolio"}
               </Link>
             </Reveal>
             <Reveal once delay={100}>
-              <p className="label text-white/80 font-semibold mb-1.5 md:mb-3 text-xs md:text-sm tracking-wider uppercase">
+              <p className="label text-neutral-800 font-semibold mb-1.5 md:mb-3 text-xs md:text-sm tracking-wider uppercase">
                 {project.index} — {activeCategory}
               </p>
             </Reveal>
             <Reveal once delay={150}>
-              <h1 className="text-3xl md:text-[clamp(2.5rem,6vw,5.5rem)] font-black tracking-tight text-white uppercase leading-tight">
+              <h1 className="text-3xl md:text-[clamp(2.5rem,6vw,5.5rem)] font-black tracking-tight text-black uppercase leading-tight">
                 {project.title}
               </h1>
             </Reveal>
@@ -147,15 +147,15 @@ function CaseStudy() {
         <section className="bg-background mx-auto max-w-[1600px] px-4 pt-4 pb-8 md:px-10 md:py-28 flex flex-col items-center text-center md:grid md:grid-cols-12 md:gap-12 md:items-start md:text-left">
           {/* Metadata */}
           <Reveal once className="w-full md:col-span-4" delay={60}>
-            <dl className="grid grid-cols-3 gap-4 w-full max-w-md mx-auto text-center border-y border-border py-4 md:block md:space-y-6 md:border-y-0 md:py-0 md:text-left md:max-w-none md:mx-0">
+            <dl className="grid grid-cols-3 gap-2 sm:gap-4 w-full max-w-md mx-auto text-center py-2 md:block md:space-y-6 md:py-0 md:text-left md:max-w-none md:mx-0">
               {[
                 [lang === "RO" ? "Client" : "Client", project.client],
                 [lang === "RO" ? "An" : "Year", project.year],
                 [lang === "RO" ? "Categorie" : "Category", activeCategory],
               ].map(([k, v]) => (
-                <div key={k} className="border-t border-border pt-2.5 md:pt-4 pb-1 text-center md:text-left">
-                  <dt className="label text-muted-foreground text-xs uppercase tracking-wider font-semibold">{k}</dt>
-                  <dd className="mt-1 md:mt-2 text-sm font-medium text-foreground truncate">{v}</dd>
+                <div key={k} className="pt-1 md:border-t md:border-border md:pt-4 pb-1 text-center md:text-left">
+                  <dt className="label text-muted-foreground text-[10px] sm:text-xs uppercase tracking-wider font-semibold">{k}</dt>
+                  <dd className="mt-1 md:mt-2 text-xs sm:text-sm font-medium text-foreground break-words whitespace-normal">{v}</dd>
                 </div>
               ))}
             </dl>
