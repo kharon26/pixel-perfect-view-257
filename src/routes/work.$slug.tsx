@@ -215,28 +215,29 @@ function CaseStudy() {
           </div>
         </section>
 
-        {/* Previous & Next project navigation with balanced 2-column desktop and stacked mobile */}
+        {/* Previous & Next project navigation side-by-side on mobile and desktop */}
         <section className="border-t border-border bg-neutral-50/50">
-          <div className="mx-auto max-w-[1600px] grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
+          <div className="mx-auto max-w-[1600px] grid grid-cols-2 divide-x divide-border">
             {/* Previous Project Button */}
             <Reveal once delay={60} className="w-full h-full">
               <Link
                 to="/work/$slug"
                 params={{ slug: safePrev.slug }}
                 resetScroll={true}
-                className="group flex flex-col justify-between h-full gap-3 px-6 py-10 md:px-10 md:py-16 hover:bg-neutral-100/70 transition-colors duration-300 text-left min-h-[140px]"
+                className="group flex flex-col justify-between h-full gap-1.5 md:gap-3 p-4 sm:p-6 md:px-10 md:py-16 hover:bg-neutral-100/70 transition-colors duration-300 text-left min-h-[100px] md:min-h-[140px]"
               >
-                <div className="flex items-center gap-2 text-neutral-600 group-hover:text-black transition-colors">
-                  <span className="text-sm transition-transform duration-300 group-hover:-translate-x-1.5">←</span>
-                  <span className="font-mono text-xs md:text-sm font-bold uppercase tracking-widest">
-                    {lang === "RO" ? "Proiectul anterior —" : "Previous project —"} {safePrev.index}
+                <div className="flex items-center gap-1.5 md:gap-2 text-neutral-600 group-hover:text-black transition-colors">
+                  <span className="text-xs md:text-sm transition-transform duration-300 group-hover:-translate-x-1.5">←</span>
+                  <span className="font-mono text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-widest truncate">
+                    {lang === "RO" ? "Anterior" : "Previous"}
+                    <span className="hidden sm:inline"> — {safePrev.index}</span>
                   </span>
                 </div>
-                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tight text-black leading-tight group-hover:text-neutral-700 transition-colors">
+                <span className="text-sm sm:text-base md:text-4xl lg:text-5xl font-black uppercase tracking-tight text-black leading-tight group-hover:text-neutral-700 transition-colors truncate">
                   {safePrev.title}
                 </span>
-                <p className="text-xs md:text-sm font-medium text-neutral-500 group-hover:text-neutral-800 transition-colors truncate">
-                  {safePrev.client} — {getCategoryLabel(safePrev.category, lang)}
+                <p className="text-[10px] sm:text-xs md:text-sm font-medium text-neutral-500 group-hover:text-neutral-800 transition-colors truncate">
+                  {safePrev.client}
                 </p>
               </Link>
             </Reveal>
@@ -247,19 +248,20 @@ function CaseStudy() {
                 to="/work/$slug"
                 params={{ slug: safeNext.slug }}
                 resetScroll={true}
-                className="group flex flex-col justify-between h-full gap-3 px-6 py-10 md:px-10 md:py-16 hover:bg-neutral-100/70 transition-colors duration-300 text-left md:text-right min-h-[140px]"
+                className="group flex flex-col justify-between h-full gap-1.5 md:gap-3 p-4 sm:p-6 md:px-10 md:py-16 hover:bg-neutral-100/70 transition-colors duration-300 text-right items-end min-h-[100px] md:min-h-[140px]"
               >
-                <div className="flex items-center gap-2 text-neutral-600 group-hover:text-black transition-colors md:justify-end">
-                  <span className="font-mono text-xs md:text-sm font-bold uppercase tracking-widest">
-                    {lang === "RO" ? "Următorul proiect —" : "Next project —"} {safeNext.index}
+                <div className="flex items-center gap-1.5 md:gap-2 text-neutral-600 group-hover:text-black transition-colors justify-end">
+                  <span className="font-mono text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-widest truncate">
+                    {lang === "RO" ? "Următor" : "Next"}
+                    <span className="hidden sm:inline"> — {safeNext.index}</span>
                   </span>
-                  <span className="text-sm transition-transform duration-300 group-hover:translate-x-1.5">→</span>
+                  <span className="text-xs md:text-sm transition-transform duration-300 group-hover:translate-x-1.5">→</span>
                 </div>
-                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tight text-black leading-tight group-hover:text-neutral-700 transition-colors">
+                <span className="text-sm sm:text-base md:text-4xl lg:text-5xl font-black uppercase tracking-tight text-black leading-tight group-hover:text-neutral-700 transition-colors truncate">
                   {safeNext.title}
                 </span>
-                <p className="text-xs md:text-sm font-medium text-neutral-500 group-hover:text-neutral-800 transition-colors truncate">
-                  {safeNext.client} — {getCategoryLabel(safeNext.category, lang)}
+                <p className="text-[10px] sm:text-xs md:text-sm font-medium text-neutral-500 group-hover:text-neutral-800 transition-colors truncate">
+                  {safeNext.client}
                 </p>
               </Link>
             </Reveal>
