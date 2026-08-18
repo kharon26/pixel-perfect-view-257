@@ -163,7 +163,7 @@ function CaseStudy() {
             <div className="mt-6 md:mt-10">
               <button
                 onClick={handleContactClick}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-neutral-400/80 bg-neutral-100 hover:bg-neutral-900 hover:text-white hover:border-neutral-900 text-black px-6 py-3.5 text-sm font-bold tracking-widest uppercase transition-all duration-300 cursor-pointer active:scale-98 text-center shadow-xs"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[44px] border border-neutral-300 hover:border-black bg-transparent hover:bg-black hover:text-white text-neutral-800 px-5 py-2.5 text-xs md:text-sm font-medium tracking-wider uppercase transition-colors duration-200 cursor-pointer active:scale-98 text-center"
               >
                 {lang === "RO" ? "Discută despre un proiect similar →" : "Discuss a similar project →"}
               </button>
