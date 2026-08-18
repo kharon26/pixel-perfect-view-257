@@ -33,8 +33,6 @@
   html {
     -webkit-text-size-adjust: 100%;
     overscroll-behavior-y: none;
-    overflow-y: scroll;
-    scrollbar-gutter: stable;
     background-color: #ffffff !important;
   }
 
@@ -46,9 +44,6 @@
     background-color: #ffffff !important;
     display: flex;
     flex-direction: column;
-    overflow-y: visible !important;
-    overflow-x: clip !important;
-    overflow-x: hidden !important;
     width: 100%;
     max-width: 100%;
   }
