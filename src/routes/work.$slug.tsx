@@ -97,7 +97,7 @@ function CaseStudy() {
       <Nav />
       <main id="top">
         {/* Hero Media Container */}
-        <div className="relative w-full h-[50vh] sm:h-[55vh] md:h-[60vh] md:min-h-[500px] flex flex-col justify-between md:justify-end overflow-hidden bg-background">
+        <div className="relative w-full h-[54vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] flex flex-col justify-end overflow-hidden bg-background">
           {/* Media Fundal */}
           <img
             src={
@@ -119,6 +119,9 @@ function CaseStudy() {
               transform: "translateZ(0)",
             }}
           />
+
+          {/* Subtle mobile overlay for image depth & text contrast */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/10 to-transparent pointer-events-none z-10 md:hidden" />
 
           {/* Desktop gradient overlay */}
           <div className="absolute inset-x-0 bottom-0 h-1/2 md:h-3/5 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none z-10 hidden md:block" />
@@ -146,38 +149,38 @@ function CaseStudy() {
         </div>
 
         {/* Mobile Dedicated Editorial Info Section (< md) */}
-        <div className="md:hidden w-full px-5 pt-8 pb-6 bg-background">
+        <div className="md:hidden w-full px-4 pt-6 pb-6 bg-background">
           {/* Badge & Title */}
           <Reveal once delay={60} className="w-full text-center">
-            <p className="text-sm font-bold uppercase tracking-widest text-neutral-600 mb-2">
+            <p className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-1.5">
               {project.index} — {activeCategory}
             </p>
-            <h1 className="text-4xl sm:text-5xl font-black uppercase tracking-tight text-black leading-tight mb-6">
+            <h1 className="text-3xl font-black uppercase tracking-tight text-neutral-950 leading-tight mb-5">
               {project.title}
             </h1>
           </Reveal>
 
           {/* Clean 3-column Metadata Strip */}
           <Reveal once delay={100} className="w-full">
-            <div className="grid grid-cols-3 divide-x divide-neutral-200 border-y border-neutral-300/80 py-4 mb-7 text-center bg-neutral-50/70">
+            <div className="grid grid-cols-3 divide-x divide-neutral-200 border-y border-neutral-200 py-3 mb-5 text-center bg-neutral-50/60">
               <div className="px-2">
-                <span className="block text-xs font-bold uppercase tracking-wider text-neutral-500">Client</span>
-                <span className="block text-sm sm:text-base font-bold text-neutral-950 truncate mt-1">{project.client}</span>
+                <span className="block text-[10px] font-bold uppercase tracking-wider text-neutral-400">Client</span>
+                <span className="block text-xs font-semibold text-neutral-900 truncate mt-0.5">{project.client}</span>
               </div>
               <div className="px-2">
-                <span className="block text-xs font-bold uppercase tracking-wider text-neutral-500">{lang === "RO" ? "An" : "Year"}</span>
-                <span className="block text-sm sm:text-base font-bold text-neutral-950 truncate mt-1">{project.year}</span>
+                <span className="block text-[10px] font-bold uppercase tracking-wider text-neutral-400">{lang === "RO" ? "An" : "Year"}</span>
+                <span className="block text-xs font-semibold text-neutral-900 truncate mt-0.5">{project.year}</span>
               </div>
               <div className="px-2">
-                <span className="block text-xs font-bold uppercase tracking-wider text-neutral-500">{lang === "RO" ? "Categorie" : "Category"}</span>
-                <span className="block text-sm sm:text-base font-bold text-neutral-950 truncate mt-1">{activeCategory}</span>
+                <span className="block text-[10px] font-bold uppercase tracking-wider text-neutral-400">{lang === "RO" ? "Categorie" : "Category"}</span>
+                <span className="block text-xs font-semibold text-neutral-900 truncate mt-0.5">{activeCategory}</span>
               </div>
             </div>
           </Reveal>
 
-          {/* Narrative description with large, crisp, highly legible text */}
+          {/* Narrative description */}
           <Reveal once delay={140} className="w-full">
-            <p className="text-base sm:text-lg leading-relaxed text-neutral-900 font-normal max-w-prose mx-auto text-left mb-8">
+            <p className="text-sm leading-relaxed text-neutral-700 max-w-prose mx-auto text-left mb-6">
               {activeNarrative}
             </p>
           </Reveal>
@@ -186,7 +189,7 @@ function CaseStudy() {
           <Reveal once delay={180} className="w-full flex justify-center">
             <button
               onClick={handleContactClick}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[48px] border border-neutral-300 hover:border-black bg-neutral-100 hover:bg-black hover:text-white text-neutral-950 px-6 py-3.5 text-sm font-bold tracking-wider uppercase transition-colors duration-200 cursor-pointer active:scale-98 text-center"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[42px] border border-neutral-300 hover:border-black bg-neutral-50 hover:bg-black hover:text-white text-neutral-900 px-5 py-2.5 text-xs font-medium tracking-wider uppercase transition-colors duration-200 cursor-pointer active:scale-98 text-center shadow-xs"
             >
               {lang === "RO" ? "Discută despre un proiect similar →" : "Discuss a similar project →"}
             </button>
