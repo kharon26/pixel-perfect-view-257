@@ -97,7 +97,7 @@ function CaseStudy() {
       <Nav />
       <main id="top">
         {/* Hero — perfectly proportioned 60-65vh container preventing excessive crop */}
-        <div className="relative w-full h-[42vh] min-h-[290px] md:h-[60vh] md:min-h-[500px] flex flex-col justify-end overflow-hidden bg-background">
+        <div className="relative w-full h-[48vh] min-h-[340px] md:h-[60vh] md:min-h-[500px] flex flex-col justify-end overflow-hidden bg-background">
           {/* Media Fundal */}
           <img
             src={
@@ -121,19 +121,19 @@ function CaseStudy() {
           <div className="absolute inset-x-0 bottom-0 h-1/2 md:h-3/5 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none z-10" />
 
           {/* Container Text cu animație de reveal */}
-          <div className="relative z-20 w-full max-w-[1600px] mx-auto px-4 md:px-10 pb-6 md:pb-16 pt-12 md:pt-28 pointer-events-auto text-center md:text-left">
+          <div className="relative z-20 w-full max-w-[1600px] mx-auto px-4 md:px-10 pb-6 md:pb-16 pt-14 md:pt-28 pointer-events-auto text-left">
             <Reveal once delay={60}>
               <Link to="/" className="label link-underline text-neutral-900 hover:text-black font-bold transition-colors inline-block text-sm mb-3 md:mb-4">
                 {lang === "RO" ? "← Înapoi la portofoliu" : "← Back to portfolio"}
               </Link>
             </Reveal>
             <Reveal once delay={100}>
-              <p className="label text-neutral-900 font-semibold mb-2 md:mb-3 text-sm tracking-wider uppercase">
+              <p className="label text-neutral-900 font-semibold mb-3 text-base tracking-wider uppercase">
                 {project.index} — {activeCategory}
               </p>
             </Reveal>
             <Reveal once delay={150}>
-              <h1 className="text-4xl sm:text-5xl md:text-[clamp(2.5rem,6vw,5.5rem)] font-black tracking-tight text-black uppercase leading-tight mb-2 md:mb-3">
+              <h1 className="text-4xl sm:text-5xl md:text-[clamp(2.5rem,6vw,5.5rem)] font-black tracking-tight text-black uppercase leading-tight mb-2 md:mb-3 text-center md:text-left">
                 {project.title}
               </h1>
             </Reveal>
@@ -141,7 +141,7 @@ function CaseStudy() {
         </div>
 
         {/* Project details & narrative */}
-        <section className="bg-background mx-auto grid max-w-[1600px] grid-cols-1 gap-3 px-4 pt-3 pb-8 md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
+        <section className="bg-background mx-auto grid max-w-[1600px] grid-cols-1 gap-6 px-4 pt-5 pb-12 md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
           <Reveal once className="md:col-span-4" delay={60}>
             <dl className="grid grid-cols-2 gap-x-4 gap-y-2 md:block md:space-y-6 text-center md:text-left max-w-md mx-auto md:max-w-none md:mx-0">
               {[
@@ -151,19 +151,19 @@ function CaseStudy() {
               ].map(([k, v, spanClass]) => (
                 <div key={k} className={`border-t border-border pt-2 md:pt-4 pb-0 md:pb-1 text-center md:text-left ${spanClass}`}>
                   <dt className="label text-muted-foreground text-xs uppercase tracking-wider font-semibold text-center md:text-left">{k}</dt>
-                  <dd className="mt-1 md:mt-2 text-sm font-medium text-foreground truncate text-center md:text-left">{v}</dd>
+                  <dd className="mt-1 md:mt-2 text-base font-medium text-foreground truncate text-center md:text-left">{v}</dd>
                 </div>
               ))}
             </dl>
           </Reveal>
           <Reveal once className="md:col-span-7 md:col-start-6 mt-1 md:mt-0" delay={120}>
-            <p className="text-sm leading-relaxed text-neutral-600 md:text-2xl md:leading-relaxed font-normal max-w-2xl mx-auto md:mx-0 text-center sm:text-left md:text-left overflow-visible">
+            <p className="text-base leading-relaxed text-neutral-700 md:text-2xl md:leading-relaxed font-normal max-w-prose mx-auto md:mx-0 text-left overflow-visible">
               {activeNarrative}
             </p>
-            <div className="mt-3 md:mt-10 flex justify-center md:justify-start">
+            <div className="mt-6 md:mt-10 flex justify-center md:justify-start">
               <button
                 onClick={handleContactClick}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[44px] border border-neutral-300 hover:border-black bg-transparent hover:bg-black hover:text-white text-neutral-800 px-5 py-2.5 text-xs md:text-sm font-medium tracking-wider uppercase transition-colors duration-200 cursor-pointer active:scale-98 text-center"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[48px] border border-neutral-300 hover:border-black bg-transparent hover:bg-black hover:text-white text-neutral-800 px-6 py-3 text-base md:text-sm font-medium tracking-wider uppercase transition-colors duration-200 cursor-pointer active:scale-98 text-center"
               >
                 {lang === "RO" ? "Discută despre un proiect similar →" : "Discuss a similar project →"}
               </button>
