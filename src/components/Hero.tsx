@@ -163,11 +163,14 @@ export function Hero() {
     touchEndX.current = null;
   };
 
-  // Subtle, ultra-smooth GPU scroll animation (Parallax + Content Fade) active on both Mobile & Desktop
+  // Smooth GPU scroll parallax active exclusively on desktop (avoids mobile address-bar resize jank)
   useEffect(() => {
     let ticking = false;
 
     const handleScroll = () => {
+      // Keep mobile touch scroll 100% native without dynamic transforms on Hero container
+      if (window.innerWidth < 768) return;
+
       if (!ticking) {
         requestAnimationFrame(() => {
           const scrollY = window.scrollY || window.pageYOffset;
@@ -219,7 +222,7 @@ export function Hero() {
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
-      className="relative flex h-[100dvh] min-h-[100dvh] md:h-auto md:min-h-[100dvh] w-full flex-col justify-end overflow-hidden bg-black text-white"
+      className="relative flex h-[100svh] min-h-[100svh] md:h-auto md:min-h-[100dvh] w-full flex-col justify-end overflow-hidden bg-black text-white"
     >
       {/* Background Slideshow — True crossfade with full opacity on incoming slide */}
       <div
