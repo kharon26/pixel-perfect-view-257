@@ -4,14 +4,14 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
 import { LazyVideo } from "@/components/LazyVideo";
-import { getProject, nextProject, getCategoryLabel, getRoleLabel, videoPoster } from "@/lib/project-utils";
+import { getProject, nextProject, prevProject, getCategoryLabel, getRoleLabel, videoPoster } from "@/lib/project-utils";
 import { useLanguage } from "@/context/LanguageContext";
 
 export const Route = createFileRoute("/work/$slug")({
   loader: ({ params }) => {
     const project = getProject(params.slug);
     if (!project) throw notFound();
-    return { project, next: nextProject(params.slug) };
+    return { project, next: nextProject(params.slug), prev: prevProject(params.slug) };
   },
   head: ({ loaderData }) => {
     const title = loaderData
@@ -45,10 +45,11 @@ export const Route = createFileRoute("/work/$slug")({
 });
 
 function CaseStudy() {
-  const { project, next } = Route.useLoaderData();
+  const { project, next, prev } = Route.useLoaderData();
   const { lang } = useLanguage();
   const navigate = useNavigate();
-  const safeNext = next || getProject("99beauty")!;
+  const safeNext = next || nextProject(project.slug);
+  const safePrev = prev || prevProject(project.slug);
 
   // Synchronous before-paint reset to guarantee top start
   useLayoutEffect(() => {
@@ -208,29 +209,55 @@ function CaseStudy() {
           </div>
         </section>
 
-        {/* Next project teaser with high contrast & smooth hover */}
-        <section className="border-t border-border bg-neutral-50/50 hover:bg-neutral-100/60 transition-colors duration-300">
-          <Reveal once delay={60} className="w-full">
-            <Link
-              to="/work/$slug"
-              params={{ slug: safeNext.slug }}
-              resetScroll={true}
-              className="group mx-auto flex max-w-[1600px] flex-col gap-3 px-4 py-14 md:px-10 md:py-24"
-            >
-              <div className="flex items-center gap-2 text-neutral-600 group-hover:text-black transition-colors">
-                <span className="font-mono text-xs md:text-sm font-bold uppercase tracking-widest">
-                  {lang === "RO" ? "Următorul proiect —" : "Next project —"} {safeNext.index}
+        {/* Previous & Next project navigation with balanced 2-column desktop and stacked mobile */}
+        <section className="border-t border-border bg-neutral-50/50">
+          <div className="mx-auto max-w-[1600px] grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
+            {/* Previous Project Button */}
+            <Reveal once delay={60} className="w-full h-full">
+              <Link
+                to="/work/$slug"
+                params={{ slug: safePrev.slug }}
+                resetScroll={true}
+                className="group flex flex-col justify-between h-full gap-3 px-6 py-10 md:px-10 md:py-16 hover:bg-neutral-100/70 transition-colors duration-300 text-left min-h-[140px]"
+              >
+                <div className="flex items-center gap-2 text-neutral-600 group-hover:text-black transition-colors">
+                  <span className="text-sm transition-transform duration-300 group-hover:-translate-x-1.5">←</span>
+                  <span className="font-mono text-xs md:text-sm font-bold uppercase tracking-widest">
+                    {lang === "RO" ? "Proiectul anterior —" : "Previous project —"} {safePrev.index}
+                  </span>
+                </div>
+                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tight text-black leading-tight group-hover:text-neutral-700 transition-colors">
+                  {safePrev.title}
                 </span>
-                <span className="text-sm transition-transform duration-300 group-hover:translate-x-1.5">→</span>
-              </div>
-              <span className="text-[clamp(2.25rem,6vw,5.5rem)] font-black uppercase tracking-tight text-black leading-tight group-hover:text-neutral-700 transition-colors">
-                {safeNext.title}
-              </span>
-              <p className="text-xs md:text-sm font-medium text-neutral-500 group-hover:text-neutral-800 transition-colors">
-                {safeNext.client} — {getCategoryLabel(safeNext.category, lang)}
-              </p>
-            </Link>
-          </Reveal>
+                <p className="text-xs md:text-sm font-medium text-neutral-500 group-hover:text-neutral-800 transition-colors truncate">
+                  {safePrev.client} — {getCategoryLabel(safePrev.category, lang)}
+                </p>
+              </Link>
+            </Reveal>
+
+            {/* Next Project Button */}
+            <Reveal once delay={100} className="w-full h-full">
+              <Link
+                to="/work/$slug"
+                params={{ slug: safeNext.slug }}
+                resetScroll={true}
+                className="group flex flex-col justify-between h-full gap-3 px-6 py-10 md:px-10 md:py-16 hover:bg-neutral-100/70 transition-colors duration-300 text-left md:text-right min-h-[140px]"
+              >
+                <div className="flex items-center gap-2 text-neutral-600 group-hover:text-black transition-colors md:justify-end">
+                  <span className="font-mono text-xs md:text-sm font-bold uppercase tracking-widest">
+                    {lang === "RO" ? "Următorul proiect —" : "Next project —"} {safeNext.index}
+                  </span>
+                  <span className="text-sm transition-transform duration-300 group-hover:translate-x-1.5">→</span>
+                </div>
+                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tight text-black leading-tight group-hover:text-neutral-700 transition-colors">
+                  {safeNext.title}
+                </span>
+                <p className="text-xs md:text-sm font-medium text-neutral-500 group-hover:text-neutral-800 transition-colors truncate">
+                  {safeNext.client} — {getCategoryLabel(safeNext.category, lang)}
+                </p>
+              </Link>
+            </Reveal>
+          </div>
         </section>
       </main>
       <Footer />

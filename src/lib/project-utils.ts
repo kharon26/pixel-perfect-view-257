@@ -83,5 +83,12 @@ export const getProject = (slug: string) => PROJECTS.find((p) => p.slug === slug
 
 export const nextProject = (slug: string) => {
   const i = PROJECTS.findIndex((p) => p.slug === slug);
+  if (i === -1) return PROJECTS[0];
   return PROJECTS[(i + 1) % PROJECTS.length];
+};
+
+export const prevProject = (slug: string) => {
+  const i = PROJECTS.findIndex((p) => p.slug === slug);
+  if (i === -1) return PROJECTS[PROJECTS.length - 1];
+  return PROJECTS[(i - 1 + PROJECTS.length) % PROJECTS.length];
 };
