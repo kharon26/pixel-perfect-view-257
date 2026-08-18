@@ -96,8 +96,8 @@ function CaseStudy() {
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
       <main id="top">
-        {/* Hero Media Container */}
-        <div className="relative w-full h-[54vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] flex flex-col justify-end overflow-hidden bg-background">
+        {/* Hero Media Container (h-[50vh] min-h-[400px] on mobile, h-[60vh] on desktop) */}
+        <div className="relative w-full h-[50vh] min-h-[400px] md:h-[60vh] md:min-h-[500px] flex flex-col justify-end overflow-hidden bg-background">
           {/* Media Fundal */}
           <img
             src={
@@ -120,106 +120,56 @@ function CaseStudy() {
             }}
           />
 
-          {/* Subtle mobile overlay for image depth & text contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/10 to-transparent pointer-events-none z-10 md:hidden" />
+          {/* Subtle gradient overlay at bottom for crisp text readability */}
+          <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black/60 via-black/25 to-transparent pointer-events-none z-10" />
 
-          {/* Desktop gradient overlay */}
-          <div className="absolute inset-x-0 bottom-0 h-1/2 md:h-3/5 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none z-10 hidden md:block" />
-
-
-
-          {/* Desktop Text Overlay */}
-          <div className="relative z-20 w-full max-w-[1600px] mx-auto px-10 pb-16 pt-28 pointer-events-auto hidden md:block">
+          {/* Text Overlay across bottom left */}
+          <div className="relative z-20 w-full max-w-[1600px] mx-auto px-4 pb-6 pt-16 md:px-10 md:pb-16 md:pt-28 pointer-events-auto text-left">
             <Reveal once delay={60}>
-              <Link to="/" className="label link-underline text-neutral-900 hover:text-black font-bold transition-colors inline-block text-sm mb-4">
+              <Link to="/" className="label link-underline text-white/90 hover:text-white font-bold transition-colors inline-block text-xs md:text-sm mb-2 md:mb-4">
                 {lang === "RO" ? "← Înapoi la portofoliu" : "← Back to portfolio"}
               </Link>
             </Reveal>
             <Reveal once delay={100}>
-              <p className="label text-neutral-900 font-semibold mb-3 text-sm tracking-wider uppercase">
+              <p className="label text-white/80 font-semibold mb-1.5 md:mb-3 text-xs md:text-sm tracking-wider uppercase">
                 {project.index} — {activeCategory}
               </p>
             </Reveal>
             <Reveal once delay={150}>
-              <h1 className="text-[clamp(2.5rem,6vw,5.5rem)] font-black tracking-tight text-black uppercase leading-tight">
+              <h1 className="text-3xl md:text-[clamp(2.5rem,6vw,5.5rem)] font-black tracking-tight text-white uppercase leading-tight">
                 {project.title}
               </h1>
             </Reveal>
           </div>
         </div>
 
-        {/* Mobile Dedicated Editorial Info Section (< md) */}
-        <div className="md:hidden w-full px-4 pt-6 pb-6 bg-background">
-          {/* Badge & Title */}
-          <Reveal once delay={60} className="w-full text-center">
-            <p className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-1.5">
-              {project.index} — {activeCategory}
-            </p>
-            <h1 className="text-3xl font-black uppercase tracking-tight text-neutral-950 leading-tight mb-5">
-              {project.title}
-            </h1>
-          </Reveal>
-
-          {/* Clean 3-column Metadata Strip */}
-          <Reveal once delay={100} className="w-full">
-            <div className="grid grid-cols-3 divide-x divide-neutral-200 border-y border-neutral-200 py-3 mb-5 text-center bg-neutral-50/60">
-              <div className="px-2">
-                <span className="block text-[10px] font-bold uppercase tracking-wider text-neutral-400">Client</span>
-                <span className="block text-xs font-semibold text-neutral-900 truncate mt-0.5">{project.client}</span>
-              </div>
-              <div className="px-2">
-                <span className="block text-[10px] font-bold uppercase tracking-wider text-neutral-400">{lang === "RO" ? "An" : "Year"}</span>
-                <span className="block text-xs font-semibold text-neutral-900 truncate mt-0.5">{project.year}</span>
-              </div>
-              <div className="px-2">
-                <span className="block text-[10px] font-bold uppercase tracking-wider text-neutral-400">{lang === "RO" ? "Categorie" : "Category"}</span>
-                <span className="block text-xs font-semibold text-neutral-900 truncate mt-0.5">{activeCategory}</span>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* Narrative description */}
-          <Reveal once delay={140} className="w-full">
-            <p className="text-sm leading-relaxed text-neutral-700 max-w-prose mx-auto text-left mb-6">
-              {activeNarrative}
-            </p>
-          </Reveal>
-
-          {/* CTA Button */}
-          <Reveal once delay={180} className="w-full flex justify-center">
-            <button
-              onClick={handleContactClick}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[42px] border border-neutral-300 hover:border-black bg-neutral-50 hover:bg-black hover:text-white text-neutral-900 px-5 py-2.5 text-xs font-medium tracking-wider uppercase transition-colors duration-200 cursor-pointer active:scale-98 text-center shadow-xs"
-            >
-              {lang === "RO" ? "Discută despre un proiect similar →" : "Discuss a similar project →"}
-            </button>
-          </Reveal>
-        </div>
-
-        {/* Desktop Details Section (>= md) */}
-        <section className="bg-background mx-auto max-w-[1600px] px-10 py-28 hidden md:grid md:grid-cols-12 md:gap-12 md:items-start md:text-left">
+        {/* Project details & narrative section */}
+        <section className="bg-background mx-auto max-w-[1600px] grid grid-cols-1 gap-6 px-4 py-8 md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
+          {/* Metadata */}
           <Reveal once className="md:col-span-4" delay={60}>
-            <dl className="space-y-6 text-left">
+            <dl className="grid grid-cols-3 gap-3 md:block md:space-y-6 text-left border-y border-border py-4 md:border-y-0 md:py-0">
               {[
                 [lang === "RO" ? "Client" : "Client", project.client],
                 [lang === "RO" ? "An" : "Year", project.year],
                 [lang === "RO" ? "Categorie" : "Category", activeCategory],
               ].map(([k, v]) => (
-                <div key={k} className="border-t border-border pt-4 pb-1">
+                <div key={k} className="border-t border-border pt-2.5 md:pt-4 pb-1">
                   <dt className="label text-muted-foreground text-xs uppercase tracking-wider font-semibold">{k}</dt>
-                  <dd className="mt-2 text-sm font-medium text-foreground truncate">{v}</dd>
+                  <dd className="mt-1 md:mt-2 text-sm font-medium text-foreground truncate">{v}</dd>
                 </div>
               ))}
             </dl>
           </Reveal>
-          <Reveal once className="md:col-span-7 md:col-start-6" delay={120}>
-            <p className="text-2xl leading-relaxed text-neutral-700 font-normal max-w-full overflow-visible">
+
+          {/* Description narrative & CTA */}
+          <Reveal once className="md:col-span-7 md:col-start-6 mt-1 md:mt-0" delay={120}>
+            <p className="text-sm leading-relaxed text-neutral-700 md:text-2xl md:leading-relaxed font-normal max-w-prose text-left overflow-visible">
               {activeNarrative}
             </p>
-            <div className="mt-10 flex justify-start">
+            <div className="mt-6 md:mt-10 flex justify-start">
               <button
                 onClick={handleContactClick}
-                className="inline-flex items-center justify-center gap-2 min-h-[44px] border border-neutral-300 hover:border-black bg-transparent hover:bg-black hover:text-white text-neutral-800 px-5 py-2.5 text-sm font-medium tracking-wider uppercase transition-colors duration-200 cursor-pointer active:scale-98 text-center"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[44px] border border-neutral-300 hover:border-black bg-neutral-100 hover:bg-black hover:text-white text-neutral-900 px-5 py-2.5 text-sm font-medium tracking-wider uppercase transition-colors duration-200 cursor-pointer active:scale-98 text-center"
               >
                 {lang === "RO" ? "Discută despre un proiect similar →" : "Discuss a similar project →"}
               </button>
