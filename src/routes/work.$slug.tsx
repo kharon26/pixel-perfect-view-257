@@ -97,7 +97,7 @@ function CaseStudy() {
       <Nav />
       <main id="top">
         {/* Hero — perfectly proportioned 60-65vh container preventing excessive crop */}
-        <div className="relative w-full h-[45vh] min-h-[300px] md:h-[60vh] md:min-h-[500px] flex flex-col justify-end overflow-hidden bg-background">
+        <div className="relative w-full h-[42vh] min-h-[290px] md:h-[60vh] md:min-h-[500px] flex flex-col justify-end overflow-hidden bg-background">
           {/* Media Fundal */}
           <img
             src={
@@ -141,7 +141,7 @@ function CaseStudy() {
         </div>
 
         {/* Project details & narrative */}
-        <section className="bg-background mx-auto grid max-w-[1600px] grid-cols-1 gap-5 px-4 pt-4 pb-10 md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
+        <section className="bg-background mx-auto grid max-w-[1600px] grid-cols-1 gap-3 px-4 pt-3 pb-8 md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
           <Reveal once className="md:col-span-4" delay={60}>
             <dl className="grid grid-cols-2 gap-x-4 gap-y-2 md:block md:space-y-6 text-center md:text-left max-w-md mx-auto md:max-w-none md:mx-0">
               {[
@@ -156,11 +156,11 @@ function CaseStudy() {
               ))}
             </dl>
           </Reveal>
-          <Reveal once className="md:col-span-7 md:col-start-6 mt-2 md:mt-0" delay={120}>
-            <p className="text-base leading-relaxed text-neutral-700 md:text-2xl md:leading-relaxed font-normal max-w-full overflow-visible">
+          <Reveal once className="md:col-span-7 md:col-start-6 mt-1 md:mt-0" delay={120}>
+            <p className="text-sm leading-relaxed text-neutral-600 md:text-2xl md:leading-relaxed font-normal max-w-2xl mx-auto md:mx-0 text-center sm:text-left md:text-left overflow-visible">
               {activeNarrative}
             </p>
-            <div className="mt-4 md:mt-10 flex justify-center md:justify-start">
+            <div className="mt-3 md:mt-10 flex justify-center md:justify-start">
               <button
                 onClick={handleContactClick}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[44px] border border-neutral-300 hover:border-black bg-transparent hover:bg-black hover:text-white text-neutral-800 px-5 py-2.5 text-xs md:text-sm font-medium tracking-wider uppercase transition-colors duration-200 cursor-pointer active:scale-98 text-center"
