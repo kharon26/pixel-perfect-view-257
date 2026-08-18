@@ -141,7 +141,7 @@ function CaseStudy() {
         </div>
 
         {/* Project details & narrative */}
-        <section className="bg-background mx-auto grid max-w-[1600px] grid-cols-1 gap-3 px-4 pt-4 pb-10 md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
+        <section className="bg-background mx-auto grid max-w-[1600px] grid-cols-1 gap-5 px-4 pt-4 pb-10 md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
           <Reveal once className="md:col-span-4" delay={60}>
             <dl className="grid grid-cols-2 gap-x-4 gap-y-2 md:block md:space-y-6 text-center md:text-left max-w-md mx-auto md:max-w-none md:mx-0">
               {[
@@ -156,7 +156,7 @@ function CaseStudy() {
               ))}
             </dl>
           </Reveal>
-          <Reveal once className="md:col-span-7 md:col-start-6 mt-0" delay={120}>
+          <Reveal once className="md:col-span-7 md:col-start-6 mt-2 md:mt-0" delay={120}>
             <p className="text-base leading-relaxed text-neutral-700 md:text-2xl md:leading-relaxed font-normal max-w-full overflow-visible">
               {activeNarrative}
             </p>
