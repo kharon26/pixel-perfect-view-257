@@ -110,7 +110,7 @@ function CaseStudy() {
             decoding="sync"
             fetchPriority="high"
             className={`hero-project-img absolute inset-0 w-full h-full object-cover pointer-events-none select-none ${
-              project.slug === "99beauty" ? "object-[80%_50%] md:object-[80%_50%]" : ""
+              project.slug === "99beauty" ? "object-[48%_50%] md:object-[48%_50%]" : ""
             }`}
             style={{
               objectPosition: project.heroPositionMobile || project.heroPosition || "center center",
