@@ -136,7 +136,7 @@ function CaseStudy() {
               </p>
             </Reveal>
             <Reveal once delay={150}>
-              <h1 className="text-3xl md:text-[clamp(2.5rem,6vw,5.5rem)] font-black tracking-tight text-black uppercase leading-tight">
+              <h1 className="text-3xl md:text-[clamp(2.5rem,6vw,5.5rem)] font-black tracking-tight text-black uppercase leading-tight mt-5 md:mt-0 text-center md:text-left mx-auto md:mx-0">
                 {project.title}
               </h1>
             </Reveal>
