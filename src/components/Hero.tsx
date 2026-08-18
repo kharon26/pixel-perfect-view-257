@@ -163,11 +163,8 @@ export function Hero() {
     touchEndX.current = null;
   };
 
-  // Subtle, high-performance scroll animation (Parallax + Content Fade)
+  // Subtle, ultra-smooth GPU scroll animation (Parallax + Content Fade) active on both Mobile & Desktop
   useEffect(() => {
-    // Only active on desktop viewports to preserve 100% native 120fps touch scroll on mobile
-    if (isMobile) return;
-
     let ticking = false;
 
     const handleScroll = () => {
@@ -179,24 +176,24 @@ export function Hero() {
           if (scrollY <= heroHeight + 50) {
             const progress = Math.min(scrollY / heroHeight, 1);
             
-            // Background subtle parallax & scale
+            // Background subtle parallax & scale (pure GPU transform3d)
             if (bgContainerRef.current) {
-              const bgY = scrollY * 0.28;
-              const bgScale = 1 + progress * 0.035;
+              const bgY = scrollY * 0.22;
+              const bgScale = 1 + progress * 0.025;
               bgContainerRef.current.style.transform = `translate3d(0, ${bgY}px, 0) scale(${bgScale})`;
               bgContainerRef.current.style.willChange = scrollY > 0 ? "transform" : "auto";
             }
 
-            // Content fade-out and subtle upward drift
+            // Content fade-out and subtle upward drift (GPU transform3d + opacity)
             if (contentRef.current) {
-              const contentOpacity = Math.max(0, 1 - progress * 1.5);
-              const contentY = -scrollY * 0.18;
+              const contentOpacity = Math.max(0, 1 - progress * 1.4);
+              const contentY = -scrollY * 0.14;
               contentRef.current.style.opacity = contentOpacity.toString();
               contentRef.current.style.transform = `translate3d(0, ${contentY}px, 0)`;
               contentRef.current.style.willChange = scrollY > 0 ? "opacity, transform" : "auto";
             }
           } else {
-            // Free GPU memory once scrolled well past hero
+            // Free GPU memory once scrolled past hero
             if (bgContainerRef.current) {
               bgContainerRef.current.style.willChange = "auto";
             }
@@ -213,7 +210,7 @@ export function Hero() {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isMobile]);
+  }, []);
 
   return (
     <section
