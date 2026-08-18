@@ -96,8 +96,8 @@ function CaseStudy() {
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
       <main id="top">
-        {/* Hero Media Container (h-[50vh] min-h-[400px] on mobile, h-[60vh] on desktop) */}
-        <div className="relative w-full h-[50vh] min-h-[400px] md:h-[60vh] md:min-h-[500px] flex flex-col justify-end overflow-hidden bg-background">
+        {/* Hero Media Container (h-[50vh] min-h-[350px] on mobile, h-[60vh] on desktop) */}
+        <div className="relative w-full h-[50vh] min-h-[350px] md:h-[60vh] md:min-h-[500px] flex flex-col justify-end overflow-hidden bg-background">
           {/* Media Fundal */}
           <img
             src={
@@ -110,7 +110,7 @@ function CaseStudy() {
             decoding="sync"
             fetchPriority="high"
             className={`hero-project-img absolute inset-0 w-full h-full object-cover pointer-events-none select-none ${
-              project.slug === "99beauty" ? "object-[48%_50%] md:object-[48%_50%]" : ""
+              project.slug === "99beauty" ? "object-[80%_50%] md:object-[80%_50%]" : ""
             }`}
             style={{
               objectPosition: project.heroPositionMobile || project.heroPosition || "center center",
@@ -120,11 +120,11 @@ function CaseStudy() {
             }}
           />
 
-          {/* Subtle gradient overlay at bottom for crisp text readability */}
-          <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black/60 via-black/25 to-transparent pointer-events-none z-10" />
+          {/* Subtle gradient overlay in bottom area */}
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/30 via-black/5 to-transparent pointer-events-none z-10" />
 
-          {/* Text Overlay across bottom left */}
-          <div className="relative z-20 w-full max-w-[1600px] mx-auto px-4 pb-6 pt-16 md:px-10 md:pb-16 md:pt-28 pointer-events-auto text-left">
+          {/* Text Overlay at bottom */}
+          <div className="relative z-20 w-full max-w-[1600px] mx-auto px-4 pb-6 pt-16 md:px-10 md:pb-16 md:pt-28 pointer-events-auto text-center md:text-left">
             <Reveal once delay={60}>
               <Link to="/" className="label link-underline text-white/90 hover:text-white font-bold transition-colors inline-block text-xs md:text-sm mb-2 md:mb-4">
                 {lang === "RO" ? "← Înapoi la portofoliu" : "← Back to portfolio"}
@@ -143,17 +143,17 @@ function CaseStudy() {
           </div>
         </div>
 
-        {/* Project details & narrative section */}
-        <section className="bg-background mx-auto max-w-[1600px] grid grid-cols-1 gap-6 px-4 py-8 md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
+        {/* Project details & narrative section (pt-4 pb-8 gap-4 on mobile) */}
+        <section className="bg-background mx-auto max-w-[1600px] px-4 pt-4 pb-8 md:px-10 md:py-28 flex flex-col items-center text-center md:grid md:grid-cols-12 md:gap-12 md:items-start md:text-left">
           {/* Metadata */}
-          <Reveal once className="md:col-span-4" delay={60}>
-            <dl className="grid grid-cols-3 gap-3 md:block md:space-y-6 text-left border-y border-border py-4 md:border-y-0 md:py-0">
+          <Reveal once className="w-full md:col-span-4" delay={60}>
+            <dl className="grid grid-cols-3 gap-4 w-full max-w-md mx-auto text-center border-y border-border py-4 md:block md:space-y-6 md:border-y-0 md:py-0 md:text-left md:max-w-none md:mx-0">
               {[
                 [lang === "RO" ? "Client" : "Client", project.client],
                 [lang === "RO" ? "An" : "Year", project.year],
                 [lang === "RO" ? "Categorie" : "Category", activeCategory],
               ].map(([k, v]) => (
-                <div key={k} className="border-t border-border pt-2.5 md:pt-4 pb-1">
+                <div key={k} className="border-t border-border pt-2.5 md:pt-4 pb-1 text-center md:text-left">
                   <dt className="label text-muted-foreground text-xs uppercase tracking-wider font-semibold">{k}</dt>
                   <dd className="mt-1 md:mt-2 text-sm font-medium text-foreground truncate">{v}</dd>
                 </div>
@@ -162,11 +162,11 @@ function CaseStudy() {
           </Reveal>
 
           {/* Description narrative & CTA */}
-          <Reveal once className="md:col-span-7 md:col-start-6 mt-1 md:mt-0" delay={120}>
-            <p className="text-sm leading-relaxed text-neutral-700 md:text-2xl md:leading-relaxed font-normal max-w-prose text-left overflow-visible">
+          <Reveal once className="w-full max-w-prose mx-auto md:max-w-none md:mx-0 md:col-span-7 md:col-start-6 mt-4 md:mt-0" delay={120}>
+            <p className="text-sm leading-relaxed text-neutral-700 md:text-2xl md:leading-relaxed font-normal text-left overflow-visible">
               {activeNarrative}
             </p>
-            <div className="mt-6 md:mt-10 flex justify-start">
+            <div className="mt-6 md:mt-10 flex justify-center md:justify-start">
               <button
                 onClick={handleContactClick}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[44px] border border-neutral-300 hover:border-black bg-neutral-100 hover:bg-black hover:text-white text-neutral-900 px-5 py-2.5 text-sm font-medium tracking-wider uppercase transition-colors duration-200 cursor-pointer active:scale-98 text-center"
