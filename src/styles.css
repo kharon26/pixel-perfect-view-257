@@ -422,3 +422,15 @@ section, header, main > div {
   animation: routeFadeIn 300ms cubic-bezier(0.16, 1, 0.3, 1) both;
   will-change: opacity;
 }
+
+
+/* Bulletproof responsive hero image positioning */
+.hero-project-img {
+  object-position: var(--hero-pos-mob, center center) !important;
+}
+
+@media (min-width: 768px) {
+  .hero-project-img {
+    object-position: var(--hero-pos, center center) !important;
+  }
+}
