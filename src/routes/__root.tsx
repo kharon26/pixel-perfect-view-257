@@ -14,6 +14,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 function NotFoundComponent() {
   return (
@@ -246,6 +247,7 @@ function RootComponent() {
         <div key={pathname} className="route-fade-container min-h-screen">
           <Outlet />
         </div>
+        <ScrollToTop />
       </LanguageProvider>
     </QueryClientProvider>
   );

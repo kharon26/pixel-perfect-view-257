@@ -19,16 +19,6 @@ export function Footer() {
             </a>
           </span>
         </div>
-        <a
-          href="#top"
-          onClick={(e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
-          className="label link-underline self-start text-muted-foreground hover:text-foreground"
-        >
-          {lang === "RO" ? "Înapoi sus ↑" : "Back to top ↑"}
-        </a>
       </div>
     </footer>
   );
