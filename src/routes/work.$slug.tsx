@@ -163,7 +163,7 @@ function CaseStudy() {
 
           {/* Description narrative & CTA */}
           <Reveal once className="w-full max-w-prose mx-auto md:max-w-none md:mx-0 md:col-span-7 md:col-start-6 mt-4 md:mt-0" delay={120}>
-            <p className="text-sm leading-relaxed text-neutral-700 md:text-2xl md:leading-relaxed font-normal text-justify md:text-left overflow-visible">
+            <p className="text-sm leading-relaxed text-neutral-700 md:text-2xl md:leading-relaxed font-normal text-justify hyphens-auto [word-break:break-word] break-words md:text-left md:hyphens-none overflow-visible">
               {activeNarrative}
             </p>
             <div className="mt-6 md:mt-10 flex justify-center md:justify-start">
