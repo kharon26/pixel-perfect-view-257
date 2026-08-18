@@ -141,26 +141,26 @@ function CaseStudy() {
         </div>
 
         {/* Project details & narrative */}
-        <section className="bg-background mx-auto grid max-w-[1600px] grid-cols-1 gap-6 px-4 pt-6 pb-14 md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
+        <section className="bg-background mx-auto grid max-w-[1600px] grid-cols-1 gap-3 px-4 pt-4 pb-10 md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
           <Reveal once className="md:col-span-4" delay={60}>
-            <dl className="grid grid-cols-2 gap-x-4 gap-y-3 md:block md:space-y-6 text-center md:text-left max-w-md mx-auto md:max-w-none md:mx-0">
+            <dl className="grid grid-cols-2 gap-x-4 gap-y-2 md:block md:space-y-6 text-center md:text-left max-w-md mx-auto md:max-w-none md:mx-0">
               {[
                 [lang === "RO" ? "Client" : "Client", project.client, "col-span-1"],
                 [lang === "RO" ? "An" : "Year", project.year, "col-span-1"],
                 [lang === "RO" ? "Categorie" : "Category", activeCategory, "col-span-2 md:col-span-1"],
               ].map(([k, v, spanClass]) => (
-                <div key={k} className={`border-t border-border pt-2.5 md:pt-4 pb-1 text-center md:text-left ${spanClass}`}>
+                <div key={k} className={`border-t border-border pt-2 md:pt-4 pb-0 md:pb-1 text-center md:text-left ${spanClass}`}>
                   <dt className="label text-muted-foreground text-xs uppercase tracking-wider font-semibold text-center md:text-left">{k}</dt>
                   <dd className="mt-1 md:mt-2 text-sm font-medium text-foreground truncate text-center md:text-left">{v}</dd>
                 </div>
               ))}
             </dl>
           </Reveal>
-          <Reveal once className="md:col-span-7 md:col-start-6 mt-1 md:mt-0" delay={120}>
+          <Reveal once className="md:col-span-7 md:col-start-6 mt-0" delay={120}>
             <p className="text-base leading-relaxed text-neutral-700 md:text-2xl md:leading-relaxed font-normal max-w-full overflow-visible">
               {activeNarrative}
             </p>
-            <div className="mt-6 md:mt-10 flex justify-center md:justify-start">
+            <div className="mt-4 md:mt-10 flex justify-center md:justify-start">
               <button
                 onClick={handleContactClick}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[44px] border border-neutral-300 hover:border-black bg-transparent hover:bg-black hover:text-white text-neutral-800 px-5 py-2.5 text-xs md:text-sm font-medium tracking-wider uppercase transition-colors duration-200 cursor-pointer active:scale-98 text-center"
