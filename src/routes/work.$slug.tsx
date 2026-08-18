@@ -118,7 +118,7 @@ function CaseStudy() {
           />
 
           {/* Gradient fin curat strict peste bază */}
-          <div className="absolute inset-x-0 bottom-0 h-1/3 md:h-1/2 bg-gradient-to-t from-background/90 via-background/40 to-transparent md:from-background md:via-background/85 md:to-transparent pointer-events-none z-10" />
+          <div className="absolute inset-x-0 bottom-0 h-1/4 md:h-1/3 bg-gradient-to-t from-background/75 via-background/25 to-transparent pointer-events-none z-10" />
 
           {/* Container Text cu animație de reveal */}
           <div className="relative z-20 w-full max-w-[1600px] mx-auto px-4 md:px-10 pb-6 md:pb-16 pt-12 md:pt-28 pointer-events-auto text-center md:text-left">
