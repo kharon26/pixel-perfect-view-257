@@ -149,9 +149,28 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
         <script
           dangerouslySetInnerHTML={{
-            __html: `if ('scrollRestoration' in history && window.location.pathname.startsWith('/work/')) { history.scrollRestoration = 'manual'; window.scrollTo(0, 0); }`,
+            __html: `(function(){
+              if ('scrollRestoration' in history && window.location.pathname.startsWith('/work/')) {
+                history.scrollRestoration = 'manual';
+                window.scrollTo(0, 0);
+              }
+              function markLoaded() {
+                if (document.body) {
+                  document.body.classList.add('loaded');
+                }
+              }
+              if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', markLoaded);
+              } else {
+                markLoaded();
+              }
+              setTimeout(markLoaded, 400);
+            })();`,
           }}
         />
+        <noscript>
+          <style>{`body { opacity: 1 !important; }`}</style>
+        </noscript>
       </head>
       <body className="bg-background text-foreground antialiased min-h-[100dvh] w-full">
         <ScrollRestoration
