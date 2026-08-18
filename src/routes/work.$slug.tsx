@@ -121,7 +121,7 @@ function CaseStudy() {
           <div className="absolute inset-x-0 bottom-0 h-1/2 md:h-3/5 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none z-10" />
 
           {/* Container Text cu animație de reveal */}
-          <div className="relative z-20 w-full max-w-[1600px] mx-auto px-4 md:px-10 pb-6 md:pb-16 pt-14 md:pt-28 pointer-events-auto">
+          <div className="relative z-20 w-full max-w-[1600px] mx-auto px-4 md:px-10 pb-8 md:pb-16 pt-16 md:pt-28 pointer-events-auto">
             <div className="flex flex-col items-start text-left">
               <Reveal once delay={60}>
                 <Link to="/" className="label link-underline text-neutral-900 hover:text-black font-bold transition-colors inline-block text-sm mb-2 md:mb-4">
@@ -143,7 +143,7 @@ function CaseStudy() {
         </div>
 
         {/* Project details & narrative */}
-        <section className="bg-background mx-auto max-w-[1600px] px-4 pt-5 pb-12 md:px-10 md:py-28 flex flex-col items-center text-center md:grid md:grid-cols-12 md:gap-12 md:items-start md:text-left">
+        <section className="bg-background mx-auto max-w-[1600px] px-4 pt-10 pb-8 md:px-10 md:py-28 flex flex-col items-center text-center md:grid md:grid-cols-12 md:gap-12 md:items-start md:text-left">
           <Reveal once className="w-full md:col-span-4" delay={60}>
             <dl className="grid grid-cols-2 gap-x-4 gap-y-2 md:block md:space-y-6 text-center md:text-left max-w-md mx-auto md:max-w-none md:mx-0">
               {[
@@ -174,7 +174,7 @@ function CaseStudy() {
         </section>
 
         {/* Gallery — grouped media flow with staggered entrance reveal */}
-        <section className="bg-background mx-auto max-w-[1180px] px-4 pb-20 md:px-10 md:pb-36">
+        <section className="bg-background mx-auto max-w-[1180px] px-4 pb-14 md:px-10 md:pb-36">
           <div className="flex flex-col items-center gap-16 md:gap-24">
             {sortedGallery.map((src: string, i: number) => {
               const isVideo = src.endsWith(".mp4");
