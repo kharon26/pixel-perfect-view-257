@@ -8,9 +8,9 @@ import { Clients } from "@/components/Clients";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
-const title = "George Roșu — Fotografie și Videografie Comercială";
+const title = "George Roșu — Fotograf & Videograf Comercial Galați | Disponibil în toată România";
 const description =
-  "Fotografie și videografie comercială, de produs, automotive și proiecte vizuale realizate de George Roșu. Portofoliu complet foto și video.";
+  "Fotografie și videografie comercială — bazat în Galați, disponibil în toată România. Auto, produs, culinar, branduri. Portofoliu BMW, Mazda, Motorpark, Nespresso.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -20,31 +20,22 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "ro_RO" },
+      { property: "og:site_name", content: "George Roșu" },
+      { property: "og:image", content: "https://georgerosu.eu/portfolio/motorpark-romania/BMW_74_-1200w.webp" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { name: "twitter:image", content: "https://georgerosu.eu/portfolio/motorpark-romania/BMW_74_-1200w.webp" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://georgerosu.eu/" },
     ],
   }),
   component: Index,
 });
 
 function Index() {
-  useEffect(() => {
-    if ("scrollRestoration" in history) {
-      history.scrollRestoration = "manual";
-    }
-
-    // Only scroll to target if user deep-linked directly with a hash in URL on initial page load
-    if (window.location.hash) {
-      const id = window.location.hash.replace("#", "");
-      const el = document.getElementById(id);
-      if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: "smooth" });
-          history.replaceState(null, "", window.location.pathname);
-        }, 100);
-      }
-    }
-  }, []);
-
   return (
     <>
       <Nav />

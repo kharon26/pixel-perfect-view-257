@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
-/** Scroll-triggered fade/slide reveal. Restrained, cinematic easing.
- *  When `once` is true the element stays revealed after first intersection
- *  (avoids GPU compositing churn that degrades image quality). */
+/** Scroll-triggered fade/slide reveal.
+ *  Defaults to `once = true` so once an element or heading is revealed,
+ *  it permanently remains in the DOM with static styles and never re-triggers
+ *  or shifts when sibling state (e.g. dropdowns, inputs) updates. */
 export function Reveal({
   children,
   delay = 0,
   className = "",
   as: Tag = "div",
-  once = false,
+  once = true,
 }: {
   children: ReactNode;
   delay?: number;
@@ -23,19 +24,18 @@ export function Reveal({
     const el = ref.current;
     if (!el) return;
 
-    // If already revealed in `once` mode, skip re-observing
     if (once && shown) return;
 
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (once) {
-            if (entry.isIntersecting) {
-              setShown(true);
+          if (entry.isIntersecting) {
+            setShown(true);
+            if (once) {
               io.disconnect();
             }
-          } else {
-            setShown(entry.isIntersecting);
+          } else if (!once) {
+            setShown(false);
           }
         });
       },

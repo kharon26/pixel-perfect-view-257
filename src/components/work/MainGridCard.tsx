@@ -15,9 +15,8 @@ export const MainGridCard = React.memo(function MainGridCard({
   lang,
 }: MainGridCardProps) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const [shouldFetch, setShouldFetch] = useState(i < 2);
+  const [shouldFetch, setShouldFetch] = useState(i < 4);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isIntersected, setIsIntersected] = useState(false);
 
   const imgSrc = p.cover.endsWith(".mp4") ? videoPoster(p.cover) : p.cover;
   const imgSrc1200wNatural = imgSrc.replace(/\.(webp|jpg|jpeg|png)$/i, "-1200w-natural.webp");
@@ -67,51 +66,72 @@ export const MainGridCard = React.memo(function MainGridCard({
           handleReady();
         }
       };
-      img.onerror = handleReady;
+      img.onerror = () => {
+        const fallbackImg = new Image();
+        fallbackImg.src = imgSrc;
+        fallbackImg.onload = handleReady;
+        fallbackImg.onerror = handleReady;
+      };
     }
 
     return () => {
       active = false;
     };
-  }, [shouldFetch, imgSrc1200wNatural]);
+  }, [shouldFetch, imgSrc1200wNatural, imgSrc]);
 
-  // 3. Reveal observer (80px rootMargin) — tracks viewport entry/exit for scroll reveal
+  // 3. Continuous reveal observer — zero React re-render, direct GPU CSS variable updates via rAF
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
+    // Initialize progress for top visible cards
+    if (i < 2) {
+      el.style.setProperty("--reveal-progress", "1");
+    }
+
     const revealIo = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          setIsIntersected(entry.isIntersecting);
+          requestAnimationFrame(() => {
+            const targetEl = ref.current;
+            if (!targetEl) return;
+            if (entry.isIntersecting) {
+              targetEl.style.setProperty("--reveal-progress", "1");
+            } else {
+              targetEl.style.setProperty("--reveal-progress", "0");
+            }
+          });
         });
       },
-      { rootMargin: "0px 0px 80px 0px", threshold: 0 }
+      { rootMargin: "0px 0px -30px 0px", threshold: [0, 0.15] }
     );
 
     revealIo.observe(el);
     return () => revealIo.disconnect();
-  }, []);
+  }, [i]);
 
-  const isVisible = isIntersected;
-  const delay = (i % 2) * 100;
+  // Stagger calculation: index-based (index * 60ms on desktop in 2-col pairs, max 30ms on mobile)
+  const desktopDelay = (i % 2) * 60;
+  const mobileDelay = Math.min(30, (i % 2) * 25);
 
   return (
     <div
       ref={ref}
-      style={{ transitionDelay: isVisible ? `${delay}ms` : "0ms" }}
-      className={`w-full main-grid-card-reveal ${
-        isVisible ? "is-visible" : ""
-      }`}
+      style={{
+        ["--stagger-delay" as any]: `${desktopDelay}ms`,
+        ["--stagger-delay-mobile" as any]: `${mobileDelay}ms`,
+        ...(i < 2 ? { ["--reveal-progress" as any]: "1" } : {}),
+      }}
+      className="w-full main-grid-card-reveal"
     >
-      <Link to="/work/$slug" params={{ slug: p.slug }} preload="intent" className="group block">
-        <div className="relative overflow-hidden bg-neutral-100 border border-border/30 aspect-[3/4] w-full flex items-center justify-center p-3 transition-colors duration-500 group-hover:border-black">
+      <Link to="/work/$slug" params={{ slug: p.slug }} resetScroll={true} preload="intent" className="group block">
+        <div className="main-grid-card-interactive relative overflow-hidden bg-neutral-100 border border-border/30 aspect-[3/4] w-full flex items-center justify-center p-3 transition-colors duration-500 group-hover:border-black">
           {shouldFetch ? (
             <img
               src={imgSrc1200wNatural}
               srcSet={srcSet}
               sizes={sizes}
-              alt={`${p.title} — ${p.category} cover`}
+              alt={`${p.title} — ${p.client} | ${getCategoryLabel(p.category, lang)} fotograf Galați ${p.year}`}
               loading={i < 2 ? "eager" : "lazy"}
               decoding="async"
               fetchPriority={i < 2 ? "high" : "auto"}

@@ -9,6 +9,12 @@ export const getRouter = () => {
     routeTree,
     context: { queryClient },
     scrollRestoration: true,
+    getScrollRestorationKey: (location) => {
+      if (location.pathname.startsWith("/work/")) {
+        return null;
+      }
+      return location.pathname;
+    },
     defaultPreloadStaleTime: 0,
   });
 

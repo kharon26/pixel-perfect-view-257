@@ -16,12 +16,13 @@ export function Work() {
 
   const setFilter = (c: string) => {
     navigate({
-      to: "/",
+      to: ".",
       search: (prev: any) => ({
         ...prev,
         category: c === "Toate" ? undefined : c,
       }),
       replace: true,
+      resetScroll: false,
     });
   };
 
@@ -36,15 +37,15 @@ export function Work() {
   );
 
   return (
-    <section id="work" className="scroll-mt-24 border-t border-border py-24 md:py-36">
+    <section id="work" className="scroll-mt-24 py-24 md:py-36 bg-white text-black">
       <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         <Reveal>
           <div className="flex flex-col items-center text-center gap-2.5 md:flex-row md:items-end md:justify-between md:text-left md:gap-4">
             <div className="flex flex-col items-center md:items-start">
-              <p className="label text-accent font-semibold tracking-widest mb-1 md:mb-2 text-center md:text-left">
+              <p className="label text-neutral-900 font-bold uppercase tracking-widest mb-1 md:mb-2 text-center md:text-left">
                 {lang === "RO" ? "Portofoliu" : "Portfolio"}
               </p>
-              <h2 className="display text-[clamp(2.5rem,8vw,7rem)] text-center md:text-left">
+              <h2 className="display text-[clamp(2.5rem,6vw,5.5rem)] text-center md:text-left">
                 {lang === "RO" ? "Proiecte" : "Projects"}
               </h2>
             </div>

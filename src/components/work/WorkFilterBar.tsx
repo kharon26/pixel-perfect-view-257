@@ -12,7 +12,7 @@ const WORK_CATEGORIES = CATEGORIES.filter((c) => c !== "Altele");
 
 export function WorkFilterBar({ filter, setFilter, lang }: WorkFilterBarProps) {
   return (
-    <div className="sticky top-[68px] z-30 -mx-6 mt-10 border-y border-border bg-background/95 px-6 py-4 backdrop-blur-md transform-gpu md:-mx-10 md:px-10">
+    <div className="-mx-6 mt-10 border-y border-border bg-background px-6 py-4 md:-mx-10 md:px-10">
       <ul className="flex snap-x gap-6 overflow-x-auto md:gap-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {(["Toate", ...WORK_CATEGORIES] as const).map((c) => (
           <li key={c} className="shrink-0 snap-start">

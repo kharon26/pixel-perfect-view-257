@@ -72,7 +72,7 @@ export function Nav() {
       />
 
       {/* Foreground Content */}
-      <nav className="relative z-10 mx-auto flex max-w-[1600px] items-center justify-between px-5 py-4 md:px-10 pointer-events-auto">
+      <nav className="relative z-10 mx-auto flex max-w-[1600px] items-center justify-between px-6 py-4 md:px-10 pointer-events-auto">
         <Link
           to="/"
           className={`text-sm md:text-base font-bold tracking-wider uppercase transition-colors duration-500 ${
@@ -91,13 +91,12 @@ export function Nav() {
                 <a
                   href={l.to}
                   onClick={(e) => {
+                    const targetId = l.to.replace("/#", "").replace("#", "");
                     if (window.location.pathname === "/") {
                       e.preventDefault();
-                      const targetId = l.to.replace("/#", "");
                       const el = document.getElementById(targetId);
                       if (el) {
                         el.scrollIntoView({ behavior: "smooth" });
-                        history.replaceState(null, "", "/");
                       }
                     }
                   }}
@@ -186,13 +185,12 @@ export function Nav() {
                 href={l.to}
                 onClick={(e) => {
                   setOpen(false);
+                  const targetId = l.to.replace("/#", "").replace("#", "");
                   if (window.location.pathname === "/") {
                     e.preventDefault();
-                    const targetId = l.to.replace("/#", "");
                     const el = document.getElementById(targetId);
                     if (el) {
                       el.scrollIntoView({ behavior: "smooth" });
-                      history.replaceState(null, "", "/");
                     }
                   }
                 }}

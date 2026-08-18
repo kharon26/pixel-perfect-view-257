@@ -16,6 +16,7 @@ export const PROJECTS: Project[] = [
     role: "Fotografie Comercială & Produs",
     cover: "/portfolio/beauty-editorial/99beauty__3_.webp",
     coverPosition: "object-[46%_50%]",
+    heroPosition: "57% 50%",
     heroLandscape: "/portfolio/beauty-editorial/99beauty__3_.webp",
     narrative:
       "O serie de imagini comerciale create pentru 99% Beauty, cu focus pe forma, textura și identitatea vizuală a produselor. Am construit un setup de studio minimalist, folosind lumină controlată și compoziții curate pentru a pune produsele în prim-plan și a păstra estetica brandului.",
@@ -40,9 +41,9 @@ export const PROJECTS: Project[] = [
     category: "Reclamă & Brand",
     year: "2025",
     role: "Fotografie Culinară & Motion Comercial",
-    cover: "/portfolio/alex-macelarie/P1010706-1.webp",
+    cover: "/portfolio/alex-macelarie/P1010164-1.webp",
     coverPosition: "object-[50%_46%]",
-    heroPosition: "center 35%",
+    heroPosition: "center 50%",
     video: "/portfolio/alex-macelarie/macelarie-noua2_iris2.mp4",
     heroLandscape: "/portfolio/alex-macelarie/P1010706-1.webp",
     narrative:
@@ -77,7 +78,7 @@ export const PROJECTS: Project[] = [
     role: "Fotografie Culinară & Video Promo",
     cover: "/portfolio/alex-restaurant/Grillhouse2-5.webp",
     coverPosition: "object-[50%_58%]",
-    heroPosition: "center 80%",
+    heroPosition: "center 50%",
     video: "/portfolio/alex-restaurant/alex-video2_iris2.mp4",
     heroLandscape: "/portfolio/alex-restaurant/Grillhouse2-5.webp",
     narrative:
@@ -110,7 +111,7 @@ export const PROJECTS: Project[] = [
     role: "Fotografie Auto & Tehnică",
     cover: "/portfolio/bcracing-europe/DSC02745-Enhanced-NR.webp",
     coverPosition: "object-[50%_46%]",
-    heroPosition: "center center",
+    heroPosition: "center 48%",
     heroLandscape: "/portfolio/bcracing-europe/DSC02745-Enhanced-NR.webp",
     narrative:
       "Serie de imagini auto realizate pentru BCRacing Europe, ulterior featured de mai multe ori pe pagina oficială de Instagram. Fotografiile au fost utilizate ca materiale promoționale pentru promovarea suspensiilor și în campanii desfășurate de brand.",
@@ -137,7 +138,7 @@ export const PROJECTS: Project[] = [
     role: "Fotografie Comercială & Regie",
     cover: "/portfolio/bmw-romania/DSC043461_1.webp",
     coverPosition: "object-[50%_53%]",
-    heroPosition: "center center",
+    heroPosition: "center 50%",
     heroLandscape: "/portfolio/bmw-romania/DSC042801.webp",
     narrative:
       "Serie de imagini auto preluată și publicată în repetate rânduri pe paginile oficiale BMW România. Cadrele au fost utilizate ca material vizual pentru promovarea modelelor și comunicarea brandului în social media.",
@@ -171,6 +172,7 @@ export const PROJECTS: Project[] = [
     role: "Fotografie Comercială & Medicală",
     cover: "/portfolio/dentoart-clinic/DentoArt-1.webp",
     coverPosition: "object-[49%_50%]",
+    heroPosition: "center 45%",
     heroLandscape: "/portfolio/dentoart-clinic/DentoArt-1.webp",
     narrative:
       "Fotografii realizate pentru clinica Dentoart, destinate utilizării în materialele media și pe website. Imagini naturale și profesioniste, construite pentru a susține comunicarea vizuală și identitatea clinicii.",
@@ -195,6 +197,7 @@ export const PROJECTS: Project[] = [
     cover: "/portfolio/famous-chicken/DSC054922_1.webp",
     coverPosition: "object-[50%_55%]",
     video: "/portfolio/famous-chicken/famous-reclama112_prob4.mp4",
+    heroPosition: "center 52%",
     heroLandscape: "/portfolio/famous-chicken/DSC054922_1.webp",
     narrative:
       "Materiale foto-video realizate pentru Famous Chicken, dedicate promovării pe social media. Conținut culinar și materiale de tip ads, cu focus pe produse și pe o prezentare vizuală atractivă, adaptată comunicării digitale a brandului.",
@@ -221,6 +224,7 @@ export const PROJECTS: Project[] = [
     cover: "/portfolio/formula-xperience/P10685322_2.webp",
     coverPosition: "object-[50%_54%]",
     video: "/portfolio/formula-xperience/orizontal-portofoliu.mp4",
+    heroPosition: "center 45%",
     heroLandscape: "/portfolio/formula-xperience/P1068258_HDR2.webp",
     narrative:
       "Conținut foto-video creat de la zero pentru Formula Xperience, înainte de lansarea conceptului. Am construit direcția vizuală a proiectului prin fotografie de acțiune și producție video pe circuit, punând bazele imaginii brandului încă din etapa de pre-lansare.",
@@ -234,6 +238,7 @@ export const PROJECTS: Project[] = [
       "/portfolio/formula-xperience/P1068266_HDR12_2.webp",
       "/portfolio/formula-xperience/P1068284_HDR2.webp",
       "/portfolio/formula-xperience/P1068330_HDR2_1.webp",
+      "/portfolio/formula-xperience/P10686012.webp",
       "/portfolio/formula-xperience/P10683472_2.webp",
       "/portfolio/formula-xperience/P10683702.webp",
       "/portfolio/formula-xperience/P10683902_1.webp",
@@ -247,7 +252,6 @@ export const PROJECTS: Project[] = [
       "/portfolio/formula-xperience/P10685252.webp",
       "/portfolio/formula-xperience/P10685322_2.webp",
       "/portfolio/formula-xperience/P10685902.webp",
-      "/portfolio/formula-xperience/P10686012.webp",
     ],
   },
 
@@ -263,6 +267,7 @@ export const PROJECTS: Project[] = [
     cover: "/portfolio/harmonie-cafe/DSC02158-Enhanced-NR-Edit.webp",
     coverPosition: "object-[50%_52%]",
     video: "/portfolio/harmonie-cafe/vid-cin-2.mp4",
+    heroPosition: "center 48%",
     heroLandscape: "/portfolio/harmonie-cafe/DSC01961-Edit-Edit.webp",
     narrative:
       "Proiect foto-video dezvoltat de la zero pentru Harmonie Cafe, încă din etapa de lansare. Am construit direcția vizuală a brandului și am gestionat conținutul foto-video pentru comunicarea și promovarea cafenelei, de la primele materiale până la imaginea prezentată în social media.",
@@ -292,6 +297,7 @@ export const PROJECTS: Project[] = [
     role: "Fotografie Auto & Detaliu Tehnic",
     cover: "/portfolio/mapet-tuning-airride/DSC09200-Enhanced-NR.webp",
     coverPosition: "object-[50%_48%]",
+    heroPosition: "center 48%",
     heroLandscape: "/portfolio/mapet-tuning-airride/DSC09200-Enhanced-NR.webp",
     narrative:
       "Fotografii auto realizate pentru Mapet Tuning Airride, ulterior preluate și featured de brand în postări de social media. Imaginile au fost folosite ca material promoțional pentru prezentarea proiectului și a sistemului de suspensie AirRide.",
@@ -321,7 +327,7 @@ export const PROJECTS: Project[] = [
     role: "Fotografie Comercială",
     cover: "/portfolio/mazda-romania/DSC07935-Enhanced-NR.webp",
     coverPosition: "object-[50%_58%]",
-    heroPosition: "object-[center_60%]",
+    heroPosition: "center 58%",
     heroLandscape: "/portfolio/mazda-romania/DSC07935-Enhanced-NR.webp",
     narrative:
       "Fotografii auto ulterior preluate și publicate pe canalele oficiale de social media ale Mazda România. Cadrele au fost utilizate ca material vizual pentru promovarea modelelor și comunicarea brandului.",
@@ -347,6 +353,7 @@ export const PROJECTS: Project[] = [
     role: "Fotografie de Acțiune pe Circuit",
     cover: "/portfolio/motorpark-romania/BMW_74_.webp",
     coverPosition: "object-[53%_50%]",
+    heroPosition: "center 50%",
     heroLandscape: "/portfolio/motorpark-romania/BMW_74_.webp",
     narrative:
       "Fotografii de motorsport preluate și publicate de MotorPark România, utilizate ca material vizual pentru promovarea evenimentelor și activității de pe circuit.",
@@ -376,6 +383,7 @@ export const PROJECTS: Project[] = [
     cover: "/portfolio/nespresso/nespresso-final.mp4",
     coverPosition: "object-[50%_54%]",
     video: "/portfolio/nespresso/nespresso-final.mp4",
+    heroPosition: "center 50%",
     heroLandscape: "/portfolio/nespresso/nespresso-hero.jpg",
     narrative:
       "Material video realizat pe baza unui brief pentru Nespresso Vertuo World Influencers, conceput pentru participarea la concurs. Clipul a urmărit cerințele campaniei, dezvoltând brief-ul într-un format vizual adaptat competiției.",
@@ -395,6 +403,7 @@ export const PROJECTS: Project[] = [
     role: "Fotografie de Produs & Auto",
     cover: "/portfolio/raliw-forged-wheels/DSC09061-Enhanced-NR.webp",
     coverPosition: "object-[50%_43%]",
+    heroPosition: "center 45%",
     heroLandscape: "/portfolio/raliw-forged-wheels/DSC09061-Enhanced-NR.webp",
     narrative:
       "Fotografii cu jantele forjate Raliw Wheels, preluate și publicate de brand ca material vizual pentru comunicarea și promovarea produselor pe canalele de social media.",
@@ -420,6 +429,7 @@ export const PROJECTS: Project[] = [
     role: "Fotografie Culinară",
     cover: "/portfolio/royal-pizza/royal__5_.webp",
     coverPosition: "object-[50%_48%]",
+    heroPosition: "center 48%",
     heroLandscape: "/portfolio/royal-pizza/royal__11_.webp",
     narrative:
       "Material foto realizat pentru Royal Pizza, destinat promovării pe social media și în campanii de marketing. Cadre culinare concepute pentru a evidenția produsele și identitatea vizuală a brandului.",
@@ -443,6 +453,7 @@ export const PROJECTS: Project[] = [
     role: "Fotografie Comercială",
     cover: "/portfolio/toyota-braila/DSC03312.webp",
     coverPosition: "object-[50%_48%]",
+    heroPosition: "center 48%",
     heroLandscape: "/portfolio/toyota-braila/DSC03435_v3-Recovered-6.webp",
     narrative:
       "Ședință foto realizată special pentru reprezentanța Toyota Brăila. Materialele rezultate au fost publicate ulterior pe pagina oficială Toyota Brăila.",

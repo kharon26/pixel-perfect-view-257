@@ -10,7 +10,7 @@ export function About() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
           {/* Title */}
           <Reveal className="md:col-span-5">
-            <h2 className="display text-[clamp(2.75rem,8vw,7rem)] font-bold tracking-tight text-white uppercase leading-none">
+            <h2 className="display text-[clamp(2.5rem,6vw,5.5rem)] font-bold tracking-tight text-white uppercase leading-none">
               {lang === "RO" ? "CINE SUNT EU?" : "WHO AM I?"}
             </h2>
           </Reveal>
@@ -61,6 +61,11 @@ export function About() {
               <div className="pt-4">
                 <a
                   href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const el = document.getElementById("contact");
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                  }}
                   className="inline-block border-b border-white text-white font-semibold text-lg md:text-xl hover:text-accent hover:border-accent transition-colors"
                 >
                   {lang === "RO" ? "Hai să lucrăm" : "Let's work together"}

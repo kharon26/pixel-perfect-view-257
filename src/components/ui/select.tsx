@@ -6,6 +6,42 @@ import { Check, ChevronDown, ChevronUp } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
+// Prevent react-remove-scroll from injecting body margin-right or locking scrollbar
+if (typeof document !== "undefined") {
+  const lockObserver = new MutationObserver((mutations) => {
+    for (const m of mutations) {
+      if (m.type === "attributes") {
+        if (document.body.hasAttribute("data-scroll-locked")) {
+          document.body.removeAttribute("data-scroll-locked");
+        }
+        if (document.body.style.marginRight && document.body.style.marginRight !== "0px") {
+          document.body.style.marginRight = "0px";
+        }
+        if (document.body.style.paddingRight && document.body.style.paddingRight !== "0px") {
+          document.body.style.paddingRight = "0px";
+        }
+        if (document.body.style.overflow === "hidden") {
+          document.body.style.overflow = "";
+        }
+      }
+    }
+  });
+  
+  if (document.body) {
+    lockObserver.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["data-scroll-locked", "style"],
+    });
+  } else {
+    document.addEventListener("DOMContentLoaded", () => {
+      lockObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ["data-scroll-locked", "style"],
+      });
+    });
+  }
+}
+
 type SelectProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root> & {
   modal?: boolean;
 };
