@@ -37,8 +37,8 @@ export function Work() {
   );
 
   return (
-    <section id="work" className="scroll-mt-24 py-16 md:py-36 bg-white text-black">
-      <div className="mx-auto max-w-[1600px] px-4 md:px-10">
+    <section id="work" className="scroll-mt-24 py-20 md:py-36 bg-white text-black">
+      <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         <Reveal>
           <div className="flex flex-col items-center text-center gap-2.5 md:flex-row md:items-end md:justify-between md:text-left md:gap-4">
             <div className="flex flex-col items-center md:items-start">

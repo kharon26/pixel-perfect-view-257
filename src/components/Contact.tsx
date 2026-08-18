@@ -216,8 +216,8 @@ export function Contact() {
   )}`;
 
   return (
-    <section id="contact" className="scroll-mt-24 border-t border-border py-16 md:py-36 bg-background text-foreground font-sans">
-      <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-8 md:gap-12 md:grid-cols-12 px-4 md:px-10">
+    <section id="contact" className="scroll-mt-24 border-t border-border py-20 md:py-36 bg-background text-foreground font-sans">
+      <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-12 md:grid-cols-12 px-6 md:px-10">
         <ContactHeading lang={lang} copyEmailToClipboard={copyEmailToClipboard} copied={copied} />
 
         <div className="md:col-span-6 md:col-start-7">

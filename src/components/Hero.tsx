@@ -311,7 +311,7 @@ export function Hero() {
       {/* Hero Content with Scroll-Triggered Entrance Reveal Animation & Scroll-linked exit */}
       <div
         ref={contentRef}
-        className="relative mx-auto w-full max-w-[1600px] px-4 pb-8 md:px-10 md:pb-20 z-30 text-center origin-bottom"
+        className="relative mx-auto w-full max-w-[1600px] px-6 pb-12 md:px-10 md:pb-20 z-30 text-center origin-bottom"
       >
         <Reveal once delay={100}>
           <h1 className="text-[clamp(2.5rem,8vw,7.5rem)] font-normal tracking-[0.04em] text-white uppercase leading-[1.08] md:leading-none w-full text-center mb-5 md:mb-8 font-sans drop-shadow-md">

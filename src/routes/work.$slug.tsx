@@ -96,7 +96,7 @@ function CaseStudy() {
       <Nav />
       <main id="top">
         {/* Hero — perfectly proportioned 60-65vh container preventing excessive crop */}
-        <div className="relative w-full h-[52vh] min-h-[380px] md:h-[60vh] md:min-h-[500px] flex flex-col justify-end overflow-hidden bg-background">
+        <div className="relative w-full h-[56vh] min-h-[420px] md:h-[60vh] md:min-h-[500px] flex flex-col justify-end overflow-hidden bg-background">
           {/* Media Fundal */}
           <img
             src={
@@ -120,19 +120,19 @@ function CaseStudy() {
           <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background via-background/85 to-transparent pointer-events-none z-10" />
 
           {/* Container Text cu animație de reveal */}
-          <div className="relative z-20 w-full max-w-[1600px] mx-auto px-4 md:px-10 pb-8 md:pb-16 pt-20 md:pt-28 pointer-events-auto">
+          <div className="relative z-20 w-full max-w-[1600px] mx-auto px-6 md:px-10 pb-10 md:pb-16 pt-24 md:pt-28 pointer-events-auto">
             <Reveal once delay={60}>
-              <Link to="/" className="label link-underline text-neutral-900 hover:text-black font-bold transition-colors inline-block mb-3">
+              <Link to="/" className="label link-underline text-neutral-900 hover:text-black font-bold transition-colors inline-block mb-4">
                 {lang === "RO" ? "← Înapoi la portofoliu" : "← Back to portfolio"}
               </Link>
             </Reveal>
             <Reveal once delay={100}>
-              <p className="label text-neutral-900 font-bold mb-2 text-xs uppercase tracking-widest">
+              <p className="label text-neutral-900 font-bold mb-3 text-xs uppercase tracking-widest">
                 {project.index} — {activeCategory}
               </p>
             </Reveal>
             <Reveal once delay={150}>
-              <h1 className="text-[clamp(2.5rem,8vw,5.5rem)] font-black tracking-tight text-black uppercase leading-[1.1] md:leading-tight">
+              <h1 className="text-[clamp(2.5rem,8vw,5.5rem)] font-black tracking-tight text-black uppercase leading-[1.12] md:leading-tight">
                 {project.title}
               </h1>
             </Reveal>
@@ -140,7 +140,7 @@ function CaseStudy() {
         </div>
 
         {/* Project details & narrative */}
-        <section className="bg-background mx-auto grid max-w-[1600px] grid-cols-1 gap-8 px-4 py-12 md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
+        <section className="bg-background mx-auto grid max-w-[1600px] grid-cols-1 gap-10 px-6 pt-16 pb-20 md:grid-cols-12 md:gap-12 md:px-10 md:py-28">
           <Reveal once className="md:col-span-4" delay={60}>
             <dl className="space-y-6">
               {[
@@ -148,7 +148,7 @@ function CaseStudy() {
                 [lang === "RO" ? "An" : "Year", project.year],
                 [lang === "RO" ? "Categorie" : "Category", activeCategory],
               ].map(([k, v]) => (
-                <div key={k} className="border-t border-border pt-3">
+                <div key={k} className="border-t border-border pt-4 pb-1">
                   <dt className="label text-muted-foreground">{k}</dt>
                   <dd className="mt-2 text-sm font-medium">{v}</dd>
                 </div>
@@ -171,8 +171,8 @@ function CaseStudy() {
         </section>
 
         {/* Gallery — grouped media flow with staggered entrance reveal */}
-        <section className="bg-background mx-auto max-w-[1180px] px-4 pb-16 md:px-10 md:pb-36">
-          <div className="flex flex-col items-center gap-14 md:gap-24">
+        <section className="bg-background mx-auto max-w-[1180px] px-6 pb-24 md:px-10 md:pb-36">
+          <div className="flex flex-col items-center gap-16 md:gap-24">
             {sortedGallery.map((src: string, i: number) => {
               const isVideo = src.endsWith(".mp4");
 
@@ -215,7 +215,7 @@ function CaseStudy() {
               to="/work/$slug"
               params={{ slug: safeNext.slug }}
               resetScroll={true}
-              className="group mx-auto flex max-w-[1600px] flex-col gap-3 px-4 py-12 md:px-10 md:py-24"
+              className="group mx-auto flex max-w-[1600px] flex-col gap-3 px-6 py-16 md:px-10 md:py-24"
             >
               <div className="flex items-center gap-2 text-neutral-600 group-hover:text-black transition-colors">
                 <span className="font-mono text-xs md:text-sm font-bold uppercase tracking-widest">
