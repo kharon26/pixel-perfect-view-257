@@ -121,19 +121,21 @@ function CaseStudy() {
           <div className="absolute inset-x-0 bottom-0 h-1/2 md:h-3/5 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none z-10" />
 
           {/* Container Text cu animație de reveal */}
-          <div className="relative z-20 w-full max-w-[1600px] mx-auto px-4 md:px-10 pb-6 md:pb-16 pt-14 md:pt-28 pointer-events-auto flex flex-col items-center md:items-start text-center md:text-left">
-            <Reveal once delay={60}>
-              <Link to="/" className="label link-underline text-neutral-900 hover:text-black font-bold transition-colors inline-block text-sm mb-3 md:mb-4">
-                {lang === "RO" ? "← Înapoi la portofoliu" : "← Back to portfolio"}
-              </Link>
-            </Reveal>
-            <Reveal once delay={100}>
-              <p className="label text-neutral-900 font-semibold mb-3 text-base tracking-wider uppercase">
-                {project.index} — {activeCategory}
-              </p>
-            </Reveal>
-            <Reveal once delay={150}>
-              <h1 className="text-4xl sm:text-5xl md:text-[clamp(2.5rem,6vw,5.5rem)] font-black tracking-tight text-black uppercase leading-tight mb-2 md:mb-3 text-center md:text-left">
+          <div className="relative z-20 w-full max-w-[1600px] mx-auto px-4 md:px-10 pb-6 md:pb-16 pt-14 md:pt-28 pointer-events-auto">
+            <div className="flex flex-col items-start text-left">
+              <Reveal once delay={60}>
+                <Link to="/" className="label link-underline text-neutral-900 hover:text-black font-bold transition-colors inline-block text-sm mb-2 md:mb-4">
+                  {lang === "RO" ? "← Înapoi la portofoliu" : "← Back to portfolio"}
+                </Link>
+              </Reveal>
+              <Reveal once delay={100}>
+                <p className="label text-neutral-900 font-semibold mb-3 text-sm tracking-wider uppercase">
+                  {project.index} — {activeCategory}
+                </p>
+              </Reveal>
+            </div>
+            <Reveal once delay={150} className="w-full">
+              <h1 className="text-4xl sm:text-5xl md:text-[clamp(2.5rem,6vw,5.5rem)] font-black tracking-tight text-black uppercase leading-tight mb-2 md:mb-3 text-center md:text-left mx-auto md:mx-0">
                 {project.title}
               </h1>
             </Reveal>
@@ -163,7 +165,7 @@ function CaseStudy() {
             <div className="mt-6 md:mt-10 flex justify-center md:justify-start">
               <button
                 onClick={handleContactClick}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[48px] border border-neutral-300 hover:border-black bg-transparent hover:bg-black hover:text-white text-neutral-800 px-6 py-3 text-base md:text-sm font-medium tracking-wider uppercase transition-colors duration-200 cursor-pointer active:scale-98 text-center"
+                className="inline-flex items-center justify-center gap-2 min-h-[44px] border border-neutral-300 hover:border-black bg-transparent hover:bg-black hover:text-white text-neutral-800 px-5 py-2.5 text-sm font-medium tracking-wider uppercase transition-colors duration-200 cursor-pointer active:scale-98 text-center"
               >
                 {lang === "RO" ? "Discută despre un proiect similar →" : "Discuss a similar project →"}
               </button>
