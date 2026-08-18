@@ -24,6 +24,7 @@ export type Project = {
   cover: string;
   coverPosition?: string;
   heroPosition?: string;
+  heroPositionMobile?: string;
   heroLandscape?: string;
   narrative: string;
   narrativeEn: string;

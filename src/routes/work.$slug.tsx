@@ -108,9 +108,10 @@ function CaseStudy() {
             loading="eager"
             decoding="sync"
             fetchPriority="high"
-            className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none [object-position:var(--hero-pos-mob)] md:[object-position:var(--hero-pos)]"
             style={{
-              objectPosition: project.heroPosition || "center center",
+              ["--hero-pos" as any]: project.heroPosition || "center center",
+              ["--hero-pos-mob" as any]: project.heroPositionMobile || project.heroPosition || "center center",
               transform: "translateZ(0)",
             }}
           />
