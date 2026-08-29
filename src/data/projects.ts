@@ -236,6 +236,7 @@ export const PROJECTS: Project[] = [
       "/portfolio/formula-xperience/linkinbio_final.mp4",
       "/portfolio/formula-xperience/promo1.mp4",
       "/portfolio/formula-xperience/promo-nou.mp4",
+      "/portfolio/formula-xperience/Promo4.mp4",
       "/portfolio/formula-xperience/P1068258_HDR2.webp",
       "/portfolio/formula-xperience/P1068266_HDR12_2.webp",
       "/portfolio/formula-xperience/P1068284_HDR2.webp",
