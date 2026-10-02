@@ -13,12 +13,15 @@ export const CATEGORIES = [
 
 export type Category = (typeof CATEGORIES)[number];
 
+export type MediaType = "photo" | "video";
+
 export type Project = {
   slug: string;
   index: string;
   title: string;
   client: string;
   category: Category | Category[];
+  mediaTypes: MediaType[];
   year: string;
   role: string;
   cover: string;

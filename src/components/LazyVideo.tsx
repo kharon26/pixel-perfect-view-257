@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { getMediaDimensions } from "@/lib/project-utils";
 
 type LazyVideoProps = {
   src: string;
@@ -13,14 +14,14 @@ type LazyVideoProps = {
 };
 
 /**
- * Lazy-loaded video with poster-first strategy.
+ * Lazy-loaded video with poster-first strategy and layout shift prevention.
  *
  * Gallery mode (controls=true):
- *   Shows poster image + play button overlay. Video loads only on click.
+ *   Shows poster image + play button overlay with preserved aspect ratio. Video loads only on click.
  *
  * Cover mode (autoPlay, no controls):
  *   Uses IntersectionObserver to mount <video> when near viewport,
- *   but with preload="none" + poster so no bytes are fetched early.
+ *   preserving exact aspect ratio to eliminate CLS.
  */
 export function LazyVideo({
   src,
@@ -71,6 +72,9 @@ function ClickToPlayVideo({
   const [inView, setInView] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
+  const dims = getMediaDimensions(src) || (poster ? getMediaDimensions(poster) : null);
+  const aspectStyle = dims ? `${dims.width} / ${dims.height}` : undefined;
+
   // Only render poster once near viewport
   useEffect(() => {
     const el = containerRef.current;
@@ -94,6 +98,11 @@ function ClickToPlayVideo({
     <div
       ref={containerRef}
       className="relative overflow-hidden flex items-center justify-center max-w-full"
+      style={{
+        aspectRatio: aspectStyle,
+        maxHeight: "88vh",
+        width: dims ? `min(100%, calc(88vh * ${dims.width / dims.height}))` : "100%",
+      }}
     >
       {playing ? (
         <video
@@ -103,6 +112,9 @@ function ClickToPlayVideo({
           playsInline
           preload="auto"
           poster={poster}
+          width={dims?.width}
+          height={dims?.height}
+          style={{ aspectRatio: aspectStyle }}
           className={`w-auto max-w-full h-auto block ${className}`}
         />
       ) : inView ? (
@@ -110,7 +122,8 @@ function ClickToPlayVideo({
           type="button"
           onClick={handlePlay}
           aria-label="Redă prezentarea video"
-          className="relative max-w-full cursor-pointer group focus:outline-none flex justify-center"
+          className="relative max-w-full cursor-pointer group focus:outline-none flex justify-center w-full h-full"
+          style={{ aspectRatio: aspectStyle }}
         >
           {poster ? (
             <img
@@ -118,13 +131,19 @@ function ClickToPlayVideo({
               alt="Video preview poster"
               loading="lazy"
               decoding="async"
+              width={dims?.width}
+              height={dims?.height}
+              style={{ aspectRatio: aspectStyle }}
               className={`w-auto max-w-full h-auto ${className}`}
             />
           ) : (
-            <div className="aspect-video w-full max-w-4xl bg-neutral-900/60" />
+            <div
+              className="w-full bg-neutral-900/60"
+              style={{ aspectRatio: aspectStyle || "16/9" }}
+            />
           )}
           {/* Play button overlay */}
-          <span className="absolute inset-0 flex items-center justify-center">
+          <span className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <span className="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-full bg-black/70 text-white backdrop-blur-sm border border-white/20 transition-transform duration-200 group-hover:scale-110 shadow-2xl">
               <svg
                 viewBox="0 0 24 24"
@@ -137,7 +156,14 @@ function ClickToPlayVideo({
           </span>
         </button>
       ) : (
-        <div className="aspect-video w-full max-w-4xl bg-neutral-900/60" />
+        <div
+          className="w-full bg-neutral-900/40"
+          style={{
+            aspectRatio: aspectStyle || "16/9",
+            maxHeight: "88vh",
+            width: dims ? `min(100%, calc(88vh * ${dims.width / dims.height}))` : "100%",
+          }}
+        />
       )}
     </div>
   );
@@ -167,6 +193,8 @@ function CoverVideo({
   playsInline: boolean;
 }) {
   const [inView, setInView] = useState(false);
+  const dims = getMediaDimensions(src) || (poster ? getMediaDimensions(poster) : null);
+  const aspectStyle = dims ? `${dims.width} / ${dims.height}` : undefined;
 
   useEffect(() => {
     const element = containerRef.current;
@@ -210,6 +238,7 @@ function CoverVideo({
     <div
       ref={containerRef}
       className="relative overflow-hidden w-full flex items-center justify-center bg-neutral-950/40"
+      style={{ aspectRatio: aspectStyle }}
     >
       {inView ? (
         <video
@@ -221,6 +250,9 @@ function CoverVideo({
           playsInline={playsInline}
           preload="none"
           poster={poster}
+          width={dims?.width}
+          height={dims?.height}
+          style={{ aspectRatio: aspectStyle }}
           className={`w-full h-auto object-contain transform-gpu ${className}`}
         />
       ) : poster ? (
@@ -229,10 +261,16 @@ function CoverVideo({
           alt="Video preview poster"
           loading="lazy"
           decoding="async"
+          width={dims?.width}
+          height={dims?.height}
+          style={{ aspectRatio: aspectStyle }}
           className={`w-full h-auto object-contain ${className}`}
         />
       ) : (
-        <div className="aspect-video w-full bg-neutral-950/40" />
+        <div
+          className="w-full bg-neutral-950/40"
+          style={{ aspectRatio: aspectStyle || "16/9" }}
+        />
       )}
     </div>
   );

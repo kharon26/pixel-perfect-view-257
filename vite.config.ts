@@ -1,4 +1,3 @@
-// @lovable.dev/vite-tanstack-config already includes default plugins and configuration.
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import { createRunnableDevEnvironment } from "vite";

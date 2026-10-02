@@ -1,6 +1,16 @@
-# ─────────────────────────────────────────────────────────────
+# -------------------------------------------------------------
 # CLOUDFLARE PAGES EDGE CDN CACHING HEADERS
-# ─────────────────────────────────────────────────────────────
+# -------------------------------------------------------------
+
+# -- SEO crawl files: explicit Content-Type + no CDN caching --
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: no-cache, no-store, must-revalidate
+  X-Robots-Tag: noindex
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: no-cache, no-store, must-revalidate
 
 # Cache all high-resolution portfolio images & videos at Cloudflare Edge CDN (1 Year)
 /portfolio/*

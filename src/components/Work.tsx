@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useNavigate, useSearch } from "@tanstack/react-router";
+import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { PROJECTS } from "@/data/projects";
 import { useLanguage } from "@/context/LanguageContext";
 import { Reveal } from "@/components/Reveal";
@@ -37,7 +37,7 @@ export function Work() {
   );
 
   return (
-    <section id="work" className="scroll-mt-24 py-20 md:py-36 bg-white text-black">
+    <section id="work" className="scroll-mt-24 pt-10 pb-20 md:pt-16 md:pb-36 bg-white text-black">
       <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         <Reveal>
           <div className="flex flex-col items-center text-center gap-2.5 md:flex-row md:items-end md:justify-between md:text-left md:gap-4">
@@ -49,9 +49,26 @@ export function Work() {
                 {lang === "RO" ? "Proiecte" : "Projects"}
               </h2>
             </div>
-            <span className="label text-muted-foreground text-center md:text-right">
-              {PROJECTS.length} {lang === "RO" ? "Proiecte" : "Projects"}
-            </span>
+            <div className="flex flex-col items-center md:items-end gap-1.5">
+              <span className="label text-muted-foreground text-center md:text-right">
+                {PROJECTS.length} {lang === "RO" ? "Proiecte" : "Projects"}
+              </span>
+              <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-wider mt-0.5">
+                <Link
+                  to="/photo"
+                  className="text-neutral-600 hover:text-black hover:underline underline-offset-4 transition-colors"
+                >
+                  {lang === "RO" ? "Foto (15) →" : "Photo (15) →"}
+                </Link>
+                <span className="text-neutral-300 select-none">·</span>
+                <Link
+                  to="/video"
+                  className="text-neutral-600 hover:text-black hover:underline underline-offset-4 transition-colors"
+                >
+                  {lang === "RO" ? "Video (6) →" : "Video (6) →"}
+                </Link>
+              </div>
+            </div>
           </div>
         </Reveal>
 

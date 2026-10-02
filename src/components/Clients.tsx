@@ -17,7 +17,7 @@ export function Clients() {
   const { lang } = useLanguage();
 
   return (
-    <section id="clients" className="scroll-mt-24 overflow-hidden border-t border-border py-16 md:py-24 bg-white text-black">
+    <section id="clients" className="scroll-mt-24 overflow-hidden border-t border-border pt-16 pb-10 md:pt-24 md:pb-14 bg-white text-black">
       <div className="mx-auto max-w-[1600px] px-6 md:px-10 mb-8">
         <Reveal>
           <p className="label text-muted-foreground font-semibold tracking-widest uppercase text-xs">

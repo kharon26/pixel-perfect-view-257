@@ -16,7 +16,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: clip !important;
-    overflow-x: hidden !important;
     width: 100%;
     max-width: 100%;
   }
@@ -34,6 +33,11 @@
     -webkit-text-size-adjust: 100%;
     overscroll-behavior-y: none;
     background-color: #ffffff !important;
+    /* Support iOS notch / Dynamic Island with viewport-fit=cover */
+    --sat: env(safe-area-inset-top, 0px);
+    --sar: env(safe-area-inset-right, 0px);
+    --sab: env(safe-area-inset-bottom, 0px);
+    --sal: env(safe-area-inset-left, 0px);
   }
 
   
@@ -373,6 +377,11 @@
 /* Păstrează spațiul scrollbar-ului rezervat permanent */
 html {
   scrollbar-gutter: stable;
+}
+
+/* iOS safe area bottom padding — applied to footer/page end regions */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 /* Anulează încercarea librăriei de a adăuga padding/margin când activează lock-ul */

@@ -4,6 +4,21 @@
 
 import { PROJECTS } from "@/data/projects";
 import type { Category } from "@/types/project";
+import mediaDimensions from "@/data/media-dimensions.json";
+
+export interface MediaDimension {
+  width: number;
+  height: number;
+  aspect: string;
+}
+
+export const getMediaDimensions = (src: string): MediaDimension | null => {
+  const dict = mediaDimensions as Record<string, MediaDimension>;
+  if (dict[src]) return dict[src];
+  const mp4Key = src.replace(/\.poster\.(jpg|webp)$/i, ".mp4");
+  if (dict[mp4Key]) return dict[mp4Key];
+  return null;
+};
 
 const getSingleCategoryLabel = (cat: Category | string, lang: "RO" | "EN" = "RO") => {
   if (lang === "RO") return cat;
@@ -91,4 +106,26 @@ export const prevProject = (slug: string) => {
   const i = PROJECTS.findIndex((p) => p.slug === slug);
   if (i === -1) return PROJECTS[PROJECTS.length - 1];
   return PROJECTS[(i - 1 + PROJECTS.length) % PROJECTS.length];
+};
+
+export const getPhotoProjects = () =>
+  PROJECTS.filter((p) => p.mediaTypes.includes("photo"));
+
+export const getVideoProjects = () =>
+  PROJECTS.filter((p) => p.mediaTypes.includes("video"));
+
+export const getProjectPhotos = (project: { gallery: string[] }): string[] =>
+  project.gallery.filter((src) => !src.endsWith(".mp4"));
+
+export const getProjectVideos = (project: { video?: string; gallery: string[] }): string[] => {
+  const vids: string[] = [];
+  if (project.video && project.video.endsWith(".mp4")) {
+    vids.push(project.video);
+  }
+  for (const src of project.gallery) {
+    if (src.endsWith(".mp4") && !vids.includes(src)) {
+      vids.push(src);
+    }
+  }
+  return vids;
 };

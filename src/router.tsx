@@ -8,13 +8,7 @@ export const getRouter = () => {
   const router = createRouter({
     routeTree,
     context: { queryClient },
-    scrollRestoration: true,
-    getScrollRestorationKey: (location) => {
-      if (location.pathname.startsWith("/work/")) {
-        return null;
-      }
-      return location.pathname;
-    },
+    scrollRestoration: false,
     defaultPreloadStaleTime: 0,
   });
 

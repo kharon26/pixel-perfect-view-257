@@ -1,139 +1,500 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://georgerosu.eu/</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://georgerosu.eu/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://georgerosu.eu/?lang=en" />
+  </url>
+  <url>
+    <loc>https://georgerosu.eu/photo</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://georgerosu.eu/video</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://georgerosu.eu/fotograf-comercial-galati</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://georgerosu.eu/videograf-comercial-galati</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://georgerosu.eu/fotografie-produs-galati</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://georgerosu.eu/fotografie-culinara-galati</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://georgerosu.eu/content-creator-galati</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://georgerosu.eu/work/99beauty</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://georgerosu.eu/work/99beauty" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://georgerosu.eu/work/99beauty?lang=en" />
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/beauty-editorial/99beauty__3_.webp</image:loc>
+      <image:title>99Beauty — Fotografie Comercială &amp; Produs (99% Beauty)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/beauty-editorial/99beauty__2_.webp</image:loc>
+      <image:title>99Beauty — Fotografie Comercială &amp; Produs (99% Beauty)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/beauty-editorial/99beauty_1_.webp</image:loc>
+      <image:title>99Beauty — Fotografie Comercială &amp; Produs (99% Beauty)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/beauty-editorial/99beauty__4_.webp</image:loc>
+      <image:title>99Beauty — Fotografie Comercială &amp; Produs (99% Beauty)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/beauty-editorial/99beauty__5_.webp</image:loc>
+      <image:title>99Beauty — Fotografie Comercială &amp; Produs (99% Beauty)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/beauty-editorial/99beauty__6_.webp</image:loc>
+      <image:title>99Beauty — Fotografie Comercială &amp; Produs (99% Beauty)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://georgerosu.eu/work/alex-macelarie</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://georgerosu.eu/work/alex-macelarie" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://georgerosu.eu/work/alex-macelarie?lang=en" />
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/alex-macelarie/P1010164-1.webp</image:loc>
+      <image:title>Alex Măcelărie — Fotografie Culinară &amp; Motion Comercial (Măcelăria Alex)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/alex-macelarie/P1010154-1.webp</image:loc>
+      <image:title>Alex Măcelărie — Fotografie Culinară &amp; Motion Comercial (Măcelăria Alex)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/alex-macelarie/P1010201-1.webp</image:loc>
+      <image:title>Alex Măcelărie — Fotografie Culinară &amp; Motion Comercial (Măcelăria Alex)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/alex-macelarie/P1010241-1.webp</image:loc>
+      <image:title>Alex Măcelărie — Fotografie Culinară &amp; Motion Comercial (Măcelăria Alex)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/alex-macelarie/P1010304-1.webp</image:loc>
+      <image:title>Alex Măcelărie — Fotografie Culinară &amp; Motion Comercial (Măcelăria Alex)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/alex-macelarie/P1010440-1.webp</image:loc>
+      <image:title>Alex Măcelărie — Fotografie Culinară &amp; Motion Comercial (Măcelăria Alex)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/alex-macelarie/P1010447-1.webp</image:loc>
+      <image:title>Alex Măcelărie — Fotografie Culinară &amp; Motion Comercial (Măcelăria Alex)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/alex-macelarie/P1010466-1.webp</image:loc>
+      <image:title>Alex Măcelărie — Fotografie Culinară &amp; Motion Comercial (Măcelăria Alex)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://georgerosu.eu/work/alex-restaurant</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://georgerosu.eu/work/alex-restaurant" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://georgerosu.eu/work/alex-restaurant?lang=en" />
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/alex-restaurant/Grillhouse2-5.webp</image:loc>
+      <image:title>Alex Restaurant — Fotografie Culinară &amp; Video Promo (Alex Restaurant)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/alex-restaurant/Alex-MICDEJUN-122.webp</image:loc>
+      <image:title>Alex Restaurant — Fotografie Culinară &amp; Video Promo (Alex Restaurant)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/alex-restaurant/Alex-MICDEJUN-127.webp</image:loc>
+      <image:title>Alex Restaurant — Fotografie Culinară &amp; Video Promo (Alex Restaurant)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/alex-restaurant/Grillhouse2-6.webp</image:loc>
+      <image:title>Alex Restaurant — Fotografie Culinară &amp; Video Promo (Alex Restaurant)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/alex-restaurant/Alex-MICDEJUN-68.webp</image:loc>
+      <image:title>Alex Restaurant — Fotografie Culinară &amp; Video Promo (Alex Restaurant)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/alex-restaurant/Alex-MICDEJUN-69.webp</image:loc>
+      <image:title>Alex Restaurant — Fotografie Culinară &amp; Video Promo (Alex Restaurant)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/alex-restaurant/Grillhouse2-9.webp</image:loc>
+      <image:title>Alex Restaurant — Fotografie Culinară &amp; Video Promo (Alex Restaurant)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/alex-restaurant/Alex-MICDEJUN-84.webp</image:loc>
+      <image:title>Alex Restaurant — Fotografie Culinară &amp; Video Promo (Alex Restaurant)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://georgerosu.eu/work/bcracing-europe</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://georgerosu.eu/work/bcracing-europe" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://georgerosu.eu/work/bcracing-europe?lang=en" />
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/bcracing-europe/DSC02745-Enhanced-NR.webp</image:loc>
+      <image:title>BCRacing Europe — Fotografie Auto &amp; Tehnică (BCRacing)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/bcracing-europe/DSC02710-Enhanced-NR.webp</image:loc>
+      <image:title>BCRacing Europe — Fotografie Auto &amp; Tehnică (BCRacing)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/bcracing-europe/DSC03828-Enhanced-NR.webp</image:loc>
+      <image:title>BCRacing Europe — Fotografie Auto &amp; Tehnică (BCRacing)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/bcracing-europe/DSC03839-Enhanced-NR.webp</image:loc>
+      <image:title>BCRacing Europe — Fotografie Auto &amp; Tehnică (BCRacing)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/bcracing-europe/DSC02598-Enhanced-NR.webp</image:loc>
+      <image:title>BCRacing Europe — Fotografie Auto &amp; Tehnică (BCRacing)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/bcracing-europe/DSC03819-Enhanced-NR.webp</image:loc>
+      <image:title>BCRacing Europe — Fotografie Auto &amp; Tehnică (BCRacing)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://georgerosu.eu/work/bmw-romania</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://georgerosu.eu/work/bmw-romania" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://georgerosu.eu/work/bmw-romania?lang=en" />
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/bmw-romania/DSC042801.webp</image:loc>
+      <image:title>BMW România — Fotografie Comercială &amp; Regie (BMW Romania)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/bmw-romania/DSC043461_1.webp</image:loc>
+      <image:title>BMW România — Fotografie Comercială &amp; Regie (BMW Romania)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/bmw-romania/DSC044011.webp</image:loc>
+      <image:title>BMW România — Fotografie Comercială &amp; Regie (BMW Romania)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/bmw-romania/DSC043841_1.webp</image:loc>
+      <image:title>BMW România — Fotografie Comercială &amp; Regie (BMW Romania)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/bmw-romania/DSC044102.webp</image:loc>
+      <image:title>BMW România — Fotografie Comercială &amp; Regie (BMW Romania)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/bmw-romania/DSC044472.webp</image:loc>
+      <image:title>BMW România — Fotografie Comercială &amp; Regie (BMW Romania)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/bmw-romania/DSC044702_1.webp</image:loc>
+      <image:title>BMW România — Fotografie Comercială &amp; Regie (BMW Romania)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/bmw-romania/DSC044822_1.webp</image:loc>
+      <image:title>BMW România — Fotografie Comercială &amp; Regie (BMW Romania)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://georgerosu.eu/work/dentoart-clinic</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://georgerosu.eu/work/dentoart-clinic" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://georgerosu.eu/work/dentoart-clinic?lang=en" />
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/dentoart-clinic/DentoArt-1.webp</image:loc>
+      <image:title>Dentoart Clinic — Fotografie Comercială &amp; Medicală (Dentoart)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/dentoart-clinic/DentoArt-4.webp</image:loc>
+      <image:title>Dentoart Clinic — Fotografie Comercială &amp; Medicală (Dentoart)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/dentoart-clinic/DentoArt-19.webp</image:loc>
+      <image:title>Dentoart Clinic — Fotografie Comercială &amp; Medicală (Dentoart)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://georgerosu.eu/work/famous-chicken</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://georgerosu.eu/work/famous-chicken" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://georgerosu.eu/work/famous-chicken?lang=en" />
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/famous-chicken/DSC054922_1.webp</image:loc>
+      <image:title>Famous Chicken — Fotografie Culinară &amp; Reclame Social Media (Famous Chicken)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/famous-chicken/DSC055242_2.webp</image:loc>
+      <image:title>Famous Chicken — Fotografie Culinară &amp; Reclame Social Media (Famous Chicken)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://georgerosu.eu/work/formula-xperience</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://georgerosu.eu/work/formula-xperience" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://georgerosu.eu/work/formula-xperience?lang=en" />
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/formula-xperience/P1068258_HDR2.webp</image:loc>
+      <image:title>Formula Xperience — Motion pe Circuit &amp; Fotografie de Mare Viteză (Formula Xperience)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/formula-xperience/P1068266_HDR12_2.webp</image:loc>
+      <image:title>Formula Xperience — Motion pe Circuit &amp; Fotografie de Mare Viteză (Formula Xperience)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/formula-xperience/P1068284_HDR2.webp</image:loc>
+      <image:title>Formula Xperience — Motion pe Circuit &amp; Fotografie de Mare Viteză (Formula Xperience)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/formula-xperience/P1068330_HDR2_1.webp</image:loc>
+      <image:title>Formula Xperience — Motion pe Circuit &amp; Fotografie de Mare Viteză (Formula Xperience)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/formula-xperience/P10686012.webp</image:loc>
+      <image:title>Formula Xperience — Motion pe Circuit &amp; Fotografie de Mare Viteză (Formula Xperience)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/formula-xperience/P10683472_2.webp</image:loc>
+      <image:title>Formula Xperience — Motion pe Circuit &amp; Fotografie de Mare Viteză (Formula Xperience)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/formula-xperience/P10683702.webp</image:loc>
+      <image:title>Formula Xperience — Motion pe Circuit &amp; Fotografie de Mare Viteză (Formula Xperience)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/formula-xperience/P10683902_1.webp</image:loc>
+      <image:title>Formula Xperience — Motion pe Circuit &amp; Fotografie de Mare Viteză (Formula Xperience)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://georgerosu.eu/work/harmonie-cafe</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://georgerosu.eu/work/harmonie-cafe" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://georgerosu.eu/work/harmonie-cafe?lang=en" />
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/harmonie-cafe/DSC01961-Edit-Edit.webp</image:loc>
+      <image:title>Harmonie Cafe — Fotografie Comercială de Produs &amp; Motion (Harmonie Cafe)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/harmonie-cafe/DSC01989-Enhanced-NR-Edit.webp</image:loc>
+      <image:title>Harmonie Cafe — Fotografie Comercială de Produs &amp; Motion (Harmonie Cafe)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/harmonie-cafe/DSC02051-Enhanced-NR-Edit.webp</image:loc>
+      <image:title>Harmonie Cafe — Fotografie Comercială de Produs &amp; Motion (Harmonie Cafe)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/harmonie-cafe/DSC02124-Enhanced-NR-Edit.webp</image:loc>
+      <image:title>Harmonie Cafe — Fotografie Comercială de Produs &amp; Motion (Harmonie Cafe)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/harmonie-cafe/DSC02158-Enhanced-NR-Edit.webp</image:loc>
+      <image:title>Harmonie Cafe — Fotografie Comercială de Produs &amp; Motion (Harmonie Cafe)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/harmonie-cafe/DSC02178-Enhanced-NR-Edit.webp</image:loc>
+      <image:title>Harmonie Cafe — Fotografie Comercială de Produs &amp; Motion (Harmonie Cafe)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://georgerosu.eu/work/mapet-tuning-airride</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://georgerosu.eu/work/mapet-tuning-airride" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://georgerosu.eu/work/mapet-tuning-airride?lang=en" />
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/mapet-tuning-airride/DSC09200-Enhanced-NR.webp</image:loc>
+      <image:title>MAPET-TUNING airRIDE — Fotografie Auto &amp; Detaliu Tehnic (Mapet Tuning)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/mapet-tuning-airride/DSC09209-Enhanced-NR.webp</image:loc>
+      <image:title>MAPET-TUNING airRIDE — Fotografie Auto &amp; Detaliu Tehnic (Mapet Tuning)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/mapet-tuning-airride/DSC09217-Enhanced-NR.webp</image:loc>
+      <image:title>MAPET-TUNING airRIDE — Fotografie Auto &amp; Detaliu Tehnic (Mapet Tuning)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/mapet-tuning-airride/DSC09218-Enhanced-NR.webp</image:loc>
+      <image:title>MAPET-TUNING airRIDE — Fotografie Auto &amp; Detaliu Tehnic (Mapet Tuning)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/mapet-tuning-airride/DSC09227-Enhanced-NR.webp</image:loc>
+      <image:title>MAPET-TUNING airRIDE — Fotografie Auto &amp; Detaliu Tehnic (Mapet Tuning)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/mapet-tuning-airride/DSC09265-Enhanced-NR.webp</image:loc>
+      <image:title>MAPET-TUNING airRIDE — Fotografie Auto &amp; Detaliu Tehnic (Mapet Tuning)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/mapet-tuning-airride/DSC09272-Enhanced-NR.webp</image:loc>
+      <image:title>MAPET-TUNING airRIDE — Fotografie Auto &amp; Detaliu Tehnic (Mapet Tuning)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/mapet-tuning-airride/DSC09275-Enhanced-NR.webp</image:loc>
+      <image:title>MAPET-TUNING airRIDE — Fotografie Auto &amp; Detaliu Tehnic (Mapet Tuning)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://georgerosu.eu/work/mazda-romania</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://georgerosu.eu/work/mazda-romania" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://georgerosu.eu/work/mazda-romania?lang=en" />
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/mazda-romania/DSC07935-Enhanced-NR.webp</image:loc>
+      <image:title>Mazda România — Fotografie Comercială (Mazda Romania)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/mazda-romania/DSC07938-Enhanced-NR.webp</image:loc>
+      <image:title>Mazda România — Fotografie Comercială (Mazda Romania)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/mazda-romania/DSC07951-Enhanced-NR.webp</image:loc>
+      <image:title>Mazda România — Fotografie Comercială (Mazda Romania)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/mazda-romania/DSC07970-Enhanced-NR.webp</image:loc>
+      <image:title>Mazda România — Fotografie Comercială (Mazda Romania)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/mazda-romania/DSC07971-Enhanced-NR.webp</image:loc>
+      <image:title>Mazda România — Fotografie Comercială (Mazda Romania)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://georgerosu.eu/work/motorpark-romania</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://georgerosu.eu/work/motorpark-romania" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://georgerosu.eu/work/motorpark-romania?lang=en" />
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/motorpark-romania/BMW_74_.webp</image:loc>
+      <image:title>Motorpark România — Fotografie de Acțiune pe Circuit (Motorpark)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/motorpark-romania/BMW_75_.webp</image:loc>
+      <image:title>Motorpark România — Fotografie de Acțiune pe Circuit (Motorpark)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/motorpark-romania/BMW_76_.webp</image:loc>
+      <image:title>Motorpark România — Fotografie de Acțiune pe Circuit (Motorpark)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/motorpark-romania/1.webp</image:loc>
+      <image:title>Motorpark România — Fotografie de Acțiune pe Circuit (Motorpark)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/motorpark-romania/2.webp</image:loc>
+      <image:title>Motorpark România — Fotografie de Acțiune pe Circuit (Motorpark)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/motorpark-romania/4.webp</image:loc>
+      <image:title>Motorpark România — Fotografie de Acțiune pe Circuit (Motorpark)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/motorpark-romania/DSC04925-Enhanced-NR.webp</image:loc>
+      <image:title>Motorpark România — Fotografie de Acțiune pe Circuit (Motorpark)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/motorpark-romania/DSC05427-Enhanced-NR2.webp</image:loc>
+      <image:title>Motorpark România — Fotografie de Acțiune pe Circuit (Motorpark)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://georgerosu.eu/work/nespresso</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://georgerosu.eu/work/nespresso" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://georgerosu.eu/work/nespresso?lang=en" />
   </url>
   <url>
     <loc>https://georgerosu.eu/work/raliw-forged-wheels</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://georgerosu.eu/work/raliw-forged-wheels" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://georgerosu.eu/work/raliw-forged-wheels?lang=en" />
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/raliw-forged-wheels/DSC09061-Enhanced-NR.webp</image:loc>
+      <image:title>Raliw Forged Wheels — Fotografie de Produs &amp; Auto (Raliw Wheels)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/raliw-forged-wheels/DSC09078-Enhanced-NR.webp</image:loc>
+      <image:title>Raliw Forged Wheels — Fotografie de Produs &amp; Auto (Raliw Wheels)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/raliw-forged-wheels/DSC09079-Enhanced-NR.webp</image:loc>
+      <image:title>Raliw Forged Wheels — Fotografie de Produs &amp; Auto (Raliw Wheels)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/raliw-forged-wheels/DSC09085-Enhanced-NR.webp</image:loc>
+      <image:title>Raliw Forged Wheels — Fotografie de Produs &amp; Auto (Raliw Wheels)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/raliw-forged-wheels/DSC09087-Enhanced-NR.webp</image:loc>
+      <image:title>Raliw Forged Wheels — Fotografie de Produs &amp; Auto (Raliw Wheels)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://georgerosu.eu/work/royal-pizza</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://georgerosu.eu/work/royal-pizza" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://georgerosu.eu/work/royal-pizza?lang=en" />
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/royal-pizza/royal__5_.webp</image:loc>
+      <image:title>Royal Pizza — Fotografie Culinară (Royal Pizza)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/royal-pizza/royal__11_.webp</image:loc>
+      <image:title>Royal Pizza — Fotografie Culinară (Royal Pizza)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/royal-pizza/royal__2_.webp</image:loc>
+      <image:title>Royal Pizza — Fotografie Culinară (Royal Pizza)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://georgerosu.eu/work/toyota-braila</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://georgerosu.eu/work/toyota-braila" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://georgerosu.eu/work/toyota-braila?lang=en" />
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/toyota-braila/DSC03312.webp</image:loc>
+      <image:title>Toyota Brăila — Fotografie Comercială (Toyota)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/toyota-braila/DSC03339.webp</image:loc>
+      <image:title>Toyota Brăila — Fotografie Comercială (Toyota)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/toyota-braila/DSC03435_v3-Recovered-6.webp</image:loc>
+      <image:title>Toyota Brăila — Fotografie Comercială (Toyota)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://georgerosu.eu/portfolio/toyota-braila/DSC03524.webp</image:loc>
+      <image:title>Toyota Brăila — Fotografie Comercială (Toyota)</image:title>
+    </image:image>
   </url>
 </urlset>

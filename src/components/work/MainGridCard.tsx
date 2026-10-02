@@ -18,10 +18,30 @@ export const MainGridCard = React.memo(function MainGridCard({
   const [shouldFetch, setShouldFetch] = useState(i < 4);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const imgSrc = p.cover.endsWith(".mp4") ? videoPoster(p.cover) : p.cover;
-  const imgSrc1200wNatural = imgSrc.replace(/\.(webp|jpg|jpeg|png)$/i, "-1200w-natural.webp");
-  const srcSet = `${imgSrc1200wNatural} 1200w, ${imgSrc} 3200w`;
-  const sizes = "(max-width: 768px) 100vw, 50vw";
+  const isVideo = p.cover.endsWith(".mp4");
+  const imgSrc = isVideo ? videoPoster(p.cover) : p.cover;
+  const imgSrc1200wNatural = isVideo
+    ? imgSrc
+    : imgSrc.replace(/\.(webp|jpg|jpeg|png)$/i, "-1200w-natural.webp");
+  const srcSet = isVideo ? undefined : `${imgSrc1200wNatural} 1200w, ${imgSrc} 3200w`;
+  const sizes = isVideo ? undefined : "(max-width: 768px) 100vw, 50vw";
+
+  // Sync shouldFetch if filter index change makes card one of the top cards
+  useEffect(() => {
+    if (i < 4 && !shouldFetch) {
+      setShouldFetch(true);
+    }
+  }, [i, shouldFetch]);
+
+  // Track project changes in case card component is ever reused
+  const prevSlugRef = useRef(p.slug);
+  useEffect(() => {
+    if (prevSlugRef.current !== p.slug) {
+      prevSlugRef.current = p.slug;
+      setIsLoaded(false);
+      if (i < 4) setShouldFetch(true);
+    }
+  }, [p.slug, i]);
 
   // 1. Proximity observer (350px rootMargin) — only fetch image when card approaches viewport
   useEffect(() => {
@@ -49,8 +69,9 @@ export const MainGridCard = React.memo(function MainGridCard({
     if (!shouldFetch) return;
 
     let active = true;
+    const targetSrc = isVideo ? imgSrc : imgSrc1200wNatural;
     const img = new Image();
-    img.src = imgSrc1200wNatural;
+    img.src = targetSrc;
 
     const handleReady = () => {
       if (active) setIsLoaded(true);
@@ -77,7 +98,7 @@ export const MainGridCard = React.memo(function MainGridCard({
     return () => {
       active = false;
     };
-  }, [shouldFetch, imgSrc1200wNatural, imgSrc]);
+  }, [shouldFetch, isVideo, imgSrc1200wNatural, imgSrc]);
 
   // 3. Continuous reveal observer — zero React re-render, direct GPU CSS variable updates via rAF
   useEffect(() => {
@@ -128,13 +149,14 @@ export const MainGridCard = React.memo(function MainGridCard({
         <div className="main-grid-card-interactive relative overflow-hidden bg-neutral-100 border border-border/30 aspect-[3/4] w-full flex items-center justify-center p-3 transition-colors duration-500 group-hover:border-black">
           {shouldFetch ? (
             <img
-              src={imgSrc1200wNatural}
+              src={isVideo ? imgSrc : imgSrc1200wNatural}
               srcSet={srcSet}
               sizes={sizes}
               alt={`${p.title} — ${p.client} | ${getCategoryLabel(p.category, lang)} fotograf Galați ${p.year}`}
               loading={i < 2 ? "eager" : "lazy"}
               decoding="async"
               fetchPriority={i < 2 ? "high" : "auto"}
+              onLoad={() => setIsLoaded(true)}
               className={`h-full w-full object-cover ${
                 p.coverPosition ?? "object-center"
               } gpu-photo-layer transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${

@@ -8,9 +8,9 @@ import { Clients } from "@/components/Clients";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
-const title = "George Roșu — Fotograf & Videograf Comercial Galați | Disponibil în toată România";
+const title = "George Roșu | Fotograf & Videograf Comercial Galați";
 const description =
-  "Fotografie și videografie comercială — bazat în Galați, disponibil în toată România. Auto, produs, culinar, branduri. Portofoliu BMW, Mazda, Motorpark, Nespresso.";
+  "Fotografie, videografie comercială și content pentru branduri, produse, restaurante și automotive. George Roșu — Galați, disponibil pentru proiecte în România.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -41,9 +41,9 @@ function Index() {
       <Nav />
       <main id="top">
         <Hero />
+        <Clients />
         <Work />
         <About />
-        <Clients />
         <Contact />
       </main>
       <Footer />

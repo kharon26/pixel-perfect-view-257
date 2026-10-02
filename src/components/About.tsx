@@ -1,3 +1,4 @@
+import { smoothScrollToElement } from "@/lib/smooth-scroll";
 import { Reveal } from "@/components/Reveal";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -64,7 +65,10 @@ export function About() {
                   onClick={(e) => {
                     e.preventDefault();
                     const el = document.getElementById("contact");
-                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                    if (el) {
+                      window.history.pushState(null, "", "/#contact");
+                      smoothScrollToElement(el);
+                    }
                   }}
                   className="inline-block border-b border-white text-white font-semibold text-lg md:text-xl hover:text-accent hover:border-accent transition-colors"
                 >

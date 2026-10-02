@@ -10,6 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContentCreatorGalatiRouteImport } from './routes/content-creator-galati'
+import { Route as FotografComercialGalatiRouteImport } from './routes/fotograf-comercial-galati'
+import { Route as FotografieCulinaraGalatiRouteImport } from './routes/fotografie-culinara-galati'
+import { Route as FotografieProdusGalatiRouteImport } from './routes/fotografie-produs-galati'
+import { Route as PhotoRouteImport } from './routes/photo'
+import { Route as VideoRouteImport } from './routes/video'
+import { Route as VideografComercialGalatiRouteImport } from './routes/videograf-comercial-galati'
 import { Route as WorkSlugRouteImport } from './routes/work.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -17,6 +24,43 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContentCreatorGalatiRoute = ContentCreatorGalatiRouteImport.update({
+  id: '/content-creator-galati',
+  path: '/content-creator-galati',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FotografComercialGalatiRoute = FotografComercialGalatiRouteImport.update({
+  id: '/fotograf-comercial-galati',
+  path: '/fotograf-comercial-galati',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FotografieCulinaraGalatiRoute =
+  FotografieCulinaraGalatiRouteImport.update({
+    id: '/fotografie-culinara-galati',
+    path: '/fotografie-culinara-galati',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const FotografieProdusGalatiRoute = FotografieProdusGalatiRouteImport.update({
+  id: '/fotografie-produs-galati',
+  path: '/fotografie-produs-galati',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PhotoRoute = PhotoRouteImport.update({
+  id: '/photo',
+  path: '/photo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VideoRoute = VideoRouteImport.update({
+  id: '/video',
+  path: '/video',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VideografComercialGalatiRoute =
+  VideografComercialGalatiRouteImport.update({
+    id: '/videograf-comercial-galati',
+    path: '/videograf-comercial-galati',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const WorkSlugRoute = WorkSlugRouteImport.update({
   id: '/work/$slug',
   path: '/work/$slug',
@@ -25,27 +69,83 @@ const WorkSlugRoute = WorkSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/content-creator-galati': typeof ContentCreatorGalatiRoute
+  '/fotograf-comercial-galati': typeof FotografComercialGalatiRoute
+  '/fotografie-culinara-galati': typeof FotografieCulinaraGalatiRoute
+  '/fotografie-produs-galati': typeof FotografieProdusGalatiRoute
+  '/photo': typeof PhotoRoute
+  '/video': typeof VideoRoute
+  '/videograf-comercial-galati': typeof VideografComercialGalatiRoute
   '/work/$slug': typeof WorkSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/content-creator-galati': typeof ContentCreatorGalatiRoute
+  '/fotograf-comercial-galati': typeof FotografComercialGalatiRoute
+  '/fotografie-culinara-galati': typeof FotografieCulinaraGalatiRoute
+  '/fotografie-produs-galati': typeof FotografieProdusGalatiRoute
+  '/photo': typeof PhotoRoute
+  '/video': typeof VideoRoute
+  '/videograf-comercial-galati': typeof VideografComercialGalatiRoute
   '/work/$slug': typeof WorkSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/content-creator-galati': typeof ContentCreatorGalatiRoute
+  '/fotograf-comercial-galati': typeof FotografComercialGalatiRoute
+  '/fotografie-culinara-galati': typeof FotografieCulinaraGalatiRoute
+  '/fotografie-produs-galati': typeof FotografieProdusGalatiRoute
+  '/photo': typeof PhotoRoute
+  '/video': typeof VideoRoute
+  '/videograf-comercial-galati': typeof VideografComercialGalatiRoute
   '/work/$slug': typeof WorkSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/work/$slug'
+  fullPaths:
+    | '/'
+    | '/content-creator-galati'
+    | '/fotograf-comercial-galati'
+    | '/fotografie-culinara-galati'
+    | '/fotografie-produs-galati'
+    | '/photo'
+    | '/video'
+    | '/videograf-comercial-galati'
+    | '/work/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/work/$slug'
-  id: '__root__' | '/' | '/work/$slug'
+  to:
+    | '/'
+    | '/content-creator-galati'
+    | '/fotograf-comercial-galati'
+    | '/fotografie-culinara-galati'
+    | '/fotografie-produs-galati'
+    | '/photo'
+    | '/video'
+    | '/videograf-comercial-galati'
+    | '/work/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/content-creator-galati'
+    | '/fotograf-comercial-galati'
+    | '/fotografie-culinara-galati'
+    | '/fotografie-produs-galati'
+    | '/photo'
+    | '/video'
+    | '/videograf-comercial-galati'
+    | '/work/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContentCreatorGalatiRoute: typeof ContentCreatorGalatiRoute
+  FotografComercialGalatiRoute: typeof FotografComercialGalatiRoute
+  FotografieCulinaraGalatiRoute: typeof FotografieCulinaraGalatiRoute
+  FotografieProdusGalatiRoute: typeof FotografieProdusGalatiRoute
+  PhotoRoute: typeof PhotoRoute
+  VideoRoute: typeof VideoRoute
+  VideografComercialGalatiRoute: typeof VideografComercialGalatiRoute
   WorkSlugRoute: typeof WorkSlugRoute
 }
 
@@ -56,6 +156,55 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/content-creator-galati': {
+      id: '/content-creator-galati'
+      path: '/content-creator-galati'
+      fullPath: '/content-creator-galati'
+      preLoaderRoute: typeof ContentCreatorGalatiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fotograf-comercial-galati': {
+      id: '/fotograf-comercial-galati'
+      path: '/fotograf-comercial-galati'
+      fullPath: '/fotograf-comercial-galati'
+      preLoaderRoute: typeof FotografComercialGalatiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fotografie-culinara-galati': {
+      id: '/fotografie-culinara-galati'
+      path: '/fotografie-culinara-galati'
+      fullPath: '/fotografie-culinara-galati'
+      preLoaderRoute: typeof FotografieCulinaraGalatiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fotografie-produs-galati': {
+      id: '/fotografie-produs-galati'
+      path: '/fotografie-produs-galati'
+      fullPath: '/fotografie-produs-galati'
+      preLoaderRoute: typeof FotografieProdusGalatiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/photo': {
+      id: '/photo'
+      path: '/photo'
+      fullPath: '/photo'
+      preLoaderRoute: typeof PhotoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/video': {
+      id: '/video'
+      path: '/video'
+      fullPath: '/video'
+      preLoaderRoute: typeof VideoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/videograf-comercial-galati': {
+      id: '/videograf-comercial-galati'
+      path: '/videograf-comercial-galati'
+      fullPath: '/videograf-comercial-galati'
+      preLoaderRoute: typeof VideografComercialGalatiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/work/$slug': {
@@ -70,6 +219,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContentCreatorGalatiRoute: ContentCreatorGalatiRoute,
+  FotografComercialGalatiRoute: FotografComercialGalatiRoute,
+  FotografieCulinaraGalatiRoute: FotografieCulinaraGalatiRoute,
+  FotografieProdusGalatiRoute: FotografieProdusGalatiRoute,
+  PhotoRoute: PhotoRoute,
+  VideoRoute: VideoRoute,
+  VideografComercialGalatiRoute: VideografComercialGalatiRoute,
   WorkSlugRoute: WorkSlugRoute,
 }
 export const routeTree = rootRouteImport

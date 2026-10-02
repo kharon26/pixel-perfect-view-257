@@ -4,7 +4,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
 import { LazyVideo } from "@/components/LazyVideo";
-import { getProject, nextProject, prevProject, getCategoryLabel, getRoleLabel, videoPoster } from "@/lib/project-utils";
+import { getProject, nextProject, prevProject, getCategoryLabel, getRoleLabel, videoPoster, getMediaDimensions } from "@/lib/project-utils";
 import { useLanguage } from "@/context/LanguageContext";
 
 export const Route = createFileRoute("/work/$slug")({
@@ -14,18 +14,86 @@ export const Route = createFileRoute("/work/$slug")({
     return { project, next: nextProject(params.slug), prev: prevProject(params.slug) };
   },
   head: ({ loaderData }) => {
-    const title = loaderData
-      ? `${loaderData.project.title} — ${loaderData.project.client} | George Roșu`
-      : "Case study | George Roșu";
-    const description = loaderData
-      ? `${loaderData.project.category} case study for ${loaderData.project.client}, ${loaderData.project.year}. Commercial photography and motion by George Roșu.`
-      : "Commercial photography and motion case study by George Roșu.";
+    const project = loaderData?.project;
+    const serviceMap: Record<string, string> = {
+      "99beauty": "Fotografie de Produs & Cosmetică",
+      "alex-macelarie": "Fotografie Comercială & Brand Culinar",
+      "alex-restaurant": "Fotografie & Video Culinar",
+      "bcracing-europe": "Automotive Photography & Content",
+      "bmw-romania": "Automotive Photography & Track Content",
+      "dentoart-clinic": "Fotografie Corporate & Medicală",
+      "famous-chicken": "Fotografie & Video Culinar",
+      "formula-xperience": "Automotive Video & Content",
+      "harmonie-cafe": "Fotografie de Brand & Social Media",
+      "mapet-tuning-airride": "Automotive Photography & Video",
+      "mazda-romania": "Automotive Photography",
+      "motorpark-romania": "Circuit Track & Motorsport Photography",
+      "nespresso": "Reclamă Video de Produs",
+      "raliw-forged-wheels": "Automotive Product Photography",
+      "royal-pizza": "Fotografie Comercială & Brand Culinar",
+      "toyota-braila": "Automotive Photography & Social Media",
+    };
 
-    const heroSrc = loaderData
-      ? (loaderData.project.heroLandscape || loaderData.project.cover).endsWith(".mp4")
-        ? videoPoster(loaderData.project.heroLandscape || loaderData.project.cover)
-        : (loaderData.project.heroLandscape || loaderData.project.cover)
+    const serviceTitle = project ? (serviceMap[project.slug] || project.role) : "Fotografie & Video Comercial";
+    const title = project
+      ? `${project.title} — ${serviceTitle} | George Roșu`
+      : "Portofoliu Comercial | George Roșu";
+    
+    const description = project
+      ? `Proiectul ${project.title} (${project.client}) — ${serviceTitle.toLowerCase()}. ${project.narrative.slice(0, 130).trim()}... George Roșu, Galați & România.`
+      : "Proiect de fotografie și videografie comercială realizat de George Roșu.";
+
+    const heroSrc = project
+      ? (project.heroLandscape || project.cover).endsWith(".mp4")
+        ? videoPoster(project.heroLandscape || project.cover)
+        : (project.heroLandscape || project.cover)
       : undefined;
+
+    const fullImageUrl = heroSrc
+      ? (heroSrc.startsWith("http") ? heroSrc : `https://georgerosu.eu${heroSrc}`)
+      : "https://georgerosu.eu/portfolio/motorpark-romania/BMW_74_-1200w.webp";
+
+    const canonicalUrl = project ? `https://georgerosu.eu/work/${project.slug}` : "https://georgerosu.eu/";
+
+    // Construct rich JSON-LD for project page: Breadcrumbs + VideoObject if video is present
+    const videoAsset = project?.gallery.find((src: string) => src.endsWith(".mp4")) || (project?.video ? project.video : null);
+    const videoUrl = videoAsset ? (videoAsset.startsWith("http") ? videoAsset : `https://georgerosu.eu${videoAsset}`) : null;
+
+    const schemaGraph: any[] = [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Acasă", "item": "https://georgerosu.eu" },
+          { "@type": "ListItem", "position": 2, "name": "Portofoliu", "item": "https://georgerosu.eu/#work" },
+          { "@type": "ListItem", "position": 3, "name": project?.title || "Proiect", "item": canonicalUrl }
+        ]
+      },
+      {
+        "@type": "CreativeWork",
+        "@id": `${canonicalUrl}#work`,
+        "name": title,
+        "headline": project ? `${project.title} — ${serviceTitle}` : title,
+        "description": description,
+        "image": fullImageUrl,
+        "author": { "@type": "Person", "name": "George Roșu", "url": "https://georgerosu.eu" },
+        "publisher": { "@type": "Organization", "name": "George Roșu", "url": "https://georgerosu.eu" },
+        "genre": project?.category || "Commercial Photography"
+      }
+    ];
+
+    if (videoUrl && project) {
+      schemaGraph.push({
+        "@type": "VideoObject",
+        "@id": `${canonicalUrl}#video`,
+        "name": `${project.title} — ${serviceTitle}`,
+        "description": project.narrative,
+        "thumbnailUrl": fullImageUrl,
+        "uploadDate": "2026-01-15T00:00:00+02:00",
+        "contentUrl": videoUrl
+      });
+    }
+
+    const jsonLdString = JSON.stringify({ "@context": "https://schema.org", "@graph": schemaGraph });
 
     return {
       meta: [
@@ -34,11 +102,26 @@ export const Route = createFileRoute("/work/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: canonicalUrl },
+        { property: "og:image", content: fullImageUrl },
+        { property: "og:site_name", content: "George Roșu" },
         { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: fullImageUrl },
       ],
-      links: heroSrc
-        ? [{ rel: "preload", href: heroSrc, as: "image", fetchpriority: "high" as any }]
-        : [],
+      links: [
+        { rel: "canonical", href: canonicalUrl },
+        ...(heroSrc
+          ? [{ rel: "preload", href: heroSrc, as: "image", fetchPriority: "high" as any }]
+          : []),
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: jsonLdString,
+        },
+      ],
     };
   },
   component: CaseStudy,
@@ -51,7 +134,7 @@ function CaseStudy() {
   const safeNext = next || nextProject(project.slug);
   const safePrev = prev || prevProject(project.slug);
 
-  // Synchronous before-paint reset to guarantee top start
+  // Synchronous before-paint reset to guarantee top start without secondary scrolling
   useLayoutEffect(() => {
     if (typeof window !== "undefined") {
       if ("scrollRestoration" in window.history) {
@@ -59,15 +142,6 @@ function CaseStudy() {
       }
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     }
-  }, [project.slug]);
-
-  // Smooth scroll sync after route transition mounts (50ms)
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-    }, 50);
-
-    return () => clearTimeout(timer);
   }, [project.slug]);
 
   const activeNarrative = lang === "RO" ? project.narrative : (project.narrativeEn || project.narrative);
@@ -82,14 +156,7 @@ function CaseStudy() {
 
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    navigate({ to: "/", hash: "contact" }).then(() => {
-      setTimeout(() => {
-        const el = document.getElementById("contact");
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 150);
-    });
+    navigate({ to: "/", hash: "contact" });
   };
 
   return (
@@ -105,7 +172,7 @@ function CaseStudy() {
                 ? videoPoster(project.heroLandscape || project.cover)
                 : (project.heroLandscape || project.cover)
             }
-            alt={project.title}
+            alt={`${project.title} — ${getRoleLabel(project.role, lang)} pentru ${project.client}`}
             loading="eager"
             decoding="sync"
             fetchPriority="high"
@@ -132,7 +199,22 @@ function CaseStudy() {
             </Reveal>
             <Reveal once delay={100}>
               <p className="label text-neutral-800 font-semibold mb-1.5 md:mb-3 text-xs md:text-sm tracking-wider uppercase">
-                {project.index} — {activeCategory}
+                <span>{project.index} — </span>
+                <Link
+                  to={
+                    project.category === "Produs"
+                      ? "/fotografie-produs-galati"
+                      : project.category === "Culinar"
+                      ? "/fotografie-culinara-galati"
+                      : project.mediaTypes.includes("video")
+                      ? "/videograf-comercial-galati"
+                      : "/fotograf-comercial-galati"
+                  }
+                  className="hover:underline transition-all"
+                  title={`Vezi serviciile de ${activeCategory} în Galați`}
+                >
+                  {activeCategory}
+                </Link>
               </p>
             </Reveal>
             <Reveal once delay={150}>
@@ -182,6 +264,7 @@ function CaseStudy() {
           <div className="flex flex-col items-center gap-16 md:gap-24">
             {sortedGallery.map((src: string, i: number) => {
               const isVideo = src.endsWith(".mp4");
+              const dims = getMediaDimensions(src);
 
               return (
                 <Reveal
@@ -190,7 +273,16 @@ function CaseStudy() {
                   delay={(i % 2) * 60}
                   className="w-full flex justify-center"
                 >
-                  <div className="w-full max-w-5xl flex justify-center bg-transparent relative overflow-hidden">
+                  <div
+                    className="w-full max-w-5xl flex justify-center bg-transparent relative overflow-hidden"
+                    style={{
+                      aspectRatio: dims ? `${dims.width} / ${dims.height}` : undefined,
+                      maxHeight: "88vh",
+                      width: dims
+                        ? `min(100%, calc(88vh * ${dims.width / dims.height}))`
+                        : "100%",
+                    }}
+                  >
                     {isVideo ? (
                       <LazyVideo
                         src={src}
@@ -201,9 +293,14 @@ function CaseStudy() {
                     ) : (
                       <img
                         src={src}
-                        alt={`${project.title} — ${getRoleLabel(project.role, lang)} photo ${i + 1}`}
+                        alt={`${project.title} — ${getRoleLabel(project.role, lang)} (${project.client}) cadru ${i + 1}`}
                         loading={i < 2 ? "eager" : "lazy"}
                         decoding="async"
+                        width={dims?.width}
+                        height={dims?.height}
+                        style={{
+                          aspectRatio: dims ? `${dims.width} / ${dims.height}` : undefined,
+                        }}
                         fetchPriority={i < 1 ? "high" : "auto"}
                         className="w-auto max-w-full h-auto max-h-[88vh] rounded-none shadow-sm block transition-opacity duration-300"
                       />
